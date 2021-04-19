@@ -8,19 +8,40 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<body>
 		<div class="topnav" id="myTopnav">
-			<div class="topnav-left"></div>
-				<a id="menu_entrance" onclick="menu('entrance')">Home</a>
-				<a id="menu_login" onclick="menu('login')">Log In</a>
-				<a id="menu_register" onclick="menu('register')">Register</a>
+			<div class="topnav-left">
+				<a id="menu_entrance" onclick="SwitchDisplay('entrance')">Home</a>
+				<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
+				<a id="menu_register" onclick="SwitchDisplay('register')">Register</a>
 				<a href="javascript:void(0);" class="icon" onclick="MenuSize()">
 			  <i class="fa fa-bars"></i>
-			  <div>
+			  </div>
 		  </div>
 		  
-		<div id="entrance" class="box">
-			<input type="submit" value="Register" onclick="menu('register')"/>
+		  <div id="entrance" class="box">
+			<input type="submit" value="Register" onclick="SwitchDisplay('register')"/>
+			<input type="submit" value="Login" onclick="SwitchDisplay('login')"/>
 		</div>
-
+		<div id="register" class="box">
+			<h1>hi, please register</h1>
+			<form  id="form_registration_id">
+				<label autofocus for="RegUsername">Username</label>
+				<input type="text" name="Username" id="RegUsername" placeholder="pacman"/>
+				<br>
+				<label for="RegPassword">Password</label>
+				<input type="password" name="Password" id="RegPassword" autocomplete="on" placeholder="********"/>
+				<br>
+				<label for="RegFullName">Full Name</label>
+				<input type="text" name="FullName" id="RegFullName" placeholder="mr. pacman"/>
+				<br>
+				<label>Email</label>
+				<input type="email" name="Email" id="RegEmail" placeholder="pacman@pacman.pac.man"/>
+				<br>
+				<label>Birthday</label>
+				<input type="date" name="Birthday" id="RegBirthday"/>
+				<input type="submit" value="Register" id="RegSubmit"/>
+			</form>
+		</div>
+		
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />

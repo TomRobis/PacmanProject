@@ -170,3 +170,24 @@ function UpdatePosition() {
 		Draw();
 	}
 }
+
+// //////new fom here
+function MenuSize() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+	  x.className += " responsive";
+	} else {
+	  x.className = "topnav";
+	}
+  }
+  function SwitchDisplay(nav) {
+    Hide_Display();
+    $('#' + nav).show();
+};
+
+//claer the screen from the box
+function Hide_Display() {
+	$('#entrance').hide();
+	$('#register').hide();
+	$('#login').hide();
+};
