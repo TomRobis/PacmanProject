@@ -3,14 +3,24 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<body>
-		<div id="welcome" class="box">
-			<img id="welcome_image" src="./resource/images/opening_1.jpg">
+		<div class="topnav" id="myTopnav">
+			<div class="topnav-left"></div>
+				<a id="menu_entrance" onclick="menu('entrance')">Home</a>
+				<a id="menu_login" onclick="menu('login')">Log In</a>
+				<a id="menu_register" onclick="menu('register')">Register</a>
+				<a href="javascript:void(0);" class="icon" onclick="MenuSize()">
+			  <i class="fa fa-bars"></i>
+			  <div>
+		  </div>
+		  
+		<div id="entrance" class="box">
 			<input type="submit" value="Register" onclick="menu('register')"/>
-			<input type="submit" value="Login" onclick="menu('login')"/>
 		</div>
+
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
