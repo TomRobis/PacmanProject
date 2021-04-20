@@ -4,8 +4,11 @@
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+
 	</head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<body>
 		<div class="topnav" id="myTopnav">
 			<div class="topnav-left">
@@ -23,7 +26,7 @@
 		</div>
 		<div id="register" class="box">
 			<h1>hi, please register</h1>
-			<form  id="form_registration_id">
+			<form  id="form_registration_id" >
 				<label autofocus for="RegUsername">Username</label>
 				<input type="text" name="Username" id="RegUsername" placeholder="pacman"/>
 				<br>
@@ -52,6 +55,7 @@
 		</div>
 		<div id="game">
 			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		</div>	
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 </html>
