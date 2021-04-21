@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- TODO add more meta tags here -->
 		<meta charset="utf-8">
+
+
+		<!-- stylesheets -->
 		<link rel="stylesheet" type="text/css" href="./css/menu.css"/>
 		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />_
+
+		<!-- jquery files and plugins -->
 		<script src="./js/jquery-3.4.1.slim.min.js"></script>
-		<script src="./js/app.js" type="text/javascript"></script>
-		<!-- <script type="text/javascript" src="./js/signup.js" ></script> -->
-		<script type="text/javascript" src="./js/main.js"  ></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
+		<!-- javascript game files -->
+		<script src="./js/app.js" type="text/javascript"></script>
+
+		<!-- javascript menu files -->
+		<script src="./js/main_menu/login.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/settings.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/signup.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/main_menu_db.js" type="text/javascript"   ></script>
+		<script src="./js/main.js" type="text/javascript"  ></script>
+		
+
 		
 	</head>
 	
@@ -85,6 +100,7 @@
 						<label for="LogPassword"></label>
 						<input type="password" class="inputFields" id="LogPassword" name="Password" placeholder="Password" required/>
 					  </li>
+					  <!-- TODO complete -->
 					  <li>
 						<button type="submit" id="executeLogin" class="action_fields">Login</button>
 					</li>
@@ -96,7 +112,7 @@
 			  </div>
 			  <div id="settings" class="menu_wrapper">
 				<form class="menu_container" id="settingsForm">
-				  <h3>Customize your key bindings</h3>
+				<h3>Control your movement</h3>
 				  <ul class="noBullet">
 					<li>
 					  <label for="setUpKey">Up</label>
@@ -129,26 +145,30 @@
 					</li>
 					<h3>Choose your difficulty</h3>
 					<li>
-						<input type="text" class="inputFields" id="dotsCount" placeholder="number of dots"/>
+						<label for="dotsCount">Dots</label>
+						<input type="text" class="inputFields" id="dotsCount" name="dotsCount" placeholder="number of dots" value=50 />
 					</li>
 					<li>
-						<input type="text" class="inputFields" id="monstersCount" placeholder="numeber of monsters"/>
+						<label for="monstersCount">Monsters</label>
+						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="numeber of monsters" value=1 />
 					</li>
+					<!-- TODO complete -->
 					<li>
 						<button type="submit" id="setSubmit" class="action_fields" >Save settings</button>
 					</li>
 					<li>
-						<button type="button" id="randomizeSettings" class="action_fields" onclick="randomizeSettings()">Random settings</button>
+						<button type="button" id="setRandomizeSettings" class="action_fields" onclick="randomizeSettings()">Random settings</button>
 					</li>	
 					<li>
 						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
 					</li>
+				
 				  </ul>
-				  <div id="modalAttempt" class="modal">
-					<p>Press any key to continue.</p>
-				  </div>
 			</form>
 			</div>
+			<div id="modalAttempt" class="modal">
+				<p>Press any key to continue.</p>
+			  </div>
 			<div id="gameDiv">
 				<div id="score">
 					<label for="lblScore">SCORE:</label>
