@@ -1,3 +1,4 @@
+
 let usersDB = [
 	{
 		username: "k",
@@ -22,10 +23,12 @@ let usersDB = [
 	}
 ];
 
+let signupValidator;
+let loginValidator;
 
 
+export function defineValidators(){
 
-function setValidator(){
     $.validator.addMethod("validPassword", function(value,element,usernameAttribute) {
 		return usernameAttribute.val() !== "" && (value === "k" || (value.length >= 6 && hasNumberAndLetter(value)));
 	}, "Your pass must have one number and one letter, and over 5 characters.");
@@ -34,7 +37,11 @@ function setValidator(){
 		return hasOnlyLetters(value);
 	}, "Your name must only contain letters.");
 
-    $validator = $("#signupform").validate({
+    $.validator.addMethod("validUserName", function(value) {
+        return typeof getRecord(value) !== "undefined";
+    }, "Please enter a valid username");
+
+    signupValidator = $("#signupform").validate({
         rules: {
             Username: {
                 required: true,
@@ -61,11 +68,33 @@ function setValidator(){
             handleNewUser();
         }
     });
+    loginValidator = $("#loginForm").validate({
+        rules: {
+            Username: {
+                required: true,
+                validUserName: true
+            },
+            Password: {
+                required: true,
+                validPassword: $("#RegUsername")
+    
+            }
+        },
+        submitHandler: function() {
+            loginUser();
+        }
+    });
 }
 
-$(document).ready(function (){
-    setValidator();
-});
+export function setValidator(pageID){
+    if (pageID === 'loginForm'){
+        validator = loginValidator;
+    }
+    else if (pageID === 'signupform'){
+        validator = signupValidator;
+    }
+}
+
 
 
 function hasNumberAndLetter(myString) {
@@ -94,12 +123,12 @@ function handleNewUser(){
             }	
         );
         $('#signupform').trigger("reset");
-        // TODO add screen switch to login
-        console.log(usersDB[3]);
+        // SwitchDisplay('welcome');
+        // console.log(usersDB[3]);
 }
 
-// LOGIN 
-//getRecord(username).password === value
-//	$.validator.addMethod("validUserName", function(value) {
-	// return typeof getRecord(value) !== "undefined";
-// }, "Please enter a valid username");
+function loginUser(){
+    SwitchDisplay('gameDiv');
+}
+
+

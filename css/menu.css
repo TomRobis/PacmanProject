@@ -11,14 +11,14 @@ body {
   background-repeat: no-repeat;
 }
 
-.signupSection {
+.menu_wrapper {
   background-repeat: no-repeat;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
-  height: 600px;
+  width: auto;
+  height: auto;
   text-align: center;
   display: flex;
   color: white;
@@ -26,13 +26,13 @@ body {
 }
 
 
-.signupForm {
-  width: 100%;
+.menu_container {
+  width: 300px;
   padding: 30px 0;
   background: rgba(20, 40, 40, .8);
   transition: .2s;
 }
-.signupForm .h2{
+.menu_container .h2{
     font-weight: 300;
 }
 
@@ -40,7 +40,7 @@ body {
   margin: 15px 0;
   font-size: 16px;
   padding: 10px;
-  width: 40%;
+  width: auto;
   border: 1px solid rgba(10, 180, 180, 1);
   border-top: none;
   border-left: none;
@@ -58,7 +58,7 @@ body {
 .action_fields {
   margin-top: 10px;
   text-align: center;
-  width: 250px;
+  width: 200px;
   border: 1px solid rgba(10, 180, 180, 1);
   background: rgba(20, 20, 20, .6);
   font-size: 18px;

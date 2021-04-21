@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="./css/signupForm.css"/>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="./css/menu.css"/>
 		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="./js/jquery-3.4.1.slim.min.js"></script>
 		<script src="./js/app.js" type="text/javascript"></script>
-		<script src="./js/signup.js" type="text/javascript"></script>
-		<script src="./js/main.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript" src="./js/signup.js" ></script> -->
+		<script type="text/javascript" src="./js/main.js"  ></script>
 
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
@@ -16,29 +17,32 @@
 	
 	<body>
 		<header>
-			<div class="topnav" id="myTopnav">
-				<div class="topnav-left">
-					<a id="menu_entrance" onclick="SwitchDisplay('entrance')">Home</a>
-					<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
-					<a id="menu_register"  onclick="SwitchDisplay('register')">Register</a>
-					<a href="javascript:void(0);" class="icon" onclick="MenuSize()"></a>
-				  </div>
-			  </div>
-			<div>
-				<img src="images/logo.png" alt="logo">
-			</div>
+			<img src="images/logo.png" alt="logo">
 			<div class="overlay">
 				<h1>The best Pac-woman out there!</h1>
 				<h3>Brought to you by: Avichai, the mighty one with three armpits and Tom, the lesser one with only two armpits.</h3>
 			</div>
 		</header>
-		<menu>
-
-		</menu>
 		<content>
-			<div id="register" class="signupSection">
-				<form class="signupForm" name="signupform" id="signupform">
-				  <h2>Submit your details and start playing!</h2>
+			<div id="welcome" class="menu_wrapper">
+				<div class="menu_container">
+				  <h2>Welcome to Pac-man!</h2>
+				  <ul class="noBullet">
+					<li>
+						<button type="button" id="welLogin" class="action_fields" onclick="SwitchDisplay('login')" >Login</button>
+					</li>
+					<li>
+						<button type="button" id="welRegister" class="action_fields" onclick="SwitchDisplay('register')" >Create new user</button>
+					</li>
+					<li>
+						<button type="button" id="welSettings" class="action_fields" onclick="SwitchDisplay('settings')">Settings</button>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			<div id="register" class="menu_wrapper">
+				<form class="menu_container" id="signupform">
+				  <h2>Submit your details!</h2>
 				  <ul class="noBullet">
 					<li>
 					  <label for="RegUsername"></label>
@@ -61,27 +65,89 @@
 						<input type="date" class="inputFields" name="Birthday" id="RegBirthday" placeholder=""/>
 					</li>
 					<li>
-					  <input type="submit" id="RegSubmit" alt="Join" value="Create my new user!" class="action_fields">
+						<button type="submit" id="RegSubmit" class="action_fields" >Create my new user!</button>
 					</li>
 					<li>
-						<!-- type text is different in size than type submit -->
-						<input type="text" id="RegMenu" alt="returnMenu" value="Return to main menu" class="action_fields">
-					  </li>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+					</li>
 				  </ul>
 				</form>
 			  </div>
+			  <div id="login" class="menu_wrapper">
+				<form class="menu_div" id="loginForm">
+				  <h2>Enter your credentials</h2>
+				  <ul class="noBullet">
+					<li>
+						<label for="LogUsername"></label>
+						<input type="text" class="inputFields" id="LogUsername" name="Username" placeholder="Username" required/>
+					  </li>
+					  <li>
+						<label for="LogPassword"></label>
+						<input type="password" class="inputFields" id="LogPassword" name="Password" placeholder="Password" required/>
+					  </li>
+					  <li>
+						<button type="submit" id="executeLogin" class="action_fields">Login</button>
+					</li>
+					<li>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+					</li>
+				  </ul>
+				</form>
+			  </div>
+			  <div id="settings" class="menu_wrapper">
+				<form class="menu_div" id="settingsForm">
+				  <h2>Choose your settings!</h2>
+				  <ul class="noBullet">
+					<li>
+					  <label for="setUpKey"></label>
+					  <input type="text" class="inputFields" id="setUpKey" placeholder="Up"/>
+					</li>
+					<li>
+					  <label for="setDownKey"></label>
+					  <input type="text" class="inputFields" id="setDownKey" placeholder="Down"/>
+					</li>
+					<li>
+						<label for="setLeftKey"></label>
+						<input type="text" class="inputFields" id="setLeftKey" placeholder="Left"/>
+					</li>
+					<li>
+					  <label for="setRightKey"></label>
+					  <input type="text" class="inputFields" id="setRightKey" placeholder="Right"/>
+					</li>
+					<li>
+						<label for="dotsCount"></label>
+						<input type="text" class="inputFields" id="dotsCount" placeholder="number of dots"/>
+					</li>
+					<li>
+						<label for="monstersCount"></label>
+						<input type="text" class="inputFields" id="monstersCount" placeholder="numeber of monsters"/>
+					</li>
+					<li>
+						<button type="submit" id="setSubmit" class="action_fields" >Save settings</button>
+					</li>
+					<li>
+						<button type="button" id="randomizeSettings" class="action_fields" onclick="randomizeSettings()">Random settings</button>
+					</li>	
+					<li>
+						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+					</li>
+				  </ul>
+				</form>
+			  </div>
+			<div id="gameDiv">
+				<div id="score">
+					<label for="lblScore">SCORE:</label>
+					<input id="lblScore" type="text" />
+				</div>
+				<div id="time">
+					<label for="lblTime">TIME:</label>
+					<input id="lblTime" type="text" />
+				</div>
+				<div id="game">
+					<canvas id="canvas" height="600" width="600"></canvas>
+				</div>	
+			</div>
 			
-			<div id="score">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
-			<div id="game">
-				<canvas id="canvas" height="600" width="600"></canvas>
-			</div>	
 		</content>
 
 
