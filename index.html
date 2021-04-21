@@ -1,61 +1,93 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="./css/signupForm.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
+		<script src="./js/jquery-3.4.1.slim.min.js"></script>
+		<script src="./js/app.js" type="text/javascript"></script>
+		<script src="./js/signup.js" type="text/javascript"></script>
+		<script src="./js/main.js" type="text/javascript"></script>
 
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
+		
 	</head>
 	
 	<body>
-		<div class="topnav" id="myTopnav">
-			<div class="topnav-left">
-				<a id="menu_entrance" onclick="SwitchDisplay('entrance')">Home</a>
-				<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
-				<a id="menu_register" onclick="SwitchDisplay('register')">Register</a>
-				<a href="javascript:void(0);" class="icon" onclick="MenuSize()">
-			  <i class="fa fa-bars"></i>
+		<header>
+			<div class="topnav" id="myTopnav">
+				<div class="topnav-left">
+					<a id="menu_entrance" onclick="SwitchDisplay('entrance')">Home</a>
+					<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
+					<a id="menu_register"  onclick="SwitchDisplay('register')">Register</a>
+					<a href="javascript:void(0);" class="icon" onclick="MenuSize()"></a>
+				  </div>
 			  </div>
-		  </div>
-		  
-		  <div id="entrance" class="box">
-			<input type="submit" value="Register" onclick="SwitchDisplay('register')"/>
-			<input type="submit" value="Login" onclick="SwitchDisplay('login')"/>
-		</div>
-		<div id="register" class="box">
-			<h1>hi, please register</h1>
-			<form  id="form_registration_id" >
-				<label autofocus for="RegUsername">Username</label>
-				<input type="text" name="Username" id="RegUsername" placeholder="pacman"/>
-				<br>
-				<label for="RegPassword">Password</label>
-				<input type="password" name="Password" id="RegPassword" autocomplete="on" placeholder="********"/>
-				<br>
-				<label for="RegFullName">Full Name</label>
-				<input type="text" name="FullName" id="RegFullName" placeholder="mr. pacman"/>
-				<br>
-				<label>Email</label>
-				<input type="email" name="Email" id="RegEmail" placeholder="pacman@pacman.pac.man"/>
-				<br>
-				<label>Birthday</label>
-				<input type="date" name="Birthday" id="RegBirthday"/>
-				<input type="submit" value="Register" id="RegSubmit"/>
-			</form>
-		</div>
-		
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>	
+			<div>
+				<img src="images/logo.png" alt="logo">
+			</div>
+			<div class="overlay">
+				<h1>The best Pac-woman out there!</h1>
+				<h3>Brought to you by: Avichai, the mighty one with three armpits and Tom, the lesser one with only two armpits.</h3>
+			</div>
+		</header>
+		<menu>
+
+		</menu>
+		<content>
+			<div id="register" class="signupSection">
+				<form class="signupForm" name="signupform" id="signupform">
+				  <h2>Submit your details and start playing!</h2>
+				  <ul class="noBullet">
+					<li>
+					  <label for="RegUsername"></label>
+					  <input type="text" class="inputFields" id="RegUsername" name="Username" placeholder="Username"/>
+					</li>
+					<li>
+					  <label for="RegPassword"></label>
+					  <input type="password" class="inputFields" id="RegPassword" name="Password" placeholder="Password"/>
+					</li>
+					<li>
+						<label for="RegFullName"></label>
+						<input type="text" class="inputFields" name="FullName" id="RegFullName" placeholder="Full Name"/>
+					</li>
+					<li>
+					  <label for="RegEmail"></label>
+					  <input type="email" class="inputFields" id="RegEmail" name="Email" placeholder="Email"/>
+					</li>
+					<li>
+						<label for="RegBirthday"></label>
+						<input type="date" class="inputFields" name="Birthday" id="RegBirthday" placeholder=""/>
+					</li>
+					<li>
+					  <input type="submit" id="RegSubmit" alt="Join" value="Create my new user!" class="action_fields">
+					</li>
+					<li>
+						<!-- type text is different in size than type submit -->
+						<input type="text" id="RegMenu" alt="returnMenu" value="Return to main menu" class="action_fields">
+					  </li>
+				  </ul>
+				</form>
+			  </div>
+			
+			<div id="score">
+				<label for="lblScore">SCORE:</label>
+				<input id="lblScore" type="text" />
+			</div>
+			<div id="time">
+				<label for="lblTime">TIME:</label>
+				<input id="lblTime" type="text" />
+			</div>
+			<div id="game">
+				<canvas id="canvas" height="600" width="600"></canvas>
+			</div>	
+		</content>
+
+
+
 	</body>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+	
 </html>
+
+
