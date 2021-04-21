@@ -9,9 +9,9 @@
 		<script src="./js/app.js" type="text/javascript"></script>
 		<!-- <script type="text/javascript" src="./js/signup.js" ></script> -->
 		<script type="text/javascript" src="./js/main.js"  ></script>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-
 		
 	</head>
 	
@@ -74,7 +74,7 @@
 				</form>
 			  </div>
 			  <div id="login" class="menu_wrapper">
-				<form class="menu_div" id="loginForm">
+				<form class="menu_container" id="loginForm">
 				  <h2>Enter your credentials</h2>
 				  <ul class="noBullet">
 					<li>
@@ -95,31 +95,43 @@
 				</form>
 			  </div>
 			  <div id="settings" class="menu_wrapper">
-				<form class="menu_div" id="settingsForm">
-				  <h2>Choose your settings!</h2>
+				<form class="menu_container" id="settingsForm">
+				  <h3>Customize your key bindings</h3>
 				  <ul class="noBullet">
 					<li>
-					  <label for="setUpKey"></label>
-					  <input type="text" class="inputFields" id="setUpKey" placeholder="Up"/>
+					  <label for="setUpKey">Up</label>
+					  <button type="button" id="setUpKey" class="action_fields keybind" onclick="bindNewKey(this.id)" > w </button>
 					</li>
 					<li>
-					  <label for="setDownKey"></label>
-					  <input type="text" class="inputFields" id="setDownKey" placeholder="Down"/>
+						<label for="setDownKey">Down</label>
+						<button type="button" id="setDownKey" class="action_fields keybind" onclick="bindNewKey(this.id)" > s </button>
 					</li>
 					<li>
-						<label for="setLeftKey"></label>
-						<input type="text" class="inputFields" id="setLeftKey" placeholder="Left"/>
+						<label for="setLeftKey">Left</label>
+						<button type="button" id="setLeftKey" class="action_fields keybind" onclick="bindNewKey(this.id)" > a </button>
+					</li>
+					<li>	
+						<label for="setRightKey">Right</label>
+						<button type="button" id="setRightKey" class="action_fields keybind" onclick="bindNewKey(this.id)" > d </button>
+					</li>
+					<h3>Pick your favorite dot colors</h3>
+					<li>
+						<label for="5ptsColor">5 pts</label>
+						<input type="color" id="5ptsColor"/>
 					</li>
 					<li>
-					  <label for="setRightKey"></label>
-					  <input type="text" class="inputFields" id="setRightKey" placeholder="Right"/>
+						<label for="15ptsColor">15 pts</label>
+						<input type="color" id="15ptsColor"/>
 					</li>
 					<li>
-						<label for="dotsCount"></label>
+						<label for="25ptsColor">25 pts</label>
+						<input type="color" id="25ptsColor"/>
+					</li>
+					<h3>Choose your difficulty</h3>
+					<li>
 						<input type="text" class="inputFields" id="dotsCount" placeholder="number of dots"/>
 					</li>
 					<li>
-						<label for="monstersCount"></label>
 						<input type="text" class="inputFields" id="monstersCount" placeholder="numeber of monsters"/>
 					</li>
 					<li>
@@ -132,8 +144,11 @@
 						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
 					</li>
 				  </ul>
-				</form>
-			  </div>
+				  <div id="modalAttempt" class="modal">
+					<p>Press any key to continue.</p>
+				  </div>
+			</form>
+			</div>
 			<div id="gameDiv">
 				<div id="score">
 					<label for="lblScore">SCORE:</label>
@@ -153,7 +168,6 @@
 
 
 	</body>
-	
 </html>
 
 

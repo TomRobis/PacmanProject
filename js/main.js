@@ -1,10 +1,12 @@
 $(document).ready(function() {
 	SwitchDisplay('welcome');
 	defineValidators();
+	defineKeyMappingDialogue();
 });
 
 
  function SwitchDisplay(pageID) {
+	$(".menu_container:visible").trigger("reset");
     $('.menu_wrapper').hide();
 	$('#' + pageID).show();
 	setValidator(pageID);
@@ -45,7 +47,14 @@ let usersDB = [
 
 let signupValidator;
 let loginValidator;
-
+let settingsValidator;
+let settingsMovementButtons = 
+	{
+	setUpKey: "w",
+	setDownKey: "s",
+	setLeftKey: "a",
+	setRightKey: "d"
+	}
 
 function defineValidators(){
 
@@ -66,6 +75,15 @@ function defineValidators(){
 		let userRec = getRecord(usernameAttr.val());
         return typeof userRec !== "undefined" && userRec.password === value;
     }, "your username or password do not match");
+
+	$.validator.addMethod("noKeyOverlap", function(value,elem) {
+		let userRec = getRecord(usernameAttr.val());
+        return typeof userRec !== "undefined" && userRec.password === value;
+    }, "your username or password do not match");
+
+
+
+
 
     signupValidator = $("#signupform").validate({
         rules: {
@@ -109,6 +127,27 @@ function defineValidators(){
 				loginUser();
 		}
 	});
+	settingsValidator = $("#settingsForm").validate({
+        rules: {
+            dotsCount: {
+                rangelength: [50,90]
+            },
+            monstersCount: {
+                required: true,
+				rangelength: [1,4]
+            },
+			setUpKey:{
+				noKeyOverlap: true
+			}
+
+        },
+        submitHandler: function() {
+            updateGameSettings(); //TODO when working on game
+
+
+        }
+    });
+	
 }
 
 function setValidator(pageID){
@@ -117,6 +156,9 @@ function setValidator(pageID){
     }
     else if (pageID === 'signupform'){
         validator = signupValidator;
+    }
+	else if (pageID === 'settingsForm'){
+        validator = settingsValidator;
     }
 }
 
@@ -147,10 +189,36 @@ function handleNewUser(){
             Birthday: $("#RegBirthday").val()
             }	
         );
-        $('#signupform').trigger("reset");
         SwitchDisplay('welcome');
         // console.log(usersDB[3]);
 }
 function loginUser(){
     SwitchDisplay('gameDiv');
 	}
+
+
+function bindNewKey(btnID) {
+	let myBtn = $("#" +btnID);
+	$("#modalAttempt").modal({
+		clickClose: false,
+	  });	
+	$(document).on('keypress',function(e) {
+		let keyPressed = e.key;
+		let myBtn = $("#" + btnID);
+
+		if( (Object.values(settingsMovementButtons).indexOf(keyPressed)) <= -1) {
+
+			myBtn.html(keyPressed);
+			settingsMovementButtons[btnID] = keyPressed;
+			
+			$.modal.close();
+			$(document).off('keypress');
+			
+		}
+	});
+	return false;
+}
+
+function updateGameSettings(){
+	return true;
+}
