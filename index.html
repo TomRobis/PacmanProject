@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />_
 
 		<!-- jquery files and plugins -->
-		<script src="./js/jquery-3.4.1.slim.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
@@ -52,7 +52,17 @@
 					<li>
 						<button type="button" id="welSettings" class="action_fields" onclick="SwitchDisplay('settings')">Settings</button>
 					</li>
+					<li>
+						<button type="button" id="welModalBtn" class="action_fields" onclick="displayAboutModal()">About</button>
+					</li>
 				  </ul>
+				  <div id="welModal" class="modal">
+					<p>
+						<span>This website was built by:</span>
+						<span><b>Avichai Edri</b>, the tall one and <b>Tom Robissa</b>, the midget.</span>
+						<span>During construction of this site, we have used the Validation Plugin and Modal Plugin</span>
+					</p>			
+				  </div>
 				</div>
 			  </div>
 			<div id="register" class="menu_wrapper">
@@ -166,7 +176,7 @@
 				  </ul>
 			</form>
 			</div>
-			<div id="modalAttempt" class="modal">
+			<div id="setKeyModal" class="modal">
 				<p>Press any key to continue.</p>
 			  </div>
 			<div id="gameDiv">

@@ -13,3 +13,12 @@ $(document).ready(function() {
     $('.menu_wrapper').hide();
 	$('#' + pageID).show();
 };
+
+
+function displayAboutModal(){
+	// $.modal.close();
+	$("#welModal").modal({
+		fadeDuration: 250
+	  });
+	return false;
+}

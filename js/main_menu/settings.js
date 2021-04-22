@@ -18,8 +18,8 @@ function setSettingsValidation(){
 
 function bindNewKey(btnID) {
 	let myBtn = $("#" +btnID);
-	$("#modalAttempt").modal({
-		clickClose: false
+	$("#setKeyModal").modal({
+		clickClose: false,
 	  });	
 	$(document).on('keypress',function(e) {
 		let keyPressed = e.key;
