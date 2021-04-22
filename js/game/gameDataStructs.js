@@ -2,7 +2,7 @@ const rowCount = 23;
 const colCount = 40;
 const foodCount = 5;
 const wallSizePxl = 25;
-const pacmanSizePxl = wallSizePxl / 2;
+const pacmanSizePxl =  wallSizePxl / 2;
 
 
 // let wallImage = new Image()

@@ -47,7 +47,7 @@ class gameBoard {
     }
 
     generateRandomLocation(){
-        return [getRndValue(0,rowCount-1),getRndValue(0,colCount-1)];
+        return [getRndValue(1,rowCount-2),getRndValue(1,colCount-2)];
     }
 
     draw(){

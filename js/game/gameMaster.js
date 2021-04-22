@@ -2,8 +2,8 @@ let ctx;
 function startGameSequence(){
     ctx  = canvas.getContext("2d");
     let gb = new gameBoard();
-    let pacmanInstance = new pacman(gb.getPacmanStartPos()); 
     gb.initGameBoard();
+    let pacmanInstance = new pacman(gb.getPacmanStartPos()); 
     pacmanInstance.draw();
     return false;
 

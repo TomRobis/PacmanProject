@@ -2,8 +2,8 @@ class pacman {
     //speed,
     constructor(startPos) {
         this.pos = startPos;
-        this.pos.x = this.pos[0]*wallSizePxl - wallSizePxl/2 ;
-        this.pos.y = this.pos[1]*wallSizePxl - wallSizePxl/2;
+        this.pos.x = this.pos[0]*wallSizePxl + pacmanSizePxl; //top left corner originally 
+        this.pos.y = this.pos[1]*wallSizePxl + pacmanSizePxl;
 
     // this.speed = speed;
     // this.dir = null;
