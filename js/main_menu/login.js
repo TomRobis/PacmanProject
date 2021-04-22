@@ -1,3 +1,5 @@
+// import {startGame} from '../game/gameMaster';
+
 
 function setLoginValidation(){
     $.validator.addMethod("userNameExists", function(value) {
@@ -22,14 +24,8 @@ function setLoginValidation(){
             }
         },
         submitHandler: function() {
-			loginUser();
+            SwitchDisplay('gameDiv');
+            startGameSequence();
 		}
 	});
-
 }
-
-
-function loginUser(){
-    SwitchDisplay('gameDiv');
-    //move on to game
-	}

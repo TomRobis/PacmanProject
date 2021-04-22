@@ -8,36 +8,46 @@
 		<!-- stylesheets -->
 		<link rel="stylesheet" type="text/css" href="./css/menu.css"/>
 		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/gameDesign.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />_
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 		<!-- jquery files and plugins -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
-		<!-- javascript game files -->
-		<script src="./js/app.js" type="text/javascript"></script>
 
 		<!-- javascript menu files -->
 		<script src="./js/main_menu/login.js" type="text/javascript" ></script>
 		<script src="./js/main_menu/settings.js" type="text/javascript" ></script>
 		<script src="./js/main_menu/signup.js" type="text/javascript" ></script>
-		<script src="./js/main_menu/main_menu_db.js" type="text/javascript"   ></script>
-		<script src="./js/main.js" type="text/javascript"  ></script>
-		
+		<script src="./js/main_menu/mainMenuDB.js" type="text/javascript"   ></script>
 
+
+		<!-- javascript game files -->
+		<script src="./js/game/gameDataStructs.js" type="text/javascript"></script>
+		<script src="./js/game/ghost.js" type="text/javascript"></script>
+		<script src="./js/game/pacman.js" type="text/javascript"></script>
+		<script src="./js/game/dot.js" type="text/javascript"></script>
+		<script src="./js/game/gameBoard.js" type="text/javascript"></script>
+		<script src="./js/game/gameMaster.js" type="text/javascript"></script>
+
+
+
+
+		<script src="./js/main.js" type="text/javascript"  ></script>
 		
 	</head>
 	
 	<body>
-		<header>
+		<!-- <header>
 			<img src="images/logo.png" alt="logo">
 			<div class="overlay">
 				<h1>The best Pac-woman out there!</h1>
 				<h3>Brought to you by: Avichai, the mighty one with three armpits and Tom, the lesser one with only two armpits.</h3>
 			</div>
-		</header>
+		</header> -->
 		<content>
 			<div id="welcome" class="menu_wrapper">
 				<div class="menu_container">
@@ -93,7 +103,7 @@
 						<button type="submit" id="RegSubmit" class="action_fields" >Create my new user!</button>
 					</li>
 					<li>
-						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')">Return to main menu </button>
 					</li>
 				  </ul>
 				</form>
@@ -110,7 +120,6 @@
 						<label for="LogPassword"></label>
 						<input type="password" class="inputFields" id="LogPassword" name="Password" placeholder="Password" required/>
 					  </li>
-					  <!-- TODO complete -->
 					  <li>
 						<button type="submit" id="executeLogin" class="action_fields">Login</button>
 					</li>
@@ -179,7 +188,7 @@
 			<div id="setKeyModal" class="modal">
 				<p>Press any key to continue.</p>
 			  </div>
-			<div id="gameDiv">
+			<div id="gameDiv" >
 				<div id="score">
 					<label for="lblScore">SCORE:</label>
 					<input id="lblScore" type="text" />
@@ -188,8 +197,8 @@
 					<label for="lblTime">TIME:</label>
 					<input id="lblTime" type="text" />
 				</div>
-				<div id="game">
-					<canvas id="canvas" height="600" width="600"></canvas>
+				<div id="game" class="canvasContainer">
+					<canvas id="canvas" height="800" width="1200"></canvas>
 				</div>	
 			</div>
 			

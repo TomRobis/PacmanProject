@@ -66,8 +66,6 @@ function handleNewUser(){
 }
 
 
-
-
 function updateGameSettings(){
 	return true;
 }

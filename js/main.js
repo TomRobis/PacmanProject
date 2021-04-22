@@ -16,7 +16,6 @@ $(document).ready(function() {
 
 
 function displayAboutModal(){
-	// $.modal.close();
 	$("#welModal").modal({
 		fadeDuration: 250
 	  });
