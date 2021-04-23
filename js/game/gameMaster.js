@@ -1,20 +1,24 @@
 let ctx;
+
 function startGameSequence(){
     ctx  = canvas.getContext("2d");
     let gb = new gameBoard();
-    gb.initGameBoard();
     let pacmanInstance = new pacman(gb.getPacmanStartPos()); 
+    let i;  
+    let ghosts =
+     [
+        new ghost(GHOST_START_LOC.SPECIALGHOST,OBJECT_COLORS.SPECIALGHOST),
+        new ghost(GHOST_START_LOC.BLINKY,OBJECT_COLORS.BLINKY),
+        new ghost(GHOST_START_LOC.PINKY,OBJECT_COLORS.PINKY),
+        new ghost(GHOST_START_LOC.INKY,OBJECT_COLORS.INKY),
+        new ghost(GHOST_START_LOC.CLYDE,OBJECT_COLORS.CLYDE)
+    ];
+    //for testing mostly
+    gb.initGameBoard(); 
     pacmanInstance.draw();
-    const ghosts = 
-        {
-            firstGhost: new ghost([1,1],"red"),
-            secondGhost: new ghost([rowCount-2,colCount-2],"green"),
-            thirdGhost: new ghost([rowCount-2,1],"blue"),
-            fourthGhost: new ghost([1,colCount-2],"brown")
-        }
-    Object.values(ghosts).map(ghost => {
-        console.log(ghost.draw())
-        })
+    for (i = 0; i - 1 < $("#monstersCount").val(); i++){
+        ghosts[i].draw();
+    }
     return false;
 
 }
@@ -23,3 +27,5 @@ function stopGame(){
     SwitchDisplay('welcome');
     return false;
 }
+
+

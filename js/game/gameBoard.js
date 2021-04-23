@@ -19,7 +19,7 @@ class gameBoard {
     placeWallsOnGameBoard(){
         let randomNum;
         let emptyCell;
-        let foodRemain = foodCount;
+        let foodRemain = $("#dotsCount").val();
         while (foodRemain > 0) {
             randomNum = Math.random();
             emptyCell = this.findRandomEmptyCell();
@@ -53,8 +53,8 @@ class gameBoard {
     draw(){
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++) {
-                this.center.x = i * wallSizePxl;
-                this.center.y = j * wallSizePxl;
+                this.center.x = j * wallSizePxl;
+                this.center.y = i * wallSizePxl;
                 let someDot;  // TODO think of moving this away from here depeneding on dot functionality
                 switch(LEVEL[i][j])
                 {                        
@@ -62,15 +62,15 @@ class gameBoard {
                         this.drawWall();
                         break;
                     case BOARD_OBJECT_ID.DOTFIVE:
-                        someDot = new dot([i,j],"red"); // TODO update later
+                        someDot = new dot([i,j],$("#5ptsColor").val()); // TODO update later
                         someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
-                        someDot = new dot([i,j],"green"); // TODO update later
+                        someDot = new dot([i,j],$("#15ptsColor").val()); // TODO update later
                         someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
-                        someDot = new dot([i,j],"blue"); // TODO update later
+                        someDot = new dot([i,j],$("#25ptsColor").val()); // TODO update later
                         someDot.draw();
                         break;  
                     default:
@@ -81,7 +81,7 @@ class gameBoard {
     }
     drawWall(){
         ctx.beginPath();
-        ctx.rect(this.center.y, this.center.x , wallSizePxl,wallSizePxl);
+        ctx.rect(this.center.x, this.center.y , wallSizePxl,wallSizePxl);
         ctx.fillStyle = "grey"; //color
         ctx.fill();
 

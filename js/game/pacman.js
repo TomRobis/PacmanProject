@@ -11,8 +11,8 @@ class pacman extends drawableOnGameBoard{
     }
     draw(){
         ctx.beginPath();
-        ctx.arc(this.pos.y, this.pos.x, wallSizePxl/2, 0.2 * Math.PI, 1.8 * Math.PI);
-        ctx.lineTo(this.pos.y, this.pos.x);
+        ctx.arc(this.pos.x, this.pos.y, wallSizePxl/2, 0.2 * Math.PI, 1.8 * Math.PI);
+        ctx.lineTo(this.pos.x, this.pos.y);
         ctx.closePath();
         ctx.fillStyle = "#FF0";
         ctx.fill();

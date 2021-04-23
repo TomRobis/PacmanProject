@@ -56,13 +56,13 @@
 				  <h2>Welcome to Pac-man!</h2>
 				  <ul class="noBullet">
 					<li>
-						<button type="button" id="welLogin" class="action_fields" onclick="SwitchDisplay('login')" >Login</button>
+						<button type="button" id="welLogin" class="action_fields" onclick="SwitchDisplay('login',false)" >Login</button>
 					</li>
 					<li>
-						<button type="button" id="welRegister" class="action_fields" onclick="SwitchDisplay('register')" >Create new user</button>
+						<button type="button" id="welRegister" class="action_fields" onclick="SwitchDisplay('register',false)" >Create new user</button>
 					</li>
 					<li>
-						<button type="button" id="welSettings" class="action_fields" onclick="SwitchDisplay('settings')">Settings</button>
+						<button type="button" id="welSettings" class="action_fields" onclick="SwitchDisplay('settings',false)">Settings</button>
 					</li>
 					<li>
 						<button type="button" id="welModalBtn" class="action_fields" onclick="displayAboutModal()">About</button>
@@ -105,7 +105,7 @@
 						<button type="submit" id="RegSubmit" class="action_fields" >Create my new user!</button>
 					</li>
 					<li>
-						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')">Return to main menu </button>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)">Return to main menu </button>
 					</li>
 				  </ul>
 				</form>
@@ -126,7 +126,7 @@
 						<button type="submit" id="executeLogin" class="action_fields">Login</button>
 					</li>
 					<li>
-						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)" >Return to main menu </button>
 					</li>
 				  </ul>
 				</form>
@@ -154,15 +154,15 @@
 					<h3>Pick your favorite dot colors</h3>
 					<li>
 						<label for="5ptsColor">5 pts</label>
-						<input type="color" id="5ptsColor"/>
+						<input type="color" id="5ptsColor" value="#B400FF"/>
 					</li>
 					<li>
 						<label for="15ptsColor">15 pts</label>
-						<input type="color" id="15ptsColor"/>
+						<input type="color" id="15ptsColor" value="#35FF00"/>
 					</li>
 					<li>
 						<label for="25ptsColor">25 pts</label>
-						<input type="color" id="25ptsColor"/>
+						<input type="color" id="25ptsColor" value="#00F0FF"/>
 					</li>
 					<h3>Choose your difficulty</h3>
 					<li>
@@ -171,17 +171,16 @@
 					</li>
 					<li>
 						<label for="monstersCount">Monsters</label>
-						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="numeber of monsters" value=1 />
+						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="number of monsters" value=1 />
 					</li>
-					<!-- TODO complete -->
 					<li>
-						<button type="submit" id="setSubmit" class="action_fields" >Save settings</button>
+						<button type="submit" id="setSubmit" class="action_fields" >Save</button>
 					</li>
 					<li>
 						<button type="button" id="setRandomizeSettings" class="action_fields" onclick="randomizeSettings()">Random settings</button>
 					</li>	
 					<li>
-						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')" >Return to main menu </button>
+						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)" >Reset to default</button>
 					</li>
 				
 				  </ul>

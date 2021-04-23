@@ -8,8 +8,10 @@ $(document).ready(function() {
 });
 
 
- function SwitchDisplay(pageID) {
-	$(".menu_container:visible").trigger("reset");
+ function SwitchDisplay(pageID,resetValues) {
+	 if (resetValues){
+		$(".menu_container:visible").trigger("reset");
+	 }
     $('.menu_wrapper').hide();
 	$('#' + pageID).show();
 };
@@ -21,3 +23,4 @@ function displayAboutModal(){
 	  });
 	return false;
 }
+

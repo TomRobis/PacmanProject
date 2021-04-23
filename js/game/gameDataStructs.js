@@ -1,14 +1,8 @@
 const rowCount = 23;
 const colCount = 40;
-const foodCount = 50;
 const wallSizePxl = 25;
 const pacmanSizePxl =  wallSizePxl / 2;
 const dotSizePxl = pacmanSizePxl / 4;
-
-
-// let wallImage = new Image()
-// wallImage.src = '../../images/obstacle.png';
-
 
 let LEVEL =
  [
@@ -78,6 +72,8 @@ const OBJECT_TYPE = {
 
 
 
+
+
   const FOOD_DISTRIBUTION = {
     FIVE:  0.7,
     FIFTEEN: 0.25,
@@ -85,5 +81,20 @@ const OBJECT_TYPE = {
   };
   
 
+  const OBJECT_COLORS = {
+    WALL: "grey",
+    PACMAN: "yellow",
+    BLINKY: "red",
+    PINKY: "pink",
+    INKY: "blue",
+    CLYDE: "orange",
+    SPECIALGHOST: "brown",
+  };
 
-
+  const GHOST_START_LOC = {
+    BLINKY: [1,1],
+    PINKY: [1,colCount-2],
+    INKY: [rowCount-2,1],
+    CLYDE: [rowCount-2,colCount-2],
+    SPECIALGHOST: [Math.floor(rowCount / 2),colCount / 2 -0.5]
+  }

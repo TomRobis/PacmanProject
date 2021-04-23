@@ -6,7 +6,7 @@ class dot extends drawableOnGameBoard {
     }
     draw(){
         ctx.beginPath();
-        ctx.arc(this.pos.y,this.pos.x, dotSizePxl, 0, 2 * Math.PI);
+        ctx.arc(this.pos.x,this.pos.y, dotSizePxl, 0, 2 * Math.PI);
         ctx.fillStyle = this.color; 
         ctx.fill();
     }

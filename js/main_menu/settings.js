@@ -9,7 +9,7 @@ function setSettingsValidation(){
             }
 		},
         submitHandler: function() {
-            updateGameSettings(); //TODO when working on game
+            SwitchDisplay('welcome',false);
         }
     });
 
@@ -37,10 +37,6 @@ function bindNewKey(btnID) {
 
 
 
-function updateGameSettings(){
-	return true;
-}
-
 function randomizeSettings(){
 	$("#5ptsColor").val(getRandomColor());
 	$("#15ptsColor").val(getRandomColor());
@@ -63,4 +59,5 @@ function getRndValue(min,max){
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
   
+
   

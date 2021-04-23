@@ -61,7 +61,7 @@ function handleNewUser(){
             Birthday: $("#RegBirthday").val()
             }	
         );
-        SwitchDisplay('welcome');
+        SwitchDisplay('welcome',true);
         // console.log(usersDB[3]);
 }
 

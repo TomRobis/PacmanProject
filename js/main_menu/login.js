@@ -24,7 +24,7 @@ function setLoginValidation(){
             }
         },
         submitHandler: function() {
-            SwitchDisplay('gameDiv');
+            SwitchDisplay('gameDiv',true);
             startGameSequence();
 		}
 	});
