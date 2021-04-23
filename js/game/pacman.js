@@ -1,9 +1,7 @@
-class pacman {
+class pacman extends drawableOnGameBoard{
     //speed,
     constructor(startPos) {
-        this.pos = startPos;
-        this.pos.x = this.pos[0]*wallSizePxl + pacmanSizePxl; //top left corner originally 
-        this.pos.y = this.pos[1]*wallSizePxl + pacmanSizePxl;
+        super(startPos);
 
     // this.speed = speed;
     // this.dir = null;
@@ -18,6 +16,8 @@ class pacman {
         ctx.closePath();
         ctx.fillStyle = "#FF0";
         ctx.fill();
+        ctx.strokeStyle = '#ff3300';
+        ctx.stroke();
     }   
 
 }

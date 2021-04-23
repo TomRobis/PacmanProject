@@ -55,32 +55,26 @@ class gameBoard {
             for (let j = 0; j < colCount; j++) {
                 this.center.x = i * wallSizePxl;
                 this.center.y = j * wallSizePxl;
+                let someDot;  // TODO think of moving this away from here depeneding on dot functionality
                 switch(LEVEL[i][j])
-                {
-                    case BOARD_OBJECT_ID.BLANK:
-                        break;
+                {                        
                     case BOARD_OBJECT_ID.WALL:
                         this.drawWall();
                         break;
                     case BOARD_OBJECT_ID.DOTFIVE:
-                        // context.beginPath();
-                        // context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-                        // context.fillStyle = "red"; //color
-                        // context.fill();
+                        someDot = new dot([i,j],"red"); // TODO update later
+                        someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
-                        // code block
+                        someDot = new dot([i,j],"green"); // TODO update later
+                        someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
+                        someDot = new dot([i,j],"blue"); // TODO update later
+                        someDot.draw();
                         break;  
-                    case BOARD_OBJECT_ID.GHOST:
-                        break;  
-                    case BOARD_OBJECT_ID.PACMAN:
-
-                        break;  
-                    // will be replaced with blank later, as in just break instead of error message
                     default:
-                        throw "error when drawing the board - board ID doesn't match any object that needs to be drawn";
+                        break;
                 }
             }
         }
