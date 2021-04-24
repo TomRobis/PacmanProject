@@ -77,7 +77,7 @@ let LEVEL =
     CLYDE: wallSizePxl / 4,
     SPECIALGHOST: wallSizePxl / 8
   }
-  
+  // rows, cols -> y,x
   const DIRECTIONS = {
     UP: [-1,0],
     DOWN: [1,0],

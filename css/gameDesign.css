@@ -4,6 +4,9 @@
   justify-content: center;
   margin-left: 15%;
 }
+#canvas{
+  border: solid 2px red;
+}
 
 
 /* 

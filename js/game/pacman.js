@@ -2,7 +2,7 @@ class pacman extends drawableOnGameBoard{
     
     constructor(startPos) {
         super(startPos);
-        this.nextPos = startPos;
+        this.nextPos = [0,0];
         this.speed = OBJ_SPEEDS.PACMAN;
         this.dir = null;
         this.lastDir = null;
@@ -51,42 +51,49 @@ class pacman extends drawableOnGameBoard{
 
     // not recognizing walls properly
     // running over candy without redrawing them
-
+ 
     moveMeTo(currDir){
         if(currDir != null){
-            let attempted = this.getNextPos(currDir);
-            let collision = gb.checkCollisions(attempted);
+            // let lastMoveAttempt = [this.nextPos[0],this.nextPos[1]];
+            let nextMoveattempt = this.getNextPos(currDir);
+            let collision = gb.checkCollisions(nextMoveattempt);
             if (!collision){
-                this.pos = attempted;
-                this.gridToAxis(this.pos); 
-                this.draw();
+                this.pos = nextMoveattempt;
                 return true;
             }
         }
+        
         return false;
     }
     getNextPos(currDir){
         let nextPos = new Object();
-        nextPos.x = this.pos.x + currDir[0] * this.speed;
-        nextPos.y = this.pos.y + currDir[1] * this.speed;
-        nextPos = this.axisToGrid(nextPos);
-        nextPos[0] = Math.floor(this.pos[0] + currDir[0]);
-        nextPos[1] = Math.floor(this.pos[1] + currDir[1]);
+        nextPos.x = this.pos.x + (currDir[1] * this.speed);
+        nextPos.y = this.pos.y + (currDir[0] * this.speed);
+        let nextPosGridLoc = this.axisToGrid(nextPos); 
+        switch(currDir)
+        {                        
+                case DIRECTIONS.DOWN:
+                    nextPos[0] = Math.ceil(nextPosGridLoc[0]);
+                    nextPos[1] = Math.floor(nextPosGridLoc[1]);
+                    break;   
+                case DIRECTIONS.RIGHT:
+                    nextPos[0] = Math.floor(nextPosGridLoc[0]);
+                    nextPos[1] = Math.ceil(nextPosGridLoc[1]);
+                    break;  
+                default: // left and up
+                    nextPos[0] = Math.floor(nextPosGridLoc[0]);
+                    nextPos[1] = Math.floor(nextPosGridLoc[1]);
+                    break;  
+        }
         return nextPos;
-        // switch(currDir)
-        // {                        
-        //         case DIRECTIONS.DOWN:
-        //             this.nextPos[0] = Math.ceil(this.nextPos[0]);
-        //             this.nextPos[1] = Math.floor(this.nextPos[1]);
-        //             break;   
-        //         case DIRECTIONS.RIGHT:
-        //             this.nextPos[0] = Math.floor(this.nextPos[0]);
-        //             this.nextPos[1] = Math.ceil(this.nextPos[1]);
-        //             break;  
-        //         default: // left and up
-        //             this.nextPos[0] = Math.floor(this.nextPos[0]);
-        //             this.nextPos[1] = Math.floor(this.nextPos[1]);
-        //             break;  
-        // }
+    }
+
+
+
+    // }
+    sumArrays(arr1,arr2){
+        return arr1.map(function (num, idx) {
+            return num + arr2[idx];
+        })
     }
 }

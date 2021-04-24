@@ -18,7 +18,7 @@ function startGameSequence(){
     pacmanInstance = new pacman(gb.getPacmanStartPos());  
 
     setEventListeners();
-    interval = setInterval(gameLoop,100);
+    interval = setInterval(gameLoop,50);
     
 }
 function stopGame(){

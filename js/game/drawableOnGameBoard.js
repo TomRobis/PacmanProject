@@ -4,11 +4,11 @@ class drawableOnGameBoard{
         this.gridToAxis(this.pos);
     }
     gridToAxis(pos){
-        pos.x = pos[1]*wallSizePxl + pacmanSizePxl; //top left corner originally 
-        pos.y = pos[0]*wallSizePxl + pacmanSizePxl;
+        pos.x = pos[1] * wallSizePxl + pacmanSizePxl; //top left corner originally 
+        pos.y = pos[0] * wallSizePxl + pacmanSizePxl;
     }
     axisToGrid(pos){
-        return [(pos.x - pacmanSizePxl) / wallSizePxl, (pos.y - pacmanSizePxl) / wallSizePxl]; 
+        return [(pos.y - pacmanSizePxl) / wallSizePxl, (pos.x - pacmanSizePxl) / wallSizePxl]; 
     }
     // draw(){
     //     return false;
