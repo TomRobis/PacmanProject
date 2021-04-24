@@ -1,13 +1,13 @@
 class pacman extends drawableOnGameBoard{
-    //speed,
+    
     constructor(startPos) {
         super(startPos);
-
-    // this.speed = speed;
-    // this.dir = null;
-    // this.timer = 0;
-    // this.powerPill = false;
-    // this.rotation = true;
+        this.nextPos = startPos;
+        this.speed = OBJ_SPEEDS.PACMAN;
+        this.dir = null;
+        this.lastDir = null;
+        // this.rotation = true;
+    
     }
     draw(){
         ctx.beginPath();
@@ -16,63 +16,77 @@ class pacman extends drawableOnGameBoard{
         ctx.closePath();
         ctx.fillStyle = "#FF0";
         ctx.fill();
-        ctx.strokeStyle = '#ff3300';
-        ctx.stroke();
+        // ctx.strokeStyle = '#ff3300';
+        // ctx.stroke();
     }   
+    updateDir(newDir){
+        this.lastDir = this.dir;
+        switch(newDir) {
+            case $("#setUpKey").text(): // should be fixed to more modular impl, allong with rest of these calls
+                this.dir = DIRECTIONS.UP;
+                break;
+            case $("#setDownKey").text():
+                this.dir = DIRECTIONS.DOWN;
+                break;
+            case $("#setLeftKey").text():
+                this.dir = DIRECTIONS.LEFT;
+                break;
+            case $("#setRightKey").text():
+                this.dir = DIRECTIONS.RIGHT;
+                break;
+            // case userInputKeys:
+                // refer to gameMaster
+                // break;
+            default:
+              break;
+        }   
+    }
+    updatePosition(){
+        if (this.moveMeTo(this.dir)){
+            this.lastDir = this.dir;
+        }else{
+            this.moveMeTo(this.lastDir);           
+        }
+    }
 
+    // not recognizing walls properly
+    // running over candy without redrawing them
+
+    moveMeTo(currDir){
+        if(currDir != null){
+            let attempted = this.getNextPos(currDir);
+            let collision = gb.checkCollisions(attempted);
+            if (!collision){
+                this.pos = attempted;
+                this.gridToAxis(this.pos); 
+                this.draw();
+                return true;
+            }
+        }
+        return false;
+    }
+    getNextPos(currDir){
+        let nextPos = new Object();
+        nextPos.x = this.pos.x + currDir[0] * this.speed;
+        nextPos.y = this.pos.y + currDir[1] * this.speed;
+        nextPos = this.axisToGrid(nextPos);
+        nextPos[0] = Math.floor(this.pos[0] + currDir[0]);
+        nextPos[1] = Math.floor(this.pos[1] + currDir[1]);
+        return nextPos;
+        // switch(currDir)
+        // {                        
+        //         case DIRECTIONS.DOWN:
+        //             this.nextPos[0] = Math.ceil(this.nextPos[0]);
+        //             this.nextPos[1] = Math.floor(this.nextPos[1]);
+        //             break;   
+        //         case DIRECTIONS.RIGHT:
+        //             this.nextPos[0] = Math.floor(this.nextPos[0]);
+        //             this.nextPos[1] = Math.ceil(this.nextPos[1]);
+        //             break;  
+        //         default: // left and up
+        //             this.nextPos[0] = Math.floor(this.nextPos[0]);
+        //             this.nextPos[1] = Math.floor(this.nextPos[1]);
+        //             break;  
+        // }
+    }
 }
-
-
-
-
-
-//   shouldMove() {
-//     // Don't move before a key is pressed
-//     if (!this.dir) return;
-
-//     if (this.timer === this.speed) {
-//       this.timer = 0;
-//       return true;
-//     }
-//     this.timer++;
-//   }
-
-//   getNextMove(objectExist) {
-//     let nextMovePos = this.pos + this.dir.movement;
-//     // Do we collide with a wall?
-//     if (
-//       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-//       objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR)
-//     ) {
-//       nextMovePos = this.pos;
-//     }
-
-//     return { nextMovePos, direction: this.dir };
-//   }
-
-//   makeMove() {
-//     const classesToRemove = [OBJECT_TYPE.PACMAN];
-//     const classesToAdd = [OBJECT_TYPE.PACMAN];
-
-//     return { classesToRemove, classesToAdd };
-//   }
-
-//   setNewPos(nextMovePos) {
-//     this.pos = nextMovePos;
-//   }
-
-//   handleKeyInput = (e, objectExist) => {
-//     let dir;
-
-//     if (e.keyCode >= 37 && e.keyCode <= 40) {
-//       dir = DIRECTIONS[e.key];
-//     } else {
-//       return;
-//     }
-
-//     const nextMovePos = this.pos + dir.movement;
-//     if (objectExist(nextMovePos, OBJECT_TYPE.WALL)) return;
-//     this.dir = dir;
-//   };
-
-

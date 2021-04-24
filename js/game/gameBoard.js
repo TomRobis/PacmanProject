@@ -2,13 +2,11 @@
 class gameBoard {
     constructor(){
         this.center = new Object();
-        
+        this.gameOver = false;
+        this.livesLeft = gameLives;
+        this.placeWallsOnGameBoard();
     }
 
-    initGameBoard() {
-        this.placeWallsOnGameBoard();
-        this.draw();
-    }
     getPacmanStartPos(){
         let pacmanLoc = this.findRandomEmptyCell();
         LEVEL[ pacmanLoc[0] ][ pacmanLoc[1] ] = BOARD_OBJECT_ID.PACMAN;
@@ -62,15 +60,15 @@ class gameBoard {
                         this.drawWall();
                         break;
                     case BOARD_OBJECT_ID.DOTFIVE:
-                        someDot = new dot([i,j],$("#5ptsColor").val()); // TODO update later
+                        someDot = new dot([i,j],$("#5ptsColor").val(),BOARD_OBJECT_ID.DOTFIVE); // TODO update later
                         someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
-                        someDot = new dot([i,j],$("#15ptsColor").val()); // TODO update later
+                        someDot = new dot([i,j],$("#15ptsColor").val(),BOARD_OBJECT_ID.DOTFIFTEEN); // TODO update later
                         someDot.draw();
                         break;
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
-                        someDot = new dot([i,j],$("#25ptsColor").val()); // TODO update later
+                        someDot = new dot([i,j],$("#25ptsColor").val(),BOARD_OBJECT_ID.DOTTWENTYFIVE); // TODO update later
                         someDot.draw();
                         break;  
                     default:
@@ -84,8 +82,29 @@ class gameBoard {
         ctx.rect(this.center.x, this.center.y , wallSizePxl,wallSizePxl);
         ctx.fillStyle = "grey"; //color
         ctx.fill();
-
-
-        // return false;
+    }
+    checkCollisions(nextPos){
+        let collision = true;
+        let nextPosValue = LEVEL[ nextPos[0] ][ nextPos[1] ];
+        switch(nextPosValue)
+        {                        
+            case BOARD_OBJECT_ID.WALL:
+                break;
+            case BOARD_OBJECT_ID.GHOST:
+                // collision with ghost
+                break;
+            case BOARD_OBJECT_ID.SPECIALGHOST:
+                // collision with special ghost
+                break;
+            case BOARD_OBJECT_ID.DOTFIVE || BOARD_OBJECT_ID.DOTFIFTEEN || BOARD_OBJECT_ID.DOTTWENTYFIVE:
+                // update score based on dot
+                collision = false;
+            default:
+                collision = false; 
+        }
+        return collision;
+    }
+    getPacman(){
+        return this.pacmanInstance;
     }
 }

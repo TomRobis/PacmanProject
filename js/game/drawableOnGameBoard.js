@@ -1,10 +1,16 @@
 class drawableOnGameBoard{
-    constructor(startPos) {
-        this.pos = startPos;
-        this.pos.x = this.pos[1]*wallSizePxl + pacmanSizePxl; //top left corner originally 
-        this.pos.y = this.pos[0]*wallSizePxl + pacmanSizePxl;
+    constructor(pos) {
+        this.pos = pos;
+        this.gridToAxis(this.pos);
     }
-    someMethod(){
-        return false;
+    gridToAxis(pos){
+        pos.x = pos[1]*wallSizePxl + pacmanSizePxl; //top left corner originally 
+        pos.y = pos[0]*wallSizePxl + pacmanSizePxl;
     }
+    axisToGrid(pos){
+        return [(pos.x - pacmanSizePxl) / wallSizePxl, (pos.y - pacmanSizePxl) / wallSizePxl]; 
+    }
+    // draw(){
+    //     return false;
+    // }
 }

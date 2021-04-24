@@ -3,6 +3,7 @@ const colCount = 40;
 const wallSizePxl = 25;
 const pacmanSizePxl =  wallSizePxl / 2;
 const dotSizePxl = pacmanSizePxl / 4;
+const gameLives = 5;
 
 let LEVEL =
  [
@@ -31,35 +32,6 @@ let LEVEL =
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
-const OBJECT_TYPE = {
-    BLANK: 'blank',
-    WALL: 'wall',
-    DOT: 'dot',
-    BLINKY: 'blinky',
-    PINKY: 'pinky',
-    INKY: 'inky',
-    CLYDE: 'clyde',
-    PILL: 'pill',
-    PACMAN: 'pacman',
-    GHOST: 'ghost',
-    SCARED: 'scared',
-    GHOSTLAIR: 'lair'
-  };
-  
-  // Lookup array for classes
-  const CLASS_LIST = [
-    OBJECT_TYPE.BLANK,
-    OBJECT_TYPE.WALL,
-    OBJECT_TYPE.DOT,
-    OBJECT_TYPE.BLINKY,
-    OBJECT_TYPE.PINKY,
-    OBJECT_TYPE.INKY,
-    OBJECT_TYPE.CLYDE,
-    OBJECT_TYPE.PILL,
-    OBJECT_TYPE.PACMAN,
-    OBJECT_TYPE.GHOSTLAIR
-  ];
-
   const BOARD_OBJECT_ID = {
     BLANK: 0,
     WALL: 1,
@@ -68,10 +40,8 @@ const OBJECT_TYPE = {
     DOTTWENTYFIVE: 25,
     PACMAN: 8,
     GHOST: 9,
+    SPECIALGHOST: 10 // TODO use in future 
   };
-
-
-
 
 
   const FOOD_DISTRIBUTION = {
@@ -97,4 +67,20 @@ const OBJECT_TYPE = {
     INKY: [rowCount-2,1],
     CLYDE: [rowCount-2,colCount-2],
     SPECIALGHOST: [Math.floor(rowCount / 2),colCount / 2 -0.5]
+  }
+
+  const OBJ_SPEEDS = {
+    PACMAN: wallSizePxl / 2,
+    BLINKY: wallSizePxl / 4,
+    PINKY:wallSizePxl / 4,
+    INKY: wallSizePxl / 4,
+    CLYDE: wallSizePxl / 4,
+    SPECIALGHOST: wallSizePxl / 8
+  }
+  
+  const DIRECTIONS = {
+    UP: [-1,0],
+    DOWN: [1,0],
+    LEFT: [0,-1],
+    RIGHT: [0,1],
   }

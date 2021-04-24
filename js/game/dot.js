@@ -1,8 +1,9 @@
 class dot extends drawableOnGameBoard {
 
-    constructor(startPos,color) {
+    constructor(startPos,color,score) {
         super(startPos);
         this.color = color;
+        this.score = score;
     }
     draw(){
         ctx.beginPath();
@@ -10,4 +11,5 @@ class dot extends drawableOnGameBoard {
         ctx.fillStyle = this.color; 
         ctx.fill();
     }
+    
 }   
