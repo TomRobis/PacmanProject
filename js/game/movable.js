@@ -45,7 +45,9 @@ class movable extends drawableOnGameBoard{
     }
     setPosition(nextPos){
         LEVEL[this.pos[0]][this.pos[1]] = BOARD_OBJECT_ID.BLANK; // delete previous instance
+        ctx.clearRect(this.pos[1] * wallSizePxl,this.pos[0] * wallSizePxl, wallSizePxl, wallSizePxl);
         LEVEL[nextPos[0]][nextPos[1]] = this; // advance 
         this.pos = nextPos;
+        this.draw();
     }
 }

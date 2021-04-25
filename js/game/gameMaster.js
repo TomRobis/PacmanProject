@@ -18,9 +18,9 @@ function startGameSequence(){
     gb = new gameBoard();
     pacmanInstance = new pacman(gb.getPacmanStartPos());    
     gb.initGameBoard(ghosts,sGhost);
-
-
     setEventListeners();
+
+    gb.draw();
     pacmanInterval = setInterval(pacmanLoop,100);
     // ghostsInterval = setInterval(ghostsLoop,250);
     // specialGhostInterval = setInterval(specialGhostLoop,350);
@@ -28,7 +28,7 @@ function startGameSequence(){
 }
 function pacmanLoop(){
     pacmanInstance.updatePosition(gb);
-    gb.draw();
+    // gb.draw();
 }
 function ghostsLoop(){
     for (i = 0; i - 1 < monstersCount; i++){

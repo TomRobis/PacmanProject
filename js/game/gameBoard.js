@@ -112,6 +112,7 @@ class gameBoard {
     updateScore(addToScore){
         return false;
     }
+    
     setGhosts(ghosts,sGhost){
         let ghostsLocs = Object.values(GHOST_START_LOC);
         for (let i=0; i < monstersCount; i++) {

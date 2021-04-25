@@ -17,6 +17,7 @@ class drawableOnGameBoard{
     getPos(){
         return this.pos;
     }
+
     // draw(){}
     // handleCollision(board,caller){}
 
