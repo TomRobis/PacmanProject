@@ -1,6 +1,8 @@
 let interval;
 let gb;
 let pacmanInstance;
+let monstersCount;
+
 const ghosts =
 [    
     new ghost(GHOST_START_LOC.BLINKY,OBJECT_COLORS.BLINKY),
@@ -11,6 +13,7 @@ const ghosts =
 const sGhost = new specialGhost(GHOST_START_LOC.SPECIALGHOST,OBJECT_COLORS.SPECIALGHOST);
 
 function startGameSequence(){
+    monstersCount = $("#monstersCount").val()
     ctx  = canvas.getContext("2d");
     gb = new gameBoard();
     pacmanInstance = new pacman(gb.getPacmanStartPos());    
@@ -28,7 +31,7 @@ function pacmanLoop(){
     gb.draw();
 }
 function ghostsLoop(){
-    for (i = 0; i - 1 < $("#monstersCount").val(); i++){
+    for (i = 0; i - 1 < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
     gb.draw();

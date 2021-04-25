@@ -113,12 +113,11 @@ class gameBoard {
         return false;
     }
     setGhosts(ghosts,sGhost){
-        // draw only the required amount
-        LEVEL[GHOST_START_LOC.BLINKY[0]][GHOST_START_LOC.BLINKY[1]] = ghosts[0]; 
-        LEVEL[GHOST_START_LOC.PINKY[0]][GHOST_START_LOC.PINKY[1]] = ghosts[1]; 
-        LEVEL[GHOST_START_LOC.INKY[0]][GHOST_START_LOC.INKY[1]] = ghosts[2]; 
-        LEVEL[GHOST_START_LOC.CLYDE[0]][GHOST_START_LOC.CLYDE[1]] = ghosts[3]; 
-        LEVEL[GHOST_START_LOC.SPECIALGHOST[0]][GHOST_START_LOC.SPECIALGHOST[0]] = sGhost; 
+        let ghostsLocs = Object.values(GHOST_START_LOC);
+        for (let i=0; i < monstersCount; i++) {
+            LEVEL[ghostsLocs[i][0]][ghostsLocs[i][1]] = ghosts[i]; 
+        }
+        LEVEL[GHOST_START_LOC.SPECIALGHOST[0]][GHOST_START_LOC.SPECIALGHOST[1]] = sGhost; 
     }
 
 }
