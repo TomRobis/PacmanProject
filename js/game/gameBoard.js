@@ -90,15 +90,15 @@ class gameBoard {
         {                        
             case BOARD_OBJECT_ID.WALL:
                 break;
-            // case BOARD_OBJECT_ID.GHOST:
-            //     // collision with ghost
-            //     break;
-            // case BOARD_OBJECT_ID.SPECIALGHOST:
-            //     // collision with special ghost
-            //     break;
-            // case BOARD_OBJECT_ID.DOTFIVE || BOARD_OBJECT_ID.DOTFIFTEEN || BOARD_OBJECT_ID.DOTTWENTYFIVE:
-            //     // update score based on dot
-            //     collision = false;
+            case BOARD_OBJECT_ID.GHOST:
+                // collision with ghost
+                break;
+            case BOARD_OBJECT_ID.SPECIALGHOST:
+                // collision with special ghost
+                break;
+            case BOARD_OBJECT_ID.DOTFIVE || BOARD_OBJECT_ID.DOTFIFTEEN || BOARD_OBJECT_ID.DOTTWENTYFIVE:
+                // update score based on dot
+                collision = false;
             default:
                 collision = false; 
         }
@@ -106,5 +106,5 @@ class gameBoard {
     }
     getPacman(){
         return this.pacmanInstance;
-    }
+    }  
 }

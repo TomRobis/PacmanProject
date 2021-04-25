@@ -2,10 +2,8 @@ class pacman extends drawableOnGameBoard{
     
     constructor(startPos) {
         super(startPos);
-        this.nextPos = [0,0];
-        this.speed = OBJ_SPEEDS.PACMAN;
         this.dir = null;
-        this.lastDir = null;
+        this.turnDir = null;
         // this.rotation = true;
     
     }
@@ -20,19 +18,18 @@ class pacman extends drawableOnGameBoard{
         // ctx.stroke();
     }   
     updateDir(newDir){
-        this.lastDir = this.dir;
         switch(newDir) {
             case $("#setUpKey").text(): // should be fixed to more modular impl, allong with rest of these calls
-                this.dir = DIRECTIONS.UP;
+                this.turnDir = DIRECTIONS.UP;
                 break;
             case $("#setDownKey").text():
-                this.dir = DIRECTIONS.DOWN;
+                this.turnDir = DIRECTIONS.DOWN;
                 break;
             case $("#setLeftKey").text():
-                this.dir = DIRECTIONS.LEFT;
+                this.turnDir = DIRECTIONS.LEFT;
                 break;
             case $("#setRightKey").text():
-                this.dir = DIRECTIONS.RIGHT;
+                this.turnDir = DIRECTIONS.RIGHT;
                 break;
             // case userInputKeys:
                 // refer to gameMaster
@@ -42,11 +39,13 @@ class pacman extends drawableOnGameBoard{
         }   
     }
     updatePosition(){
-        if (this.moveMeTo(this.dir)){
-            this.lastDir = this.dir;
-        }else{
-            this.moveMeTo(this.lastDir);           
+        if (this.moveMeTo(this.turnDir)){
+            this.dir = this.turnDir;
         }
+        else{
+            this.moveMeTo(this.dir);
+        }
+        
     }
 
     // not recognizing walls properly
@@ -54,37 +53,22 @@ class pacman extends drawableOnGameBoard{
  
     moveMeTo(currDir){
         if(currDir != null){
-            // let lastMoveAttempt = [this.nextPos[0],this.nextPos[1]];
-            let nextMoveattempt = this.getNextPos(currDir);
-            let collision = gb.checkCollisions(nextMoveattempt);
+            let attempted = this.getNextPos(currDir);
+            let collision = gb.checkCollisions(attempted);
             if (!collision){
-                this.pos = nextMoveattempt;
+                this.pos = attempted;
+                this.gridToAxis(this.pos); 
+                this.draw();
                 return true;
             }
         }
-        
         return false;
     }
     getNextPos(currDir){
         let nextPos = new Object();
-        nextPos.x = this.pos.x + (currDir[1] * this.speed);
-        nextPos.y = this.pos.y + (currDir[0] * this.speed);
-        let nextPosGridLoc = this.axisToGrid(nextPos); 
-        switch(currDir)
-        {                        
-                case DIRECTIONS.DOWN:
-                    nextPos[0] = Math.ceil(nextPosGridLoc[0]);
-                    nextPos[1] = Math.floor(nextPosGridLoc[1]);
-                    break;   
-                case DIRECTIONS.RIGHT:
-                    nextPos[0] = Math.floor(nextPosGridLoc[0]);
-                    nextPos[1] = Math.ceil(nextPosGridLoc[1]);
-                    break;  
-                default: // left and up
-                    nextPos[0] = Math.floor(nextPosGridLoc[0]);
-                    nextPos[1] = Math.floor(nextPosGridLoc[1]);
-                    break;  
-        }
+        nextPos = this.axisToGrid(nextPos);
+        nextPos[0] = Math.floor(this.pos[0] + currDir[0]);
+        nextPos[1] = Math.floor(this.pos[1] + currDir[1]);
         return nextPos;
     }
 

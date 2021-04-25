@@ -18,7 +18,7 @@ function startGameSequence(){
     pacmanInstance = new pacman(gb.getPacmanStartPos());  
 
     setEventListeners();
-    interval = setInterval(gameLoop,50);
+    interval = setInterval(gameLoop,100);
     
 }
 function stopGame(){
@@ -50,4 +50,9 @@ function draw(){
     for (i = 0; i - 1 < $("#monstersCount").val(); i++){
         ghosts[i].draw();
     }
+}
+function sumArrays(arr1,arr2){
+    return arr1.map(function (num, idx) {
+        return num + arr2[idx];
+    })
 }
