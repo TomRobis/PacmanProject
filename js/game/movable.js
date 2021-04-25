@@ -3,39 +3,12 @@ class movable extends drawableOnGameBoard{
         super(startPos);
         this.dir = null;
         this.turnDir = null;
+        this.prevPos = null;
         // this.rotation = true;
     
     }
-    updateDir(newDir){
-        switch(newDir) {
-            case $("#setUpKey").text(): // should be fixed to more modular impl, allong with rest of these calls
-                this.turnDir = DIRECTIONS.UP;
-                break;
-            case $("#setDownKey").text():
-                this.turnDir = DIRECTIONS.DOWN;
-                break;
-            case $("#setLeftKey").text():
-                this.turnDir = DIRECTIONS.LEFT;
-                break;
-            case $("#setRightKey").text():
-                this.turnDir = DIRECTIONS.RIGHT;
-                break;
-            // case userInputKeys:
-                // refer to gameMaster
-                // break;
-            default:
-              break;
-        }   
-    }
-    updatePosition(gb){
-        if (this.moveMeTo(this.turnDir,gb)){
-            this.dir = this.turnDir;
-        }
-        else{
-            this.moveMeTo(this.dir,gb);
-        }
-        
-    }
+
+
     moveMeTo(currDir,gb){
         if(currDir != null){
             let nextPos = sumArrays(this.pos,currDir);
@@ -44,10 +17,11 @@ class movable extends drawableOnGameBoard{
         }
     }
     setPosition(nextPos){
+        this.prevPos = this.pos;
         LEVEL[this.pos[0]][this.pos[1]] = BOARD_OBJECT_ID.BLANK; // delete previous instance
-        ctx.clearRect(this.pos[1] * wallSizePxl,this.pos[0] * wallSizePxl, wallSizePxl, wallSizePxl);
         LEVEL[nextPos[0]][nextPos[1]] = this; // advance 
-        this.pos = nextPos;
-        this.draw();
+        this.pos = nextPos;        
+        
     }
+    
 }

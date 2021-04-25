@@ -15,9 +15,12 @@ class dot extends drawableOnGameBoard {
         
         if(caller instanceof pacman){
             caller.setPosition(this.pos);
+            // caller.redraw();x
             }
         board.updateScore(this.score);
+        return false; // not a collision
         }
+        
         
     getScore(){
         return this.score;

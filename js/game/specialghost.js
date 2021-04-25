@@ -13,5 +13,7 @@ class specialGhost extends ghost{
             caller.setPosition(this.pos);
         }
         board.updateScore(this.score);
+        return false;
     }
+    
 }
