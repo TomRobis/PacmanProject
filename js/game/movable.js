@@ -44,20 +44,8 @@ class movable extends drawableOnGameBoard{
         }
     }
     setPosition(nextPos){
-
-        let lastPos = [this.pos[0],this.pos[1]];
-
         LEVEL[this.pos[0]][this.pos[1]] = BOARD_OBJECT_ID.BLANK; // delete previous instance
-
         LEVEL[nextPos[0]][nextPos[1]] = this; // advance 
-
-        console.log(LEVEL[nextPos[0]][nextPos[1]]);
-        console.log(LEVEL[this.pos[0]][this.pos[1]]);
-
         this.pos = nextPos;
-
-        
-        console.log(LEVEL[nextPos[0]][nextPos[1]]);
-        console.log(LEVEL[lastPos[0]][lastPos[1]]);
     }
 }

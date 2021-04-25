@@ -92,7 +92,7 @@ class gameBoard {
         let gridObj = LEVEL[nextPos[0]][nextPos[1]];
         let collision = true;
         if (gridObj == BOARD_OBJECT_ID.BLANK){
-            caller.setPosition(nextPos  );
+            caller.setPosition(nextPos);
             collision = false;
         }
         else{
