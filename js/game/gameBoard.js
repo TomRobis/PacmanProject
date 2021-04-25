@@ -90,12 +90,16 @@ class gameBoard {
     }
     checkCollision(caller,nextPos){
         let gridObj = LEVEL[nextPos[0]][nextPos[1]];
+        let collision = true;
         if (gridObj == BOARD_OBJECT_ID.BLANK){
             caller.setPosition(nextPos  );
+            collision = false;
         }
         else{
             gridObj.handleCollision(this,caller);
         }
+
+        return collision;
     }
 
     lifeLost(){

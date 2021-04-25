@@ -18,7 +18,7 @@ function startGameSequence(){
 
 
     setEventListeners();
-    pacmanInterval = setInterval(pacmanLoop,100);
+    pacmanInterval = setInterval(pacmanLoop,125);
     // ghostsInterval = setInterval(ghostsLoop,250);
     // specialGhostInterval = setInterval(specialGhostLoop,350);
     

@@ -40,7 +40,7 @@ class movable extends drawableOnGameBoard{
         if(currDir != null){
             let nextPos = sumArrays(this.pos,currDir);
             this.gridToAxis(nextPos); 
-            gb.checkCollision(this,nextPos);
+            return !gb.checkCollision(this,nextPos);
         }
     }
     setPosition(nextPos){
