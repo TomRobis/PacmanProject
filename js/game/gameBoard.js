@@ -1,7 +1,6 @@
  
 class gameBoard {
     constructor(){
-        this.center = new Object();
         this.gameOver = false;
         this.livesLeft = gameLives;
         this.placeWallsOnGameBoard();
@@ -34,8 +33,6 @@ class gameBoard {
         }
     }
 
-
-
     findRandomEmptyCell() {
         let randCell = this.generateRandomLocation();
         while (LEVEL[randCell[0]][randCell[1]] != 0) {
@@ -48,63 +45,73 @@ class gameBoard {
         return [getRndValue(1,rowCount-2),getRndValue(1,colCount-2)];
     }
 
-    draw(){
+    initGameBoard(ghosts,sGhost){
+        let gridPos;
+        let dotColor;
+        let gridVal;
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++) {
-                this.center.x = j * wallSizePxl;
-                this.center.y = i * wallSizePxl;
-                let someDot;  // TODO think of moving this away from here depeneding on dot functionality
+                gridPos = [i,j];
                 switch(LEVEL[i][j])
                 {                        
                     case BOARD_OBJECT_ID.WALL:
-                        this.drawWall();
+                        LEVEL[i][j] = new wall(gridPos);
+                        break;
+                    case BOARD_OBJECT_ID.PACMAN:
+                        LEVEL[i][j] = new pacman(gridPos); 
                         break;
                     case BOARD_OBJECT_ID.DOTFIVE:
-                        someDot = new dot([i,j],$("#5ptsColor").val(),BOARD_OBJECT_ID.DOTFIVE); // TODO update later
-                        someDot.draw();
-                        break;
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
-                        someDot = new dot([i,j],$("#15ptsColor").val(),BOARD_OBJECT_ID.DOTFIFTEEN); // TODO update later
-                        someDot.draw();
-                        break;
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
-                        someDot = new dot([i,j],$("#25ptsColor").val(),BOARD_OBJECT_ID.DOTTWENTYFIVE); // TODO update later
-                        someDot.draw();
-                        break;  
+                        dotColor = $("#" + LEVEL[i][j] + "ptsColor").val();
+                        LEVEL[i][j] = new dot(gridPos,gridVal,dotColor); // TODO update later
+                        break;
                     default:
                         break;
+                }
+
+            }
+        }
+        this.setGhosts(ghosts,sGhost);
+    }
+    draw(){
+        let gridCellObject;
+        for (let i = 0; i < rowCount; i++) {
+            for (let j = 0; j < colCount; j++){
+                gridCellObject = LEVEL[i][j];
+                if (gridCellObject == BOARD_OBJECT_ID.BLANK){
+                    ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl);
+                }
+                else{
+                    gridCellObject.draw();    
                 }
             }
         }
     }
-    drawWall(){
-        ctx.beginPath();
-        ctx.rect(this.center.x, this.center.y , wallSizePxl,wallSizePxl);
-        ctx.fillStyle = "grey"; //color
-        ctx.fill();
-    }
-    checkCollisions(nextPos){
-        let collision = true;
-        let nextPosValue = LEVEL[ nextPos[0] ][ nextPos[1] ];
-        switch(nextPosValue)
-        {                        
-            case BOARD_OBJECT_ID.WALL:
-                break;
-            case BOARD_OBJECT_ID.GHOST:
-                // collision with ghost
-                break;
-            case BOARD_OBJECT_ID.SPECIALGHOST:
-                // collision with special ghost
-                break;
-            case BOARD_OBJECT_ID.DOTFIVE || BOARD_OBJECT_ID.DOTFIFTEEN || BOARD_OBJECT_ID.DOTTWENTYFIVE:
-                // update score based on dot
-                collision = false;
-            default:
-                collision = false; 
+    checkCollision(caller,nextPos){
+        let gridObj = LEVEL[nextPos[0]][nextPos[1]];
+        if (gridObj == BOARD_OBJECT_ID.BLANK){
+            caller.setPosition(nextPos  );
         }
-        return collision;
+        else{
+            gridObj.handleCollision(this,caller);
+        }
     }
-    getPacman(){
-        return this.pacmanInstance;
-    }  
+
+    lifeLost(){
+        return false;
+    }
+
+    updateScore(addToScore){
+        return false;
+    }
+    setGhosts(ghosts,sGhost){
+        // draw only the required amount
+        LEVEL[GHOST_START_LOC.BLINKY[0]][GHOST_START_LOC.BLINKY[1]] = ghosts[0]; 
+        LEVEL[GHOST_START_LOC.PINKY[0]][GHOST_START_LOC.PINKY[1]] = ghosts[1]; 
+        LEVEL[GHOST_START_LOC.INKY[0]][GHOST_START_LOC.INKY[1]] = ghosts[2]; 
+        LEVEL[GHOST_START_LOC.CLYDE[0]][GHOST_START_LOC.CLYDE[1]] = ghosts[3]; 
+        LEVEL[GHOST_START_LOC.SPECIALGHOST[0]][GHOST_START_LOC.SPECIALGHOST[0]] = sGhost; 
+    }
+
 }

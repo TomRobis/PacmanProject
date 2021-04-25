@@ -1,12 +1,7 @@
-class ghost extends drawableOnGameBoard{
+class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
-    // this.speed = speed;
-    // this.dir = null;
-    // this.timer = 0;
-    // this.powerPill = false;
-    // this.rotation = true;
     }
 
     draw() {
@@ -50,4 +45,11 @@ class ghost extends drawableOnGameBoard{
 
         ctx.restore();
     }
+
+    handleCollision(board,caller){
+        if (typeof pacman.prototype.isPrototypeOf(caller)){
+            board.lifeLost();
+        }
+    }
+
 }

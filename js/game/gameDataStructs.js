@@ -40,7 +40,7 @@ let LEVEL =
     DOTTWENTYFIVE: 25,
     PACMAN: 8,
     GHOST: 9,
-    SPECIALGHOST: 10 // TODO use in future 
+    SPECIALGHOST: 50 
   };
 
 
@@ -66,7 +66,7 @@ let LEVEL =
     PINKY: [1,colCount-2],
     INKY: [rowCount-2,1],
     CLYDE: [rowCount-2,colCount-2],
-    SPECIALGHOST: [Math.floor(rowCount / 2),colCount / 2 -0.5]
+    SPECIALGHOST: [Math.floor(rowCount / 2),colCount / 2]
   }
 
   const OBJ_SPEEDS = {
