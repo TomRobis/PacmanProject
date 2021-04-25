@@ -8,7 +8,5 @@ class wall extends drawableOnGameBoard{
         ctx.fillStyle = OBJECT_COLORS.WALL; 
         ctx.fill();
     }
-    handleCollision(board,caller){
-    }
 
 }

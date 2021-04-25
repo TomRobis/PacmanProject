@@ -90,3 +90,10 @@ let LEVEL =
     "0,-1": 2,
     "0,1": 0
   }
+
+  const OBJECT_NAMES = {
+    DOT: "dot",
+    PACMAN: "pacman",
+    GHOST: "ghost",
+    SPECIALGHOST: "specialGhost"
+  };

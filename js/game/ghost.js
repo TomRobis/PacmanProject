@@ -46,10 +46,8 @@ class ghost extends movable{
         ctx.restore();
     }
 
-    handleCollision(board,caller){
-        if (typeof pacman.prototype.isPrototypeOf(caller)){
-            board.lifeLost();
-        }
+    handlePacmanCollision(board,caller){
+        board.lifeLost();
     }
 
 }

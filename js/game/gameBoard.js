@@ -1,4 +1,3 @@
- 
 class gameBoard {
     constructor(){
         this.gameOver = false;
@@ -89,16 +88,20 @@ class gameBoard {
         }
     }
     checkCollision(caller,nextPos){
+        console.log(caller instanceof pacman);
         let gridObj = LEVEL[nextPos[0]][nextPos[1]];
         let collision = true;
         if (gridObj == BOARD_OBJECT_ID.BLANK){
             caller.setPosition(nextPos);
             collision = false;
+        }  
+        else if (gridObj instanceof pacman){ // collided with pacman
+            caller.handlePacmanCollision(this,caller);
         }
-        else{
-            gridObj.handleCollision(this,caller);
+        else if (!(gridObj instanceof wall) && caller instanceof pacman){ // pacman made the collision
+            gridObj.handlePacmanCollision(this,caller);
         }
-
+        
         return collision;
     }
 

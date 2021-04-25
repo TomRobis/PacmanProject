@@ -8,10 +8,10 @@ class specialGhost extends ghost{
         return this.score;
     }
     // if only i could extend dot too...
-    handleCollision(board,caller){
-        if (typeof pacman.prototype.isPrototypeOf(caller)){
-            board.updateScore(this.score);
-            this.removeFromGrid(this);
+    handlePacmanCollision(board,caller){
+        if(caller instanceof pacman){
+            caller.setPosition(this.pos);
         }
+        board.updateScore(this.score);
     }
 }

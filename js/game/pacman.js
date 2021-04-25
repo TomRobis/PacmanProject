@@ -18,26 +18,5 @@ class pacman extends movable{
         ctx.closePath();
         ctx.fillStyle = OBJECT_COLORS.PACMAN;
         ctx.fill();
-    }
-    handleCollision(board,caller){
-        if (typeof ghost.prototype.isPrototypeOf(caller)){
-            board.lifeLost();
-        }
-        else if(typeof specialGhost.prototype.isPrototypeOf(caller)){
-            board.updateScore(caller.getScore());
-            this.removeFromGrid(caller);
-        }
-        else{ // ???
-            throw "unknown collision with pacman";
-        } 
-        
     }   
-    updatePctOpen(){
-        if (this.pctOpen < 1){
-            this.pctOpen += pacmanAnimationSpeed;
-        }
-        else{
-            this.pctOpen -= pacmanAnimationSpeed;
-        }
-    }
 }

@@ -11,12 +11,14 @@ class dot extends drawableOnGameBoard {
         ctx.fillStyle = this.color; 
         ctx.fill();
     }
-    handleCollision(board,caller){
-        if (typeof pacman.prototype.isPrototypeOf(caller)){
-            board.updateScore(this.score);
-            // this.removeFromGrid(this);
+    handlePacmanCollision(board,caller){
+        
+        if(caller instanceof pacman){
+            caller.setPosition(this.pos);
+            }
+        board.updateScore(this.score);
         }
-    }
+        
     getScore(){
         return this.score;
     }
