@@ -33,11 +33,21 @@
 	<body>
 		<header>
 			<img src="images/logo.png" alt="logo">
-			<div class="overlay">
-				<h1>The best Pac-woman out there!</h1>
-				<h3>Brought to you by: Avichai, the mighty one with three armpits and Tom, the lesser one with only two armpits.</h3>
+			<div class="topnav">
+				<div class="topnav-left">
+					<a id="menu_welcome" onclick="SwitchDisplay('welcome')">Welcome</a>
+					<a id="menu_login" onclick="SwitchDisplay('register')">Log In</a>
+					<a id="menu_register" onclick="SwitchDisplay('login')">Register</a>
+					<a id="menu_about" onclick= "displayAboutModal()">About</a>
+					<div class="us">
+						<h1>Ⓒ Tom Robissa & Avichai Edri!</h1>
+					</div>
+				</div>
+		
 			</div>
 		</header>
+
+		</div>
 		<content>
 			<div id="welcome" class="menu_wrapper">
 				<div class="menu_container">
@@ -191,6 +201,12 @@
 				<div id="game">
 					<canvas id="canvas" height="600" width="600"></canvas>
 				</div>	
+			</div>
+
+			<div  class="footer">
+				Do you enjoy the game?
+				Please tell us at avichaie@post.bgu.ac.il, tomrob@post.bgu.ac.il.
+				but actually, don't tell us.
 			</div>
 			
 		</content>
