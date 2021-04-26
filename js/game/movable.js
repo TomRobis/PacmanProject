@@ -3,7 +3,7 @@ class movable extends drawableOnGameBoard{
         super(startPos);
         this.dir = DIRECTIONS.STATIONARY; 
         this.turnDir = DIRECTIONS.STATIONARY;
-        this.facingDir = DIRECTIONS.RIGHT;
+        this.facingDir = PACMAN_FACING_DIR[(DIRECTIONS.RIGHT).join()];
         this.prevPos = null;
     
     }
