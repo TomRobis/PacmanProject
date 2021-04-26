@@ -89,11 +89,11 @@ class gameBoard {
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++){
                 gridCellObject = LEVEL[i][j];
-                if (gridCellObject == BOARD_OBJECT_ID.BLANK){
-                    ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl);
+                if (gridCellObject != BOARD_OBJECT_ID.BLANK){
+                    gridCellObject.draw();    
                 }
                 else{
-                    gridCellObject.draw();    
+                    // ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl);
                 }
             }
         }
@@ -160,7 +160,7 @@ class gameBoard {
         return this.ghosts;
     }
     getSpecialGhost(){
-        return this.specialGhost;
+        return this.sGhost;
     }
 
 }

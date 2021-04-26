@@ -9,6 +9,7 @@ let sGhost;
 
 let pacmanInterval;
 
+const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 function startGameSequence(){
     monstersCount = $("#monstersCount").val()
@@ -22,7 +23,7 @@ function startGameSequence(){
 
     gb.draw();
     pacmanInterval = setInterval(pacmanLoop,100);
-    // ghostsInterval = setInterval(ghostsLoop,250);
+    // ghostsInterval = setInterval(ghostsLoop,200);
     // specialGhostInterval = setInterval(specialGhostLoop,350);
     
 }
@@ -30,12 +31,12 @@ function pacmanLoop(){
     pacmanInstance.updatePosition(gb);
 }
 function ghostsLoop(){
-    for (i = 0; i - 1 < monstersCount; i++){
+    for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
 }
 function specialGhostLoop(){
-    specialGhost.updatePosition(gb);
+    sGhost.updatePosition(gb);
     gb.draw();
 }
 

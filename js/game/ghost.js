@@ -2,7 +2,7 @@ class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
-        this.randomDirectionAlpha = 0.1;
+        this.randomDirectionAlpha = 0;
         this.storedDot = null;
 
     }
@@ -55,19 +55,28 @@ class ghost extends movable{
     }
 
     updateDir(pacmanPos){
-        let probDecider = Math.random();
-        if(probDecider <= this.randomDirectionAlpha){
+        if(Math.random() <= this.randomDirectionAlpha){
             //random dirs
             this.dir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
             this.turnDir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
         }
         else{
-            //Manhattan distance
             let diffX = this.pos[1] - pacmanPos[1];
             let diffY = this.pos[0] - pacmanPos[0];
+            let diffXLarger = Math.abs(diffX - diffY) > 0 ? true : false; 
             // normalize to a direction
-            this.turnDir = [ diffX * (1 / diffX) , 0 ];
-            this.dir = [ 0 , diffY * (1 / diffY) ];
+            let dirX = [ 0, this.findDir(diffX) ];
+            let dirY = [  this.findDir(diffY) , 0];
+            if (diffXLarger){
+                this.turnDir = dirX;
+                this.dir = dirY;
+            }
+            else{
+                this.turnDir = dirY;
+                this.dir = dirX;
+            }
+            
+            
         }
     }
 
@@ -78,6 +87,20 @@ class ghost extends movable{
 
     handleGhostCollision(board,caller){
         return board.switchPositions(this,caller);
+    }
+    findDir(locationDiff){
+        // stair function
+        let dir;
+        if(locationDiff > 0){
+            dir = -1;
+        }
+        else if (locationDiff < 0) {
+            dir = 1;
+        }
+        else{
+            dir = 0;
+        }
+        return dir;
     }
 
 

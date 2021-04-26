@@ -1,16 +1,16 @@
 class movable extends drawableOnGameBoard{
     constructor(startPos) {
         super(startPos);
-        this.dir = null; 
-        this.turnDir = null;
-        this.facingDir = null;
+        this.dir = DIRECTIONS.STATIONARY; 
+        this.turnDir = DIRECTIONS.STATIONARY;
+        this.facingDir = DIRECTIONS.RIGHT;
         this.prevPos = null;
     
     }
 
 
     moveMeTo(currDir,gb){
-        if(currDir != null){
+        if(!equals(currDir,DIRECTIONS.STATIONARY)){
             let nextPos = sumArrays(this.pos,currDir);
             this.gridToAxis(nextPos); 
             return !gb.checkCollision(this,nextPos);
@@ -30,7 +30,7 @@ class movable extends drawableOnGameBoard{
             this.setFacingDir(this.turnDir);
 
             this.dir = this.turnDir;
-            this.turnDir = null;
+            this.turnDir = DIRECTIONS.STATIONARY;
 
             this.redraw();
             this.draw();
@@ -43,7 +43,7 @@ class movable extends drawableOnGameBoard{
         
     }
     setFacingDir(currDir){
-        if(currDir != null){
+        if(!equals(currDir, DIRECTIONS.STATIONARY)){
             this.facingDir = PACMAN_FACING_DIR[(currDir.join())];
         }
         

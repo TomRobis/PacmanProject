@@ -8,7 +8,7 @@ class pacman extends movable{
     
     }
     draw(){        
-        if (this.dir != null){
+        if (!equals(this.dir, DIRECTIONS.STATIONARY)){
             this.facingDir = PACMAN_FACING_DIR[(this.dir.join())];
         }
         ctx.beginPath();

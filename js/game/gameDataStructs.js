@@ -4,7 +4,6 @@ const wallSizePxl = 25;
 const pacmanSizePxl =  wallSizePxl / 2;
 const dotSizePxl = pacmanSizePxl / 4;
 const gameLives = 5;
-const pacmanAnimationSpeed = (75 / 100);
 let LEVEL =
  [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -83,6 +82,7 @@ let LEVEL =
     DOWN: [1,0],
     LEFT: [0,-1],
     RIGHT: [0,1],
+    STATIONARY: [0,0],
   }
   const PACMAN_FACING_DIR = {
     "-1,0": 3,

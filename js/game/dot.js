@@ -17,7 +17,7 @@ class dot extends drawableOnGameBoard {
         return false;
     }
     handleGhostCollision(board,caller){
-        caller.storeDot(this);
+        // caller.storeDot(this);
         caller.setPosition(this.pos);
         return false;
     }   
