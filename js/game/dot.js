@@ -12,13 +12,18 @@ class dot extends drawableOnGameBoard {
         ctx.fill();
     }
     handlePacmanCollision(board,caller){
-        caller.setPosition(this.pos);
         board.updateScore(this.score);
+        gb.setGridCell(caller.getPos(),BOARD_OBJECT_ID.BLANK); 
+        caller.advance(board,this.pos);
+
+        
         return false;
     }
     handleGhostCollision(board,caller){
-        // caller.storeDot(this);
-        caller.setPosition(this.pos);
+        caller.storeDot(this);
+        gb.setGridCell(caller.getPos(),BOARD_OBJECT_ID.BLANK); 
+        caller.advance(board,this.pos)
+        
         return false;
     }   
         
