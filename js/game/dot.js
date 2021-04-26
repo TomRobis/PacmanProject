@@ -12,18 +12,20 @@ class dot extends drawableOnGameBoard {
         ctx.fill();
     }
     handlePacmanCollision(board,caller){
-        
-        if(caller instanceof pacman){
-            caller.setPosition(this.pos);
-            // caller.redraw();x
-            }
+        caller.setPosition(this.pos);
         board.updateScore(this.score);
-        return false; // not a collision
-        }
+        return false;
+    }
+    handleGhostCollision(board,caller){
+        caller.storeDot(this);
+        caller.setPosition(this.pos);
+        return false;
+    }   
         
         
     getScore(){
         return this.score;
     }
+
     
 }   

@@ -1,10 +1,10 @@
 class movable extends drawableOnGameBoard{
     constructor(startPos) {
         super(startPos);
-        this.dir = null;
+        this.dir = null; 
         this.turnDir = null;
+        this.facingDir = null;
         this.prevPos = null;
-        // this.rotation = true;
     
     }
 
@@ -23,5 +23,39 @@ class movable extends drawableOnGameBoard{
         this.pos = nextPos;        
         
     }
+
+    updatePosition(gb){
+        if (this.moveMeTo(this.turnDir,gb)){
+
+            this.setFacingDir(this.turnDir);
+
+            this.dir = this.turnDir;
+            this.turnDir = null;
+
+            this.redraw();
+            this.draw();
+        }
+        else if (this.moveMeTo(this.dir,gb)){
+            this.redraw();
+            this.draw();
+        }
+
+        
+    }
+    setFacingDir(currDir){
+        if(currDir != null){
+            this.facingDir = PACMAN_FACING_DIR[(currDir.join())];
+        }
+        
+    }
+    redraw(){
+        ctx.clearRect(this.prevPos[1] * wallSizePxl,this.prevPos[0] * wallSizePxl, wallSizePxl, wallSizePxl);
+        this.draw();
+    }
     
+    getPos(){
+        return this.pos;
+    }
+
+
 }

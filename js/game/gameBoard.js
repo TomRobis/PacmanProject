@@ -1,7 +1,18 @@
 class gameBoard {
     constructor(){
+        this.ghosts =
+        [    
+            new ghost(GHOST_START_LOC.BLINKY,OBJECT_COLORS.BLINKY),
+            new ghost(GHOST_START_LOC.PINKY,OBJECT_COLORS.PINKY),
+            new ghost(GHOST_START_LOC.INKY,OBJECT_COLORS.INKY),
+            new ghost(GHOST_START_LOC.CLYDE,OBJECT_COLORS.CLYDE)
+        ];
+        this.sGhost = new specialGhost(GHOST_START_LOC.SPECIALGHOST,OBJECT_COLORS.SPECIALGHOST);
+        this.pacman = new pacman(this.getPacmanStartPos());
+
         this.gameOver = false;
         this.livesLeft = gameLives;
+
         this.placeWallsOnGameBoard();
     }
 
@@ -71,7 +82,7 @@ class gameBoard {
 
             }
         }
-        this.setGhosts(ghosts,sGhost);
+        this.setGhosts();
     }
     draw(){
         let gridCellObject;
@@ -87,22 +98,44 @@ class gameBoard {
             }
         }
     }
+    // caller gridObj
+    // pacman ghost -> end-game V
+    // ghost pacman -> end-game V
+    // sGhost pacman -> update score, delete other V
+    // pacman sGhost -> update score, delete other V 
+    // pacman dot -> update score, delete other V
+    // ghost / dot -> store dot, set position V
+    // ghost / ghost -> switch positions V
+    // other / blank -> switch positions V
+    // other / wall -> nothing  V
+
+
+
+
+
+
     checkCollision(caller,nextPos){
         let gridObj = LEVEL[nextPos[0]][nextPos[1]];
         let collision = true;
-        if (gridObj == BOARD_OBJECT_ID.BLANK){
-            caller.setPosition(nextPos);
-            collision = false;
+        if (!(gridObj instanceof wall)){
+            if(gridObj == BOARD_OBJECT_ID.BLANK){
+                collision = caller.setPosition(nextPos);
+            }
+            else if(caller instanceof ghost){
+                collision = gridObj.handleGhostCollision(this,caller);
+            }
+            else if(caller instanceof pacman){
+                collision = gridObj.handlePacmanCollision(this,caller);
+            }
         }  
-        else if (gridObj instanceof pacman){ // collided with pacman
-            collision = caller.handlePacmanCollision(this,caller);
-        }
-
-        else if (!(gridObj instanceof wall) && caller instanceof pacman){ // pacman made the collision
-            collision = gridObj.handlePacmanCollision(this,caller);
-        }
-        
         return collision;
+    }
+    switchPositions(first,second){
+        firstPos = first.getPos();
+        secondPos = second.getPos();
+        LEVEL[firstPos[0]][firstPos[1]] = second;
+        LEVEL[secondPos[0]][secondPos[1]] = first;
+        return false;
     }
 
     lifeLost(){
@@ -113,12 +146,21 @@ class gameBoard {
         return false;
     }
     
-    setGhosts(ghosts,sGhost){
+    setGhosts(){
         let ghostsLocs = Object.values(GHOST_START_LOC);
         for (let i=0; i < monstersCount; i++) {
-            LEVEL[ghostsLocs[i][0]][ghostsLocs[i][1]] = ghosts[i]; 
+            LEVEL[ghostsLocs[i][0]][ghostsLocs[i][1]] = this.ghosts[i]; 
         }
-        LEVEL[GHOST_START_LOC.SPECIALGHOST[0]][GHOST_START_LOC.SPECIALGHOST[1]] = sGhost; 
+        LEVEL[GHOST_START_LOC.SPECIALGHOST[0]][GHOST_START_LOC.SPECIALGHOST[1]] = this.sGhost; 
+    }
+    getPacMan(){
+        return this.pacman; 
+    }
+    getGhosts(){
+        return this.ghosts;
+    }
+    getSpecialGhost(){
+        return this.specialGhost;
     }
 
 }

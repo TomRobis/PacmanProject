@@ -2,6 +2,9 @@ class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
+        this.randomDirectionAlpha = 0.1;
+        this.storedDot = null;
+
     }
 
     draw() {
@@ -10,7 +13,7 @@ class ghost extends movable{
         let head_radius = radius * 0.8;
         let foot_radius = head_radius / feet;
         ctx.save();
-        ctx.strokeStyle =  "white";
+        // ctx.strokeStyle =  "white";
         ctx.fillStyle =  this.color;
         ctx.lineWidth =  radius * 0.05;
         ctx.beginPath();
@@ -25,7 +28,7 @@ class ghost extends movable{
         ctx.arc(this.pos.x, this.pos.y +  head_radius - radius, head_radius, Math.PI, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
-        ctx.stroke();
+        // ctx.stroke();
 
         ctx.fillStyle = "white";
         ctx.beginPath();
@@ -46,9 +49,36 @@ class ghost extends movable{
         ctx.restore();
     }
 
+    updatePosition(board){
+        this.updateDir(board.getPacMan().getPos());
+        super.updatePosition(board);
+    }
+
+    updateDir(pacmanPos){
+        let probDecider = Math.random();
+        if(probDecider <= this.randomDirectionAlpha){
+            //random dirs
+            this.dir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
+            this.turnDir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
+        }
+        else{
+            //Manhattan distance
+            let diffX = this.pos[1] - pacmanPos[1];
+            let diffY = this.pos[0] - pacmanPos[0];
+            // normalize to a direction
+            this.turnDir = [ diffX * (1 / diffX) , 0 ];
+            this.dir = [ 0 , diffY * (1 / diffY) ];
+        }
+    }
+
     handlePacmanCollision(board,caller){
         board.lifeLost();
         return true;
     }
+
+    handleGhostCollision(board,caller){
+        return board.switchPositions(this,caller);
+    }
+
 
 }

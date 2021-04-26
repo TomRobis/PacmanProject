@@ -5,7 +5,6 @@ class pacman extends movable{
         this.pctOpen = 0;
         this.startAngle = 0.2 * Math.PI;
         this.endAngle = 1.8 * Math.PI;
-        this.facingDir = 0;
     
     }
     draw(){        
@@ -19,20 +18,7 @@ class pacman extends movable{
         ctx.fillStyle = OBJECT_COLORS.PACMAN;
         ctx.fill();
     } 
-    updatePosition(gb){
-        let hasMoved = true;
-        if (this.moveMeTo(this.turnDir,gb)){
-            this.dir = this.turnDir;
-            this.turnDir = null;
-            this.setFacingDir(this.dir);
-            this.redraw();
-        }
-        else if (this.moveMeTo(this.dir,gb)){
-            this.redraw();
-        }
-
         
-    }
     updateDir(newDir){
         switch(newDir) {
             case $("#setUpKey").text(): // should be fixed to more modular impl, allong with rest of these calls
@@ -54,15 +40,9 @@ class pacman extends movable{
               break;
         }   
     }
-    setFacingDir(currDir){
-        if(currDir != null){
-            this.facingDir = PACMAN_FACING_DIR[(currDir.join())];
-        }
-        
-    }
-    redraw(){
-        ctx.clearRect(this.prevPos[1] * wallSizePxl,this.prevPos[0] * wallSizePxl, wallSizePxl, wallSizePxl);
-        this.draw();
+
+    handleGhostCollision(board,caller){
+       return caller.handlePacmanCollision(board,caller);
     }
     
 }
