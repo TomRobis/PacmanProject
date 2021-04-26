@@ -10,10 +10,6 @@ class drawableOnGameBoard{
     axisToGrid(pos){
         return [(pos.y - pacmanSizePxl) / wallSizePxl, (pos.x - pacmanSizePxl) / wallSizePxl]; 
     }
-    removeFromGrid(deleted){
-        let deletedPos = deleted.getPos();
-        LEVEL[deletedPos[0]][deletedPos[1]] = BOARD_OBJECT_ID.BLANK;
-    }
     getPos(){
         return this.pos;
     }

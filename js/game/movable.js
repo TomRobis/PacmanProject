@@ -35,9 +35,10 @@ class movable extends drawableOnGameBoard{
     }
 
     advance(gb,nextPos){
+        let somePos = nextPos;
         gb.setGridCell(nextPos,this); 
         this.prevPos = this.pos;
-        this.pos = nextPos;
+        this.pos = somePos;
         return false;
     }
 

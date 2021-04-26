@@ -3,7 +3,8 @@ class ghost extends movable{
         super(startPos);
         this.color = color;
         this.randomDirectionAlpha = 0.05;
-        this.dotStorage = [];
+        this.newDot = null;
+        this.oldDot = null;
 
     }
 
@@ -50,23 +51,14 @@ class ghost extends movable{
     }
 
     updatePosition(board){
+        this.newDot = null;
         this.updateDir(board.getPacMan().getPos());
         let hasMoved = super.updatePosition(board);
-
-        //testing
-        if (hasMoved && this.hasStoredDot()){
-            console.log(this.dotStorage);
-        }
-
-
-
-        if (hasMoved && this.hasStoredDot()){
-            let firstDotInStorage = this.popFirstDot();
-            // board.setGridCell(firstDotInStorage.getPos(),BOARD_OBJECT_ID.BLANK);
-
-            board.setGridCell(firstDotInStorage.getPos(),firstDotInStorage);
-        
-        }
+        if(hasMoved && this.hasStoredDot()){
+            this.prevPos = this.oldDot.getPos();    
+            gb.setGridCell(this.prevPos,this.oldDot);
+           }
+        this.oldDot = this.newDot;
     }
 
     updateDir(pacmanPos){
@@ -127,23 +119,20 @@ class ghost extends movable{
         return dir;
     }
     setStoredDot(dot){
-        this.dotStorage.push(dot);
+        this.newDot = dot;
     }
     hasStoredDot(){
-        return this.dotStorage.length !== 0;
+        return this.oldDot != null;
     }
 
-    getStoredDot(){ //might be risky *********************
+    getStoredDot(){ 
         
         if (this.hasStoredDot()){
-            return this.dotStorage[0];
+            return this.oldDot;
         }
-        return null;
-        
+        return null; 
     }
-    popFirstDot(){
-        return this.dotStorage.shift();
-    }
+
 
     switchStoredDots(otherGhost){
 

@@ -74,7 +74,7 @@ class gameBoard {
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
                         dotColor = $("#" + LEVEL[i][j] + "ptsColor").val();
-                        this.setGridCell(gridPos,new dot(gridPos,gridVal,dotColor));
+                        this.setGridCell(gridPos,new dot(gridPos,LEVEL[i][j],dotColor));
                         break;
                     default:
                         break;
@@ -90,10 +90,9 @@ class gameBoard {
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++){
                 gridCellObject = LEVEL[i][j];
-                gridCell = [i,j] 
-                if (this.gridCellEmpty(gridCell)){
-                    ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl);
-                } else {
+                gridCell = [i,j];
+                ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl); 
+                if (!this.gridCellEmpty(gridCell)){
                     gridCellObject.draw();    
                 }
             }
@@ -152,7 +151,7 @@ class gameBoard {
         for (let i=0; i < monstersCount; i++) {
             this.setGridCell(ghostsLocs[i],this.ghosts[i]);
         }
-        this.setGridCell(GHOST_START_LOC.SPECIALGHOST,this.sGhost);
+        // this.setGridCell(GHOST_START_LOC.SPECIALGHOST,this.sGhost);
     }
     getPacMan(){
         return this.pacman; 

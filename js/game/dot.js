@@ -23,13 +23,15 @@ class dot extends drawableOnGameBoard {
         caller.setStoredDot(this);
         gb.setGridCell(caller.getPos(),BOARD_OBJECT_ID.BLANK); 
         caller.advance(board,this.pos);
-        
         return false;
     }   
         
         
     getScore(){
         return this.score;
+    }
+    getColor(){
+        return this.color;
     }
 
     
