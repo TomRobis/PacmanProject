@@ -1,5 +1,10 @@
 class gameBoard {
     constructor(){
+
+        this.score = 0;
+        this.gameGrid = generateNewGrid();
+
+
         this.ghosts =
         [    
             new ghost(GHOST_START_LOC.BLINKY,OBJECT_COLORS.BLINKY),
@@ -10,10 +15,10 @@ class gameBoard {
         this.sGhost = new specialGhost(GHOST_START_LOC.SPECIALGHOST,OBJECT_COLORS.SPECIALGHOST);
         this.pacman = new pacman(this.getPacmanStartPos());
 
-        this.gameOver = false;
-        this.livesLeft = gameLives;
 
         this.placeWallsOnGameBoard();
+
+        
     }
 
     getPacmanStartPos(){
@@ -45,7 +50,7 @@ class gameBoard {
 
     findRandomEmptyCell() {
         let randCell = this.generateRandomLocation();
-        while (LEVEL[randCell[0]][randCell[1]] != BOARD_OBJECT_ID.BLANK) {
+        while (this.gameGrid[randCell[0]][randCell[1]] != BOARD_OBJECT_ID.BLANK) {
             randCell = this.generateRandomLocation();
         }
         return randCell;
@@ -62,7 +67,7 @@ class gameBoard {
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++) {
                 gridPos = [i,j];
-                switch(LEVEL[i][j])
+                switch(this.gameGrid[i][j])
                 {                        
                     case BOARD_OBJECT_ID.WALL:
                         this.setGridCell(gridPos,new wall(gridPos));
@@ -73,8 +78,8 @@ class gameBoard {
                     case BOARD_OBJECT_ID.DOTFIVE:
                     case BOARD_OBJECT_ID.DOTFIFTEEN:
                     case BOARD_OBJECT_ID.DOTTWENTYFIVE:
-                        dotColor = $("#" + LEVEL[i][j] + "ptsColor").val();
-                        this.setGridCell(gridPos,new dot(gridPos,LEVEL[i][j],dotColor));
+                        dotColor = $("#" + this.gameGrid[i][j] + "ptsColor").val();
+                        this.setGridCell(gridPos,new dot(gridPos,this.gameGrid[i][j],dotColor));
                         break;
                     default:
                         break;
@@ -89,7 +94,7 @@ class gameBoard {
         let gridCell;
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++){
-                gridCellObject = LEVEL[i][j];
+                gridCellObject = this.gameGrid[i][j];
                 gridCell = [i,j];
                 ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl); 
                 if (!this.gridCellEmpty(gridCell)){
@@ -113,7 +118,7 @@ class gameBoard {
 
 
     checkCollision(caller,nextPos){
-        let gridObj = LEVEL[nextPos[0]][nextPos[1]];
+        let gridObj = this.gameGrid[nextPos[0]][nextPos[1]];
         let collision = true;
         if (!(gridObj instanceof wall)){
             if(this.gridCellEmpty(nextPos)){
@@ -138,12 +143,8 @@ class gameBoard {
     }
 
 
-    lifeLost(){
-        return false;
-    }
-
     updateScore(addToScore){
-        return false;
+        this.score += addToScore;
     }
     
     setGhosts(){
@@ -151,7 +152,7 @@ class gameBoard {
         for (let i=0; i < monstersCount; i++) {
             this.setGridCell(ghostsLocs[i],this.ghosts[i]);
         }
-        // this.setGridCell(GHOST_START_LOC.SPECIALGHOST,this.sGhost);
+        this.setGridCell(GHOST_START_LOC.SPECIALGHOST,this.sGhost);
     }
     getPacMan(){
         return this.pacman; 
@@ -163,10 +164,19 @@ class gameBoard {
         return this.sGhost;
     }
     gridCellEmpty(pos){
-        return LEVEL[pos[0]][pos[1]] === BOARD_OBJECT_ID.BLANK;
+        return this.gameGrid[pos[0]][pos[1]] === BOARD_OBJECT_ID.BLANK;
     }
     setGridCell(pos,obj){
-        LEVEL[pos[0]][pos[1]] = obj; 
+        this.gameGrid[pos[0]][pos[1]] = obj; 
     }
+    getStartTime(){
+        return this.startTime;
+    }
+    getScore(){
+        return this.score;
+    }
+
+    
+
 
 }

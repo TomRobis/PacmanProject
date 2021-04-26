@@ -3,7 +3,7 @@ const colCount = 40;
 const wallSizePxl = 25;
 const pacmanSizePxl =  wallSizePxl / 2;
 const dotSizePxl = pacmanSizePxl / 4;
-const gameLives = 5;
+const gameLives = 5
 let LEVEL =
  [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -30,6 +30,7 @@ let LEVEL =
   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+
 
   const BOARD_OBJECT_ID = {
     BLANK: 0,

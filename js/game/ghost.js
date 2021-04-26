@@ -98,8 +98,7 @@ class ghost extends movable{
     }
 
     handlePacmanCollision(board,caller){
-        board.lifeLost();
-        return true;
+        lifeLost();
     }
 
     handleGhostCollision(board,caller){
