@@ -11,8 +11,9 @@ class specialGhost extends ghost{
     handlePacmanCollision(board,caller){
         return this.innerDot.handlePacmanCollision(board,caller);
     }
-    updatePosition(board){
-        super.updatePosition(board);
-    }
+    // ??
+    // updatePosition(board){
+    //     super.updatePosition(board);
+    // }
     
 }

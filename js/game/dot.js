@@ -20,9 +20,9 @@ class dot extends drawableOnGameBoard {
         return false;
     }
     handleGhostCollision(board,caller){
-        caller.storeDot(this);
+        caller.setStoredDot(this);
         gb.setGridCell(caller.getPos(),BOARD_OBJECT_ID.BLANK); 
-        caller.advance(board,this.pos)
+        caller.advance(board,this.pos);
         
         return false;
     }   

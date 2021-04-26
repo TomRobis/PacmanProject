@@ -15,47 +15,36 @@ class movable extends drawableOnGameBoard{
             this.gridToAxis(nextPos); 
             return !gb.checkCollision(this,nextPos);
         }
-    }
-    setPosition(nextPos){
-        this.prevPos = this.pos;
-        LEVEL[this.pos[0]][this.pos[1]] = BOARD_OBJECT_ID.BLANK; // delete previous instance
-        LEVEL[nextPos[0]][nextPos[1]] = this; // advance 
-        this.pos = nextPos;        
-        
+        return false;
     }
 
     updatePosition(gb){
-        if (this.moveMeTo(this.turnDir,gb)){
+        let hasMoved;
+        hasMoved = this.moveMeTo(this.turnDir,gb); 
+        if (hasMoved){
 
             this.setFacingDir(this.turnDir);
-
             this.dir = this.turnDir;
             this.turnDir = DIRECTIONS.STATIONARY;
 
-            this.redraw();
-            this.draw();
+        } else {
+            hasMoved = this.moveMeTo(this.dir,gb);
         }
-        else if (this.moveMeTo(this.dir,gb)){
-            this.redraw();
-            this.draw();
-        }
-
+        return hasMoved;
         
     }
+
+    advance(gb,nextPos){
+        gb.setGridCell(nextPos,this); 
+        this.prevPos = this.pos;
+        this.pos = nextPos;
+        return false;
+    }
+
     setFacingDir(currDir){
         if(!equals(currDir, DIRECTIONS.STATIONARY)){
             this.facingDir = PACMAN_FACING_DIR[(currDir.join())];
         }
         
     }
-    redraw(){
-        ctx.clearRect(this.prevPos[1] * wallSizePxl,this.prevPos[0] * wallSizePxl, wallSizePxl, wallSizePxl);
-        this.draw();
-    }
-    
-    getPos(){
-        return this.pos;
-    }
-
-
 }

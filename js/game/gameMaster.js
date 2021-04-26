@@ -23,17 +23,19 @@ function startGameSequence(){
 
     gb.draw();
     pacmanInterval = setInterval(pacmanLoop,100);
-    // ghostsInterval = setInterval(ghostsLoop,200);
+    ghostsInterval = setInterval(ghostsLoop,200);
     // specialGhostInterval = setInterval(specialGhostLoop,350);
     
 }
 function pacmanLoop(){
     pacmanInstance.updatePosition(gb);
+    gb.draw();
 }
 function ghostsLoop(){
     for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
+    gb.draw();
 }
 function specialGhostLoop(){
     sGhost.updatePosition(gb);

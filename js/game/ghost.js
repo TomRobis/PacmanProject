@@ -2,8 +2,8 @@ class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
-        this.randomDirectionAlpha = 0;
-        this.storedDot = null;
+        this.randomDirectionAlpha = 0.05;
+        this.dotStorage = [];
 
     }
 
@@ -51,7 +51,22 @@ class ghost extends movable{
 
     updatePosition(board){
         this.updateDir(board.getPacMan().getPos());
-        super.updatePosition(board);
+        let hasMoved = super.updatePosition(board);
+
+        //testing
+        if (hasMoved && this.hasStoredDot()){
+            console.log(this.dotStorage);
+        }
+
+
+
+        if (hasMoved && this.hasStoredDot()){
+            let firstDotInStorage = this.popFirstDot();
+            // board.setGridCell(firstDotInStorage.getPos(),BOARD_OBJECT_ID.BLANK);
+
+            board.setGridCell(firstDotInStorage.getPos(),firstDotInStorage);
+        
+        }
     }
 
     updateDir(pacmanPos){
@@ -63,18 +78,24 @@ class ghost extends movable{
         else{
             let diffX = this.pos[1] - pacmanPos[1];
             let diffY = this.pos[0] - pacmanPos[0];
-            let diffXLarger = Math.abs(diffX - diffY) > 0 ? true : false; 
+            
             // normalize to a direction
-            let dirX = [ 0, this.findDir(diffX) ];
-            let dirY = [  this.findDir(diffY) , 0];
-            if (diffXLarger){
-                this.turnDir = dirX;
-                this.dir = dirY;
-            }
-            else{
-                this.turnDir = dirY;
-                this.dir = dirX;
-            }
+
+            // prefer horizontal movement
+            this.turnDir = [ 0, this.findDir(diffX) ];
+            this.dir = [  this.findDir(diffY) , 0];
+
+             /* move based on larger distance to pacman */
+            //  let diffXLarger = Math.abs(diffX - diffY) > 0 ? true : false; 
+            
+            // if (diffXLarger){
+            //     this.turnDir = dirX;
+            //     this.dir = dirY;
+            // }
+            // else{
+            //     this.turnDir = dirY;
+            //     this.dir = dirX;
+            // }
             
             
         }
@@ -86,6 +107,9 @@ class ghost extends movable{
     }
 
     handleGhostCollision(board,caller){
+        if (caller.hasStoredDot()){
+            this.switchStoredDots(caller);
+        }
         return board.switchPositions(this,caller);
     }
     findDir(locationDiff){
@@ -102,6 +126,33 @@ class ghost extends movable{
         }
         return dir;
     }
+    setStoredDot(dot){
+        this.dotStorage.push(dot);
+    }
+    hasStoredDot(){
+        return this.dotStorage.length !== 0;
+    }
+
+    getStoredDot(){ //might be risky *********************
+        
+        if (this.hasStoredDot()){
+            return this.dotStorage[0];
+        }
+        return null;
+        
+    }
+    popFirstDot(){
+        return this.dotStorage.shift();
+    }
+
+    switchStoredDots(otherGhost){
+
+        let tmpDot = this.dotStorage.popFirstDot();
+        this.setStoredDot(otherGhost.popFirstDot());
+        otherGhost.setStoredDot(tmpDot);
+        
+    }
+
 
 
 }
