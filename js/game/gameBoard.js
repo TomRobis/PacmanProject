@@ -130,8 +130,8 @@ class gameBoard {
         return collision;
     }
     switchPositions(firstObj,secondObj){
-        firstPos = firstObj.getPos();
-        secondPos = secondObj.getPos();
+        let firstPos = firstObj.getPos();
+        let secondPos = secondObj.getPos();
         firstObj.advance(this,secondPos);
         secondObj.advance(this,firstPos);
         return false;

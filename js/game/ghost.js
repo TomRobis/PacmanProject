@@ -2,7 +2,9 @@ class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
-        this.randomDirectionAlpha = 0.05;
+        this.randomDirectionAlpha = 0.1;
+        this.oppositeDirectionBeta = 0.1;
+        // this.longerOrShorterPathGamma = 0.4;
         this.newDot = null;
         this.oldDot = null;
 
@@ -57,12 +59,13 @@ class ghost extends movable{
         if(hasMoved && this.hasStoredDot()){
             this.prevPos = this.oldDot.getPos();    
             gb.setGridCell(this.prevPos,this.oldDot);
-           }
+        }
         this.oldDot = this.newDot;
     }
 
     updateDir(pacmanPos){
-        if(Math.random() <= this.randomDirectionAlpha){
+        let randNum = Math.random(); 
+        if( randNum <= this.randomDirectionAlpha){
             //random dirs
             this.dir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
             this.turnDir = Object.values(DIRECTIONS)[getRandomInt(0,3)];
@@ -70,12 +73,14 @@ class ghost extends movable{
         else{
             let diffX = this.pos[1] - pacmanPos[1];
             let diffY = this.pos[0] - pacmanPos[0];
-            
-            // normalize to a direction
-
-            // prefer horizontal movement
+            if(randNum <= this.randomDirectionAlpha + this.oppositeDirectionBeta){
+                diffX *= -1;
+                diffY *= -1;
+            }
             this.turnDir = [ 0, this.findDir(diffX) ];
             this.dir = [  this.findDir(diffY) , 0];
+        }
+            // prefer horizontal movement
 
              /* move based on larger distance to pacman */
             //  let diffXLarger = Math.abs(diffX - diffY) > 0 ? true : false; 
@@ -90,7 +95,6 @@ class ghost extends movable{
             // }
             
             
-        }
     }
 
     handlePacmanCollision(board,caller){
@@ -102,7 +106,6 @@ class ghost extends movable{
         if (caller.hasStoredDot()){
             this.switchStoredDots(caller);
         }
-        return board.switchPositions(this,caller);
     }
     findDir(locationDiff){
         // stair function
@@ -132,13 +135,16 @@ class ghost extends movable{
         }
         return null; 
     }
+    setStoredOldDot(dot){
+        this.oldDot = dot; 
+    }
 
 
     switchStoredDots(otherGhost){
 
         let tmpDot = this.dotStorage.popFirstDot();
-        this.setStoredDot(otherGhost.popFirstDot());
-        otherGhost.setStoredDot(tmpDot);
+        this.setStoredOldDot(otherGhost.popFirstDot());
+        otherGhost.setStoredOldDot(tmpDot);
         
     }
 
