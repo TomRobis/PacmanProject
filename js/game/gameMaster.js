@@ -34,9 +34,17 @@ function startNewMiniGame(){
 
     gb.initGameBoard();
     gb.draw();
-
+    startSound();
     startIntervals();
     
+}
+function startSound(){
+    document.getElementById("game_sound").play();
+    document.getElementById("game_sound").volume = 0.1;
+}
+function stopMainMusic()
+{
+	document.getElementById("game_sound").pause();
 }
 function pacmanLoop(){
     if (!miniGameOver){
