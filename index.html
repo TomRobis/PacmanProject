@@ -200,6 +200,7 @@
 
 			<div id="gameDiv" class="gameSetContainer menu_wrapper">
 				<div id=gameSetWrapperDiv class="gameChild">
+					<audio id="game_sound"  src="./sound/pacman.mp3"type="audio/mpeg" preload="auto" loop ></audio>
 					<span id="gameSetUserName"></span>
 					<h3 >In - Game Settings</h3>
 					<ul class="noBullet">
@@ -217,20 +218,24 @@
 							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
 						<li>
-							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="pauseGame()">Pause / Play </button>
+							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
 						<li>
-							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
+							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="toggleGamePause()">Pause / Play </button>
+						</li>
+
+						<li>
+							<button type="button" id="gameSetBackgroundMusic" class="action_fields" onclick="toggleBackgroundMusic()">Toggle Music </button>
 						</li>
 						<li>
 							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
 						</li>
+
 				  
 					</ul>	
 				</div>
 				<div id="game" class="gameChild">
 					<canvas id="canvas" height="575" width="1000"></canvas>
-				</div>
 	
 			</div>
 

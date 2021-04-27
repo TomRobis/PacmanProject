@@ -16,7 +16,8 @@ let timeLimit;
 let pacmanInterval;
 let ghostsInterval;
 let specialGhostInterval;
-let onPause;
+
+
 
 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -34,18 +35,11 @@ function startNewMiniGame(){
 
     gb.initGameBoard();
     gb.draw();
-    startSound();
+    // startSound();
     startIntervals();
     
 }
-function startSound(){
-    document.getElementById("game_sound").play();
-    document.getElementById("game_sound").volume = 0.1;
-}
-function stopMainMusic()
-{
-	document.getElementById("game_sound").pause();
-}
+
 function pacmanLoop(){
     if (!miniGameOver){
         pacmanInstance.updatePosition(gb);
@@ -115,6 +109,7 @@ function lifeLost(){
 function endGame(displayEndGameMessages){
     stopGame();
     removeEventListeners();
+    toggleBackgroundMusic();
     if (displayEndGameMessages){
         if(livesLeft == 0){
             alert('Loser!');
@@ -134,6 +129,7 @@ function endGame(displayEndGameMessages){
 
 
 function startNewGame(){
+    document.getElementById("game_sound").play();
     stopGame();
     setGameVariables();
     setEventListeners();
@@ -186,6 +182,7 @@ function setGameVariables(){
     timeLimit = $("#setGameTimer").val(); 
     $("#gameSetUserName").html('User: ' + '<b>' + activeUser + '</b>');
     onPause = false;
+    musicOn = true;
 }
 
 function removeEventListeners(){
