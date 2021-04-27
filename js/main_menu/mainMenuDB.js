@@ -33,3 +33,5 @@ let usersDB = [
 function getRecord(recordID){
 	return usersDB.find( ({ username }) => username === recordID );
 }
+
+let activeUser = null;

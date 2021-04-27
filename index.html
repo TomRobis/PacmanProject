@@ -7,7 +7,7 @@
 
 		<!-- stylesheets -->
 		<link rel="stylesheet" type="text/css" href="./css/menu.css"/>
-		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="./css/header.css"/> -->
 		<link rel="stylesheet" type="text/css" href="./css/gameDesign.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -38,6 +38,7 @@
 		
 		<script src="./js/game/gameBoard.js" type="text/javascript"></script>
 		<script src="./js/game/gameMaster.js" type="text/javascript"></script>
+		<script src="./js/game/gameSettings.js" type="text/javascript"></script>
 
 		
 
@@ -180,8 +181,8 @@
 						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="1 to 4 monsters" value=1 />
 					</li>
 					<li>
-						<label for="gameTimer">Game time</label>
-						<input type="text" class="inputFields" id="gameTimer" name="gameTimer" placeholder="60 to 120 seconds" value=60 />
+						<label for="setGameTimer">Game time</label>
+						<input type="text" class="inputFields" id="setGameTimer" name="setGameTimer" placeholder="60 to 120 seconds" value=60 />
 					</li>
 					<li>
 						<button type="submit" id="setSubmit" class="action_fields" >Save</button>
@@ -196,25 +197,43 @@
 				  </ul>
 			</form>
 			</div>
-			<div id="setKeyModal" class="modal">
-				<p>Press any key to continue.</p>
-			</div>
-			<div id="gameDiv" class="gameDivStyle" >
-				<div id= "gameDetails">
-					<div id="score">
-						<label for="lblScore">SCORE:</label>
-						<input id="lblScore" type="text" readonly="true" class="inputFields"/>
-					</div>
-					<div id="time">
-						<label for="lblTime">TIME:</label>
-						<input id="lblTime" type="text" readonly="true" class="inputFields"/>
-					</div>
+
+			<div id="gameDiv" class="gameSetContainer menu_wrapper">
+				<div id=gameSetWrapperDiv class="gameChild">
+					<span id="gameSetUserName"></span>
+					<h3 >In - Game Settings</h3>
+					<ul class="noBullet">
+						
+						<li>
+							<label for="gameSetScore" class="gameSetLbl">Score </label>
+							<input id="gameSetScore" name="gameSetScore" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetTimer" class="gameSetLbl">Timer</label>
+							<input id="gameSetTimer" name="gameSetTimer" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
+							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="pauseGame()">Pause / Play </button>
+						</li>
+						<li>
+							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
+						</li>
+						<li>
+							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
+						</li>
+				  
+					</ul>	
 				</div>
-				<div id="game" class="canvasContainer">
-					<canvas id="canvas" height="800" width="1200"></canvas>
-				</div>	
+				<div id="game" class="gameChild">
+					<canvas id="canvas" height="575" width="1000"></canvas>
+				</div>
+	
 			</div>
-			
+
 		</content>
 
 

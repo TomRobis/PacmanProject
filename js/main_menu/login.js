@@ -24,7 +24,9 @@ function setLoginValidation(){
             }
         },
         submitHandler: function() {
-            SwitchDisplay('gameDiv',false);
+            
+            activeUser = $("#LogUsername").val();
+            SwitchDisplay('gameDiv',true);
             startNewGame();
 		}
 	});
