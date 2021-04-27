@@ -179,11 +179,6 @@
 						<label for="monstersCount">Monsters</label>
 						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="number of monsters" value=1 />
 					</li>
-					<!-- deal with validation -->
-					<li>
-						<label for="gameTimer">Game timer</label>
-						<input type="text" class="inputFields" id="gameTimer" name="gameTimer" placeholder="Game timer" value=60 />
-					</li>
 					<li>
 						<button type="submit" id="setSubmit" class="action_fields" >Save</button>
 					</li>
@@ -199,18 +194,20 @@
 			</div>
 			<div id="setKeyModal" class="modal">
 				<p>Press any key to continue.</p>
-			  </div>
-			<div id="gameDiv" >
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" readonly="true" class="inputFields" value="0"/>
-				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" readonly="true" class="inputFields" value="0" 	/>
+			</div>
+			<div id="gameDiv" class="gameDivStyle" >
+				<div id= "gameDetails">
+					<div id="score">
+						<label for="lblScore">SCORE:</label>
+						<input id="lblScore" type="text" />
+					</div>
+					<div id="time">
+						<label for="lblTime">TIME:</label>
+						<input id="lblTime" type="text" />
+					</div>
 				</div>
 				<div id="game" class="canvasContainer">
-					<canvas id="canvas" height="575" width="1000"></canvas>
+					<canvas id="canvas" height="800" width="1200"></canvas>
 				</div>	
 			</div>
 			
