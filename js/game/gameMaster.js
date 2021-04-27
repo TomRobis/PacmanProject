@@ -1,28 +1,26 @@
 let gb;
 let monstersCount;
-
+let ctx;
 let timeElapsed;
 let pacmanInstance;
 let ghosts;
 let sGhost;
-let livesLeft = gameLives;
-let startTime = new Date();
-let timeOut = false;
-let totalScore = 0;
-
-// let pacmanInterval;
-// let ghostsInterval;
-// let specialGhostInterval;
-let intervals;
+let livesLeft;
+let startTime;
+let timeOut;
+let totalScore;
+let pacmanInterval;
+let ghostsInterval;
+let specialGhostInterval;
+let miniGameOver;
 
 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
-function startGameSequence(){
-    
-    monstersCount = $("#monstersCount").val()
-    ctx  = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // mainly for new lives
-    setEventListeners();
+
+
+function startNewMiniGame(){
+    miniGameOver = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
     gb = new gameBoard();
     pacmanInstance = gb.getPacMan();    
@@ -32,26 +30,29 @@ function startGameSequence(){
     gb.initGameBoard();
     gb.draw();
 
-    
-    pacmanInterval = setInterval(pacmanLoop,100);
-    ghostsInterval = setInterval(ghostsLoop,200);
-    specialGhostInterval = setInterval(specialGhostLoop,350);
+    startIntervals();
     
 }
 function pacmanLoop(){
-    pacmanInstance.updatePosition(gb);
-    gb.draw();
-    updateDisplay();
+    if (!miniGameOver){
+        pacmanInstance.updatePosition(gb);
+        gb.draw();
+        updateDisplay();
+    }
+    else{
+        lifeLost();
+    }
+
 }
 function ghostsLoop(){
     for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
-    gb.draw();
+    // gb.draw();
 }
 function specialGhostLoop(){
     sGhost.updatePosition(gb);
-    gb.draw();
+    // gb.draw();
 }
 
 
@@ -86,7 +87,7 @@ function updateDisplay(){
     if (isTimeOut()){ // requires testing
         endGame();
     } 
-    totalScore += gb.getScore();
+    totalScore = gb.getScore();
     $("#lblTime").val(timeElapsed);
     $("#lblScore").val(totalScore);
 
@@ -105,6 +106,7 @@ function generateNewGrid(){
     }
     return newGrid;
 }
+
 function endGame(){
     stopGame();
     if(livesLeft == 0){
@@ -126,7 +128,7 @@ function lifeLost(){
     if(--livesLeft > 0){
         alert('you have ' + livesLeft +  ' lives left');
         stopGame();
-        startGameSequence();
+        startNewMiniGame();
     }
     else{
         endGame();
@@ -134,5 +136,22 @@ function lifeLost(){
 }
 function isTimeOut(){
     return timeElapsed > $("#gameTimer");
+}
+
+function startNewGame(){
+    monstersCount = $("#monstersCount").val();
+    ctx  = canvas.getContext("2d");
+    livesLeft = gameLives;
+    startTime = new Date();
+    timeOut = false;
+    totalScore = 0;
+    setEventListeners();
+    startNewMiniGame();
+
+}
+function startIntervals(){
+    pacmanInterval = setInterval(pacmanLoop,100);
+    ghostsInterval = setInterval(ghostsLoop,200);
+    specialGhostInterval = setInterval(specialGhostLoop,350);
 }
 

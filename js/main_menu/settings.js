@@ -6,7 +6,10 @@ function setSettingsValidation(){
 			},
             monstersCount: {
 				range: [1,4]
-            }
+            },
+			gameTime: {
+				range: [60,120]	
+			}
 		},
         submitHandler: function() {
             SwitchDisplay('welcome',false);
@@ -21,7 +24,7 @@ function bindNewKey(btnID) {
 	$("#setKeyModal").modal({
 		clickClose: false,
 	  });	
-	$(document).on('keypress',function(e) {
+	$(document).on('keydown',function(e) {
 		let keyPressed = e.key;
 		if( (Object.values(settingsMovementButtons).indexOf(keyPressed)) <= -1) {
 
@@ -29,7 +32,7 @@ function bindNewKey(btnID) {
 			settingsMovementButtons[btnID] = keyPressed;
 			
 			$.modal.close();
-			$(document).off('keypress');		
+			$(document).off('keydown');		
 		}
 	});
 	return false;
@@ -43,6 +46,7 @@ function randomizeSettings(){
 	$("#25ptsColor").val(getRandomColor());
 	$('#dotsCount').val(getRndValue(50,90));
 	$('#monstersCount').val(getRndValue(1,4));
+	$('#gameTimer').val(getRndValue(60,120));
 }
 
 

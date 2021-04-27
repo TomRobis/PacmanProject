@@ -173,11 +173,15 @@
 					<h3>Choose your difficulty</h3>
 					<li>
 						<label for="dotsCount">Dots</label>
-						<input type="text" class="inputFields" id="dotsCount" name="dotsCount" placeholder="number of dots" value=50 />
+						<input type="text" class="inputFields" id="dotsCount" name="dotsCount" placeholder="50 to 90 dots" value=50 />
 					</li>
 					<li>
 						<label for="monstersCount">Monsters</label>
-						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="number of monsters" value=1 />
+						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="1 to 4 monsters" value=1 />
+					</li>
+					<li>
+						<label for="gameTimer">Game time</label>
+						<input type="text" class="inputFields" id="gameTimer" name="gameTimer" placeholder="60 to 120 seconds" value=60 />
 					</li>
 					<li>
 						<button type="submit" id="setSubmit" class="action_fields" >Save</button>
@@ -199,11 +203,11 @@
 				<div id= "gameDetails">
 					<div id="score">
 						<label for="lblScore">SCORE:</label>
-						<input id="lblScore" type="text" />
+						<input id="lblScore" type="text" readonly="true" class="inputFields"/>
 					</div>
 					<div id="time">
 						<label for="lblTime">TIME:</label>
-						<input id="lblTime" type="text" />
+						<input id="lblTime" type="text" readonly="true" class="inputFields"/>
 					</div>
 				</div>
 				<div id="game" class="canvasContainer">

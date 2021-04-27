@@ -1,7 +1,7 @@
 class gameBoard {
     constructor(){
 
-        this.score = 0;
+        this.score = totalScore;
         this.gameGrid = generateNewGrid();
 
 
@@ -103,19 +103,6 @@ class gameBoard {
             }
         }
     }
-    // caller gridObj
-    // pacman ghost -> end-game V
-    // ghost pacman -> end-game V
-    // sGhost pacman -> update score, delete other V
-    // pacman sGhost -> update score, delete other V 
-    // pacman dot -> update score, delete other V
-    // ghost / dot -> store dot, set position V
-    // ghost / ghost -> switch positions V
-    // other / blank -> switch positions V
-    // other / wall -> nothing  V
-
-
-
 
     checkCollision(caller,nextPos){
         let gridObj = this.gameGrid[nextPos[0]][nextPos[1]];
@@ -134,13 +121,13 @@ class gameBoard {
         }  
         return collision;
     }
-    switchPositions(firstObj,secondObj){
-        let firstPos = firstObj.getPos();
-        let secondPos = secondObj.getPos();
-        firstObj.advance(this,secondPos);
-        secondObj.advance(this,firstPos);
-        return false;
-    }
+    // switchPositions(firstObj,secondObj){
+    //     let firstPos = firstObj.getPos();
+    //     let secondPos = secondObj.getPos();
+    //     firstObj.advance(this,secondPos);
+    //     secondObj.advance(this,firstPos);
+    //     return false;
+    // }
 
 
     updateScore(addToScore){
