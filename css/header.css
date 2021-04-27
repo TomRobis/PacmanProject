@@ -1,10 +1,11 @@
-header {
-	height: 300px;
-  background-image: url(../images/pacman_header.jpg);
+/* header {
+	height: 1000px;
+  background-repeat: no-repeat;
+  background-image: url(../images/background.jpg);
   background-attachment: relative;
   background-position-y: 50%;
 
-}
+} */
 .overlay{
   text-align: right;
 	width: auto;

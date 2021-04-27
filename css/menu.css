@@ -1,7 +1,9 @@
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   background: #111;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../images/pacman_background_2.png);
 }
 
 .menu_wrapper {

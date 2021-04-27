@@ -215,10 +215,11 @@
 			</div>
 
 			<div id="gameDiv" class="gameSetContainer menu_wrapper">
-				<div id=gameSetWrapperDiv class="gameChild">
+				<div id=inGameInformationDiv class="gameChild">
 					<audio id="game_sound"  src="./sound/pacman.mp3"type="audio/mpeg" preload="auto" loop ></audio>
+					<br>
 					<span id="gameSetUserName"></span>
-					<h3 >In - Game Settings</h3>
+					<h3 >Game Status</h3>
 					<ul class="noBullet">
 						
 						<li>
@@ -233,6 +234,7 @@
 							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
 							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
+						<h3 >More Options</h3>
 						<li>
 							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
@@ -246,12 +248,49 @@
 						<li>
 							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
 						</li>
-
-				  
 					</ul>	
+
 				</div>
-				<div id="game" class="gameChild">
+
+				<div id="gameSettings" class="gameChild">
 					<canvas id="canvas" height="575" width="1000"></canvas>
+				</div>
+
+				<div id=gameInformationDiv class="gameChild">
+					<br>
+					<h3 >In - Game Settings</h3>
+					<ul class="noBullet">
+						<li>
+							<canvas id="gameSetCanvas" height="400" width="200"></canvas>
+						</li>
+						<!-- <li>
+							<label for="gameSetScore" class="gameSetLbl">Score </label>
+							<input id="gameSetScore" name="gameSetScore" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetTimer" class="gameSetLbl">Timer</label>
+							<input id="gameSetTimer" name="gameSetTimer" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
+							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<h3 >More Options</h3>
+						<li>
+							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
+						</li>
+						<li>
+							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="toggleGamePause()">Pause / Play </button>
+						</li>
+
+						<li>
+							<button type="button" id="gameSetBackgroundMusic" class="action_fields" onclick="toggleBackgroundMusic()">Toggle Music </button>
+						</li>
+						<li>
+							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
+						</li> -->
+					</ul>	
+
 				</div>
 			</div>
 		</content>

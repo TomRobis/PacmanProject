@@ -129,11 +129,12 @@ function endGame(displayEndGameMessages){
 
 
 function startNewGame(){
-    document.getElementById("game_sound").play();
-    stopGame();
-    setGameVariables();
-    setEventListeners();
-    startNewMiniGame();
+    // stopGame();
+    // document.getElementById("game_sound").play();
+    displayGameSettings();
+    // setGameVariables();
+    // setEventListeners();
+    // startNewMiniGame();
 
 }
 
@@ -160,16 +161,6 @@ function updateDisplay(){
     
 }
 
-function sumArrays(arr1,arr2){
-    return arr1.map(function (num, idx) {
-        return num + arr2[idx];
-    })
-}
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 
 function setGameVariables(){
@@ -193,4 +184,17 @@ function removeEventListeners(){
         },
         false
     );
+}
+
+
+
+function sumArrays(arr1,arr2){
+    return arr1.map(function (num, idx) {
+        return num + arr2[idx];
+    })
+}
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
