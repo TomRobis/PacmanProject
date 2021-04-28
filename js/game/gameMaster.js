@@ -66,7 +66,7 @@ function specialGhostLoop(){
 function stopGame(){
     clearInterval(pacmanInterval);
     clearInterval(ghostsInterval);
-    // clearInterval(specialGhostInterval);
+    clearInterval(specialGhostInterval);
     onPause = true;
 }
 

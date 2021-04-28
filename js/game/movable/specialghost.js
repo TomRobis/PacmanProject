@@ -10,6 +10,7 @@ class specialGhost extends ghost{
 
     handlePacmanCollision(board,caller){
         let innerDot = new dot(this.pos,BOARD_OBJECT_ID.SPECIALGHOST,"red");
+        innerDot.setRegularDot(false); // doesn't count as dot
         let collision =  innerDot.handlePacmanCollision(board,caller);  
         clearInterval(specialGhostInterval);
         return collision;

@@ -2,8 +2,8 @@ class ghost extends movable{
     constructor(startPos,color) {
         super(startPos);
         this.color = color;
-        this.randomDirectionAlpha = 0.1;
-        this.oppositeDirectionBeta = 0.1;
+        this.randomDirectionAlpha = 0.01;
+        this.oppositeDirectionBeta = 0.05;
         // this.longerOrShorterPathGamma = 0.4;
         this.newDot = null;
         this.oldDot = null;
@@ -59,8 +59,12 @@ class ghost extends movable{
         if(hasMoved && this.hasStoredDot()){
             this.prevPos = this.oldDot.getPos();    
             gb.setGridCell(this.prevPos,this.oldDot);
+            this.oldDot = null;
         }
-        this.oldDot = this.newDot;
+        if (this.newDot != null){
+            this.oldDot = this.newDot;
+        }
+    
     }
 
     updateDir(pacmanPos){
@@ -89,10 +93,10 @@ class ghost extends movable{
     }
 
     handleGhostCollision(board,caller){
-        if (caller.hasStoredDot()){
-            this.switchStoredDots(caller);
-        }
+        caller.setStoredDot(this.oldDot);
+        return true;
     }
+
     findDir(locationDiff){
         // stair function
         let dir;
@@ -126,13 +130,6 @@ class ghost extends movable{
     }
 
 
-    switchStoredDots(otherGhost){
-
-        let tmpDot = this.dotStorage.popFirstDot();
-        this.setStoredOldDot(otherGhost.popFirstDot());
-        otherGhost.setStoredOldDot(tmpDot);
-        
-    }
 
 
 

@@ -35,5 +35,7 @@ class dot extends drawableOnGameBoard {
         return this.color;
     }
 
-    
+    setRegularDot(regularDot){
+        this.regularDot = regularDot;
+    }
 }   
