@@ -72,6 +72,7 @@ function displayInstructions(){
 function playMusic(){
     document.getElementById("game_sound").play();
     document.getElementById("game_sound").volume = 0.1;
+    document.getElementById("game_sound").playbackRate = 0.8;
 }
 function pauseMusic(){
     document.getElementById("game_sound").pause();
