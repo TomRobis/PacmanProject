@@ -79,7 +79,10 @@
 				  <h2>Welcome to Pac-man!</h2>
 				  <ul class="noBullet">
 					<li>
-						<button type="button" id="welLogin" class="action_fields" onclick="SwitchDisplay('login',false)" >Login</button>
+						<button type="button" id="welPlay" class="action_fields" onclick="playGame()" disabled="true" >Play</button>
+					</li>
+					<li>
+						<button type="button" id="welLogin" class="action_fields" onclick="loginPressed()" >Login</button>
 					</li>
 					<li>
 						<button type="button" id="welRegister" class="action_fields" onclick="SwitchDisplay('register',false)" >Create new user</button>

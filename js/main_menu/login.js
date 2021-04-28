@@ -1,6 +1,3 @@
-// import {startGame} from '../game/gameMaster';
-
-
 function setLoginValidation(){
     $.validator.addMethod("userNameExists", function(value) {
 		let userRec = getRecord(value);
@@ -24,10 +21,31 @@ function setLoginValidation(){
             }
         },
         submitHandler: function() {
+            login();
             
-            activeUser = $("#LogUsername").val();
-            SwitchDisplay('gameDiv',true);
-            startNewGame();
 		}
 	});
+}
+
+function loginPressed(){
+    if (activeUser == null){
+        SwitchDisplay('login',false);
+    }
+    else{
+        logout();
+    }
+}
+
+
+
+function logout(){
+    activeUser = null;
+    $("#welPlay").prop('disabled', true);
+    $('#welLogin').html('Login');
+}
+function login(){
+    activeUser = $("#LogUsername").val();
+    $("#welPlay").prop('disabled', false);
+    SwitchDisplay('welcome',true);
+    $('#welLogin').html('Logout');
 }

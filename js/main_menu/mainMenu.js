@@ -25,3 +25,8 @@ function displayAboutModal(){
 	return false;
 }
 
+function playGame(){
+    SwitchDisplay('gameDiv',true);
+    startNewGame();
+}
+
