@@ -7,9 +7,9 @@ function setSettingsValidation(){
             monstersCount: {
 				range: [1,4]
             },
-			gameTime: {
-				range: [60,120]	
-			}
+			// gameTime: {
+			// 	range: [60,120]	
+			// }
 		},
         submitHandler: function() {
             SwitchDisplay('welcome',false);
@@ -46,7 +46,7 @@ function randomizeSettings(){
 	$("#25ptsColor").val(getRandomColor());
 	$('#dotsCount').val(getRndValue(50,90));
 	$('#monstersCount').val(getRndValue(1,4));
-	$('#gameTimer').val(getRndValue(60,120));
+	$('#setGameTimer').val(getRndValue(60,120));
 }
 
 

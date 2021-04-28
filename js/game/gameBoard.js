@@ -1,8 +1,9 @@
 class gameBoard {
     constructor(){
 
-        this.score = totalScore;
+        this.score = 0;
         this.gameGrid = generateNewGrid();
+        this.dotsEaten = 0;
 
 
         this.ghosts =
@@ -31,7 +32,8 @@ class gameBoard {
     placeWallsOnGameBoard(){
         let randomNum;
         let emptyCell;
-        let foodRemain = $("#dotsCount").val();
+
+        let foodRemain = numOfDots;
         while (foodRemain > 0) {
             randomNum = Math.random();
             emptyCell = this.findRandomEmptyCell();
@@ -46,11 +48,12 @@ class gameBoard {
             }
             foodRemain--;
         }
+        
     }
 
     findRandomEmptyCell() {
         let randCell = this.generateRandomLocation();
-        while (this.gameGrid[randCell[0]][randCell[1]] != BOARD_OBJECT_ID.BLANK) {
+        while (!this.gridCellEmpty(randCell)) {
             randCell = this.generateRandomLocation();
         }
         return randCell;
@@ -98,10 +101,8 @@ class gameBoard {
                 gridCellObject = this.gameGrid[i][j];
                 gridCell = [i,j];
                 ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl); 
-                if(typeof gridCellObject === undefined){
-                    alert('wtf');
-                }
-                if (!this.gridCellEmpty(gridCell) && typeof gridCellObject !== 'undefined'){
+                if (!this.gridCellEmpty(gridCell)){
+
                     gridCellObject.draw();    
                 }
             }
@@ -146,8 +147,11 @@ class gameBoard {
     // }
 
 
-    updateScore(addToScore){
+    updateScore(addToScore,isRegularDot){
         this.score += addToScore;
+        if (isRegularDot){
+            this.dotsEaten +=1;
+        }
     }
     
     setGhosts(){
@@ -190,6 +194,9 @@ class gameBoard {
         pacmanInstance = newPac;
         this.setGridCell(nextPos,newPac);
 
+    }
+    getEatenDots(){
+        return this.dotsEaten;
     }
 
     

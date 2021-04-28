@@ -13,7 +13,6 @@ function backToMainMenu(){
 function toggleGamePause(){
     if (onPause){
         startIntervals();
-        
     }
     else{
         stopGame();
@@ -60,7 +59,9 @@ function displayGameSettings(){
 
     $("#gameSetDotsCount").val(numDots);
     $("#gameSetMonstersCount").val(numMonsters);
-    $("#setGameMaxGameTime").val(maxGameTime);
+    $("#setGameMaxGameTime").val(maxGameTime);    
+
+    $("#gameSetDotsLeft").val(numDots);
     
 }   
 function displayInstructions(){

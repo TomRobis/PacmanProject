@@ -4,6 +4,7 @@ class timeDot extends dot {
         super(startPos,0,color);
         this.color = color;
         this.score = score;
+        this.regularDot = false;
     }
     draw()
     {

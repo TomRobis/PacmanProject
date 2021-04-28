@@ -6,7 +6,7 @@
 			Pacman, personal, game, Avichai Edri, Tom Robissa, contact, feedback,
 			list, links, frame, js">
 		
-		<META NAME = "description" CONTENT = "his game is brought to you by Tom Robissa and Avichai Edri ">
+		<META NAME = "description" CONTENT = "This Pacman is brought to you by Tom Robissa and Avichai Edri ">
 		
 		<TITLE>Pacman - Avichai & Tom </TITLE>
 		
@@ -37,7 +37,7 @@
 		<script src="./js/game/gameDataStructs.js" type="text/javascript"></script>
 
 		<script src="./js/game/drawable/wall.js" type="text/javascript"></script>
-		<script src="./js/game/movable/dot.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/dot.js" type="text/javascript"></script>
 		<script src="./js/game/movable/ghost.js" type="text/javascript"></script>
 		<script src="./js/game/movable/specialghost.js" type="text/javascript"></script>
 		<script src="./js/game/movable/pacman.js" type="text/javascript"></script>
@@ -47,13 +47,8 @@
 		<script src="./js/game/gameSettings.js" type="text/javascript"></script>
 		
 
-		<script src="./js/game/movable/timeDot.js" type="text/javascript"></script>
-		<script src="./js/game/movable/killDot.js" type="text/javascript"></script>
-
-		
-
-
-
+		<script src="./js/game/drawable/timeDot.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/killDot.js" type="text/javascript"></script>
 
 		<script src="./js/main.js" type="text/javascript"  ></script>
 		
@@ -239,8 +234,11 @@
 							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
 							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
+						<li>
+							<label for="gameSetDotsLeft" class="gameSetLbl">Dots Left</label>
+							<input id="gameSetDotsLeft" name="gameSetDotsLeft" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
 						<br>
-						<h3>Game Options</h3>
 						<li>
 							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
@@ -327,7 +325,6 @@
 			<div  class="footer">
 				Do you enjoy the game?
 				Please tell us at avichaie@post.bgu.ac.il, tomrob@post.bgu.ac.il.
-				but actually, don't tell us.
 			</div>
 		</footer>
 	</body>

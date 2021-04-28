@@ -69,14 +69,6 @@ let LEVEL =
     SPECIALGHOST: [Math.floor(rowCount / 2),colCount / 2]
   }
 
-  const OBJ_SPEEDS = {
-    PACMAN: wallSizePxl / 2,
-    BLINKY: wallSizePxl / 4,
-    PINKY:wallSizePxl / 4,
-    INKY: wallSizePxl / 4,
-    CLYDE: wallSizePxl / 4,
-    SPECIALGHOST: wallSizePxl / 8
-  }
   // rows, cols -> y,x
   const DIRECTIONS = {
     UP: [-1,0],

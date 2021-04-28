@@ -5,8 +5,10 @@ let ghosts;
 let sGhost;
 
 let totalScore;
+let numOfDots;
+let dotsLeft;
 let monstersCount;
-let miniGameOver;
+
 
 let timeElapsed;
 let livesLeft;
@@ -17,7 +19,7 @@ let pacmanInterval;
 let ghostsInterval;
 let specialGhostInterval;
 
-
+let miniGameOver;
 
 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -42,7 +44,7 @@ function pacmanLoop(){
     if(!miniGameOver){
         pacmanInstance.updatePosition(gb);
         gb.draw();
-        updateDisplay();
+        checkGameStatus();
     }
     else{
         lifeLost();
@@ -146,20 +148,24 @@ function startIntervals(){
     onPause = false;
 }
 
-function updateDisplay(){ 
+function checkGameStatus(){ 
     timeElapsed = (new Date() - startTime) / 1000;
     totalScore = gb.getScore();
-    $("#gameSetLivesLeft").val(livesLeft);
+    dotsLeft = numOfDots - gb.getEatenDots();
 
-    if (timeElapsed > timeLimit){ // requires testing
+    if (timeElapsed > timeLimit || dotsLeft == 0){ 
         endGame(true);
     } 
     else{
-        $("#gameSetTimer").val(timeElapsed);
-        $("#gameSetScore").val(totalScore);
+        updateDisplay();
     }
     
-    
+}
+function updateDisplay(){
+    $("#gameSetTimer").val(timeElapsed);
+    $("#gameSetScore").val(totalScore);
+    $("#gameSetDotsLeft").val(dotsLeft);
+    $("#gameSetLivesLeft").val(livesLeft);
 }
 
 
@@ -171,6 +177,7 @@ function setGameVariables(){
     livesLeft = gameLives;
     startTime = new Date();
     totalScore = 0;
+    numOfDots = parseInt($("#dotsCount").val());
     timeLimit = $("#setGameTimer").val(); 
     $("#gameSetUserName").html('User: ' + '<b>' + activeUser + '</b>');
     onPause = false;

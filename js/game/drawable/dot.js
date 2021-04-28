@@ -4,6 +4,7 @@ class dot extends drawableOnGameBoard {
         super(startPos);
         this.color = color;
         this.score = score;
+        this.regularDot = true;
     }
     draw(){
         ctx.beginPath();
@@ -12,7 +13,7 @@ class dot extends drawableOnGameBoard {
         ctx.fill();
     }
     handlePacmanCollision(board,caller){
-        board.updateScore(this.score);
+        board.updateScore(this.score,this.regularDot);
         gb.setGridCell(caller.getPos(),BOARD_OBJECT_ID.BLANK); 
         caller.advance(board,this.pos);
 

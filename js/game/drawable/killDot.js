@@ -5,6 +5,7 @@ class killDot extends dot {
         this.color = color;
         this.score = -50;
         this.counter = 1;
+        this.regularDot = false;
     }
     draw()
     {

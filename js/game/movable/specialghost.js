@@ -10,7 +10,7 @@ class specialGhost extends ghost{
 
     handlePacmanCollision(board,caller){
         let innerDot = new dot(this.pos,BOARD_OBJECT_ID.SPECIALGHOST,"red");
-        let collision =  innerDot.handlePacmanCollision(board,caller);
+        let collision =  innerDot.handlePacmanCollision(board,caller);  
         clearInterval(specialGhostInterval);
         return collision;
     }
@@ -41,11 +41,6 @@ class specialGhost extends ghost{
         ctx.fill();
         ctx.closePath();
         ctx.fill();
-        ctx.restore();
     }
-    // ??
-    // updatePosition(board){
-    //     super.updatePosition(board);
-    // }
     
 }
