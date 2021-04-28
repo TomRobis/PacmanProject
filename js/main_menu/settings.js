@@ -7,9 +7,10 @@ function setSettingsValidation(){
             monstersCount: {
 				range: [1,4]
             },
-			// gameTime: {
-			// 	range: [60,120]	
-			// }
+			setGameTimer: {
+				min: 60
+				// range: [60,120]	
+			}
 		},
         submitHandler: function() {
             SwitchDisplay('welcome',false);
@@ -26,7 +27,8 @@ function bindNewKey(btnID) {
 	  });	
 	$(document).on('keydown',function(e) {
 		let keyPressed = e.key;
-		if( (Object.values(settingsMovementButtons).indexOf(keyPressed)) <= -1) {
+		console.log(e.keyCode);
+		if(  !(Object.values(settingsMovementButtons).includes(keyPressed) || Object.values(badKeys).includes(e.keyCode)) ) {
 
 			myBtn.html(keyPressed);
 			settingsMovementButtons[btnID] = keyPressed;
@@ -62,6 +64,6 @@ function getRandomColor() {
 function getRndValue(min,max){
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-  
+
 
   

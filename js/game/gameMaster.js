@@ -10,7 +10,7 @@ let dotsLeft;
 let monstersCount;
 
 
-let timeElapsed;
+let timeLeft;
 let livesLeft;
 let startTime;
 let timeLimit;
@@ -149,11 +149,12 @@ function startIntervals(){
 }
 
 function checkGameStatus(){ 
-    timeElapsed = (new Date() - startTime) / 1000;
+    let timePassed =  (new Date() - startTime) / 1000;
+    timeLeft = timeLimit - timePassed;
     totalScore = gb.getScore();
     dotsLeft = numOfDots - gb.getEatenDots();
 
-    if (timeElapsed > timeLimit || dotsLeft == 0){ 
+    if (timeLeft <= 0 || dotsLeft == 0){ 
         endGame(true);
     } 
     else{
@@ -162,7 +163,7 @@ function checkGameStatus(){
     
 }
 function updateDisplay(){
-    $("#gameSetTimer").val(timeElapsed);
+    $("#gameSetTimer").val(timeLeft.toFixed(2));
     $("#gameSetScore").val(totalScore);
     $("#gameSetDotsLeft").val(dotsLeft);
     $("#gameSetLivesLeft").val(livesLeft);

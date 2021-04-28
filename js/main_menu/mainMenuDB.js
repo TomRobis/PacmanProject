@@ -1,9 +1,9 @@
 let settingsMovementButtons = 
 	{
-	setUpKey: "w",
-	setDownKey: "s",
-	setLeftKey: "a",
-	setRightKey: "d"
+	setUpKey: "ArrowUp",
+	setDownKey: "ArrowDown",
+	setLeftKey: "ArrowLeft",
+	setRightKey: "ArrowRight"
 	}
 
 let usersDB = [
@@ -36,3 +36,9 @@ function getRecord(recordID){
 
 let activeUser = null;
 
+const badKeys = 
+	{
+	Enter: 13,
+	Space: 32,
+	Fn: 255,
+	}

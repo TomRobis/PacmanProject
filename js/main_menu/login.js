@@ -46,6 +46,9 @@ function logout(){
 function login(){
     activeUser = $("#LogUsername").val();
     // $("#welPlay").prop('disabled', false);
+
+    alert('Login successful. You are now logged in as ' + activeUser);
     SwitchDisplay('welcome',true);
     $('#welLogin').html('Logout');
+
 }
