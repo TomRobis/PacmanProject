@@ -98,7 +98,8 @@ class ghost extends movable{
     }
 
     handlePacmanCollision(board,caller){
-        miniGameOver = true;
+        board.updateScore(-10,false); 
+         miniGameOver = true;
     }
 
     handleGhostCollision(board,caller){
