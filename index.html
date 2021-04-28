@@ -156,7 +156,7 @@
 			  </div>
 			  <div id="settings" class="menu_wrapper">
 				<form class="menu_container" id="settingsForm">
-				<h3>Control your movement</h3>
+				<h3>Movement Keys</h3>
 				  <ul class="noBullet">
 					<li>
 					  <label for="setUpKey">Up</label>
@@ -219,7 +219,8 @@
 					<audio id="game_sound"  src="./sound/pacman.mp3"type="audio/mpeg" preload="auto" loop ></audio>
 					<br>
 					<span id="gameSetUserName"></span>
-					<h3 >Game Status</h3>
+					<br>
+					<br>
 					<ul class="noBullet">
 						
 						<li>
@@ -234,7 +235,6 @@
 							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
 							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
-						<h3 >More Options</h3>
 						<li>
 							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
@@ -245,54 +245,81 @@
 						<li>
 							<button type="button" id="gameSetBackgroundMusic" class="action_fields" onclick="toggleBackgroundMusic()">Toggle Music </button>
 						</li>
+
+						<li>
+							<button type="button" id="gameSetInstructions" class="action_fields" onclick="displayInstructions()"> Game Instructions </button>
+						</li>
+
 						<li>
 							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
 						</li>
 					</ul>	
-
 				</div>
 
-				<div id="gameSettings" class="gameChild">
+
+
+
+
+
+				<div id="gameSetCanvasContainer" class="gameChild">
 					<canvas id="canvas" height="575" width="1000"></canvas>
 				</div>
 
 				<div id=gameInformationDiv class="gameChild">
-					<br>
-					<h3 >In - Game Settings</h3>
 					<ul class="noBullet">
 						<li>
-							<canvas id="gameSetCanvas" height="400" width="200"></canvas>
-						</li>
-						<!-- <li>
-							<label for="gameSetScore" class="gameSetLbl">Score </label>
-							<input id="gameSetScore" name="gameSetScore" type="text" readonly="true" class="gameSetDisplay"/>
+							<label for="gameSetUpKey" class="gameSetLbl">↑</label>
+							<input id="gameSetUpKey" name="gameSetUpKey" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
 						<li>
-							<label for="gameSetTimer" class="gameSetLbl">Timer</label>
-							<input id="gameSetTimer" name="gameSetTimer" type="text" readonly="true" class="gameSetDisplay"/>
+							<label for="gameSetDownKey" class="gameSetLbl">↓</label>
+							<input id="gameSetDownKey" name="gameSetDownKey" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
 						<li>
-							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
-							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
+							<label for="gameSetLeftKey" class="gameSetLbl">←</label>
+							<input id="gameSetLeftKey" name="gameSetLeftKey" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
-						<h3 >More Options</h3>
-						<li>
-							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
-						</li>
-						<li>
-							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="toggleGamePause()">Pause / Play </button>
-						</li>
-
-						<li>
-							<button type="button" id="gameSetBackgroundMusic" class="action_fields" onclick="toggleBackgroundMusic()">Toggle Music </button>
+						<li>	
+							<label for="gameSetRightKey" class="gameSetLbl">→</label>
+							<input id="gameSetRightKey" name="gameSetRightKey" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
 						<li>
-							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
-						</li> -->
-					</ul>	
-
+							<label for="gameSet5pts" class="gameSetLbl">5</label>
+							<span id="gameSet5pts" name="gameSet5pts" class="dot"></span>
+						</li>
+						<br>
+						<li>
+							<label for="gameSet15pts" class="gameSetLbl">15</label>
+							<span id="gameSet15pts" name="gameSet15pts" class="dot"></span>
+						</li>
+						<br>
+						<li>
+							<label for="gameSet25pts" class="gameSetLbl">25</label>
+							<span id="gameSet25pts" name="gameSet25pts" class="dot"></span>
+						</li>
+						
+					</ul>
 				</div>
 			</div>
+			<!-- <div>
+				<li>
+					<label for="gameSetDotsCount" class="gameSetLbl">#TotalDots</label>
+					<input id="gameSetDotsCount" name="gameSetDotsCount" type="text" readonly="true" class="gameSetDisplay"/>
+				</li>
+				<li>
+					<label for="gameSetMonstersCount" class="gameSetLbl">#Monsters</label>
+					<input id="gameSetMonstersCount" name="gameSetMonstersCount" type="text" readonly="true" class="gameSetDisplay"/>
+				</li>
+				<li>
+					<label for="setGameMaxGameTime" class="gameSetLbl">Time Limit</label>
+					<input id="setGameMaxGameTime" name="setGameMaxGameTime" type="text" readonly="true" class="gameSetDisplay"/>
+				</li>
+			</div> -->
+			<div id="setGameModal" class="modal">
+				<p>
+					<span>Something interesting about game instructions etc etc...</span>
+				</p>			
+			  </div>
 		</content>
 
 		<footer>

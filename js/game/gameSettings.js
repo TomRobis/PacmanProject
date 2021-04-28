@@ -34,33 +34,37 @@ function toggleBackgroundMusic(){
 
 
 
-function canvas_arrow(myCtx, fromx, fromy, tox, toy) {
-    var headlen = 10; // length of head in pixels
-    var dx = tox - fromx;
-    var dy = toy - fromy;
-    var angle = Math.atan2(dy, dx);
-    myCtx.moveTo(fromx, fromy);
-    myCtx.lineTo(tox, toy);
-    myCtx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
-    myCtx.moveTo(tox, toy);
-    myCtx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
-  }
-
 
 function displayGameSettings(){
-    settingsCanvas = document.getElementById("gameSetCanvas").getContext("2d");
-    arrowSize = 20;
-    settingsCanvas.beginPath();
-    settingsCanvas.fillStyle = "red";
-    settingsCanvas.strokeStyle = "#FFFFFF";
+    // TODO make these into variables
+    let up = $("#setUpKey").text();
+    let down = $("#setDownKey").text();
+    let left = $("#setLeftKey").text();
+    let right = $("#setRightKey").text();
+    $("#gameSetUpKey").val(up);
+    $("#gameSetDownKey").val(down);
+    $("#gameSetLeftKey").val(left);
+    $("#gameSetRightKey").val(right);
 
-    canvas_arrow(settingsCanvas, arrowSize, arrowSize, arrowSize, 0);
-    canvas_arrow(settingsCanvas, arrowSize * 3, 0, arrowSize * 3, arrowSize );
-    canvas_arrow(settingsCanvas, arrowSize * 6, arrowSize / 2, arrowSize * 5, arrowSize / 2);
-    canvas_arrow(settingsCanvas, arrowSize * 8, arrowSize / 2, arrowSize * 9, arrowSize / 2);
+    let fivePtsColor = $("#5ptsColor").val();
+    let fifteenPtsColor = $("#15ptsColor").val();
+    let twentyfivePtsColor = $("#25ptsColor").val();
+
+    $('#gameSet5pts').css('background-color',fivePtsColor);
+    $('#gameSet15pts').css('background-color',fifteenPtsColor);
+    $('#gameSet25pts').css('background-color',twentyfivePtsColor);
+
+    let numDots = $("#dotsCount").val();
+    let numMonsters = $("#monstersCount").val();
+    let maxGameTime = $("#setGameTimer").val();
+
+    $("#gameSetDotsCount").val(numDots);
+    $("#gameSetMonstersCount").val(numMonsters);
+    $("#setGameMaxGameTime").val(maxGameTime);
     
-
-
-
-    settingsCanvas.stroke();
+}   
+function displayInstructions(){
+    $("#setGameModal").modal({
+		fadeDuration: 500
+	  });
 }

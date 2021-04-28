@@ -129,12 +129,12 @@ function endGame(displayEndGameMessages){
 
 
 function startNewGame(){
-    // stopGame();
-    // document.getElementById("game_sound").play();
+    stopGame();
+    document.getElementById("game_sound").play();
     displayGameSettings();
-    // setGameVariables();
-    // setEventListeners();
-    // startNewMiniGame();
+    setGameVariables();
+    setEventListeners();
+    startNewMiniGame();
 
 }
 
