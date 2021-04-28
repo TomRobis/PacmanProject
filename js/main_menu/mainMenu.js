@@ -26,7 +26,13 @@ function displayAboutModal(){
 }
 
 function playGame(){
-    SwitchDisplay('gameDiv',true);
-    startNewGame();
+	if (activeUser == null){
+		alert("Please login before playing");
+	}
+	else{
+		SwitchDisplay('gameDiv',true);
+    	startNewGame();
+	}
+    
 }
 

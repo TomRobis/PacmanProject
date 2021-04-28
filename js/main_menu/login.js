@@ -40,12 +40,12 @@ function loginPressed(){
 
 function logout(){
     activeUser = null;
-    $("#welPlay").prop('disabled', true);
+    // $("#welPlay").prop('disabled', true);
     $('#welLogin').html('Login');
 }
 function login(){
     activeUser = $("#LogUsername").val();
-    $("#welPlay").prop('disabled', false);
+    // $("#welPlay").prop('disabled', false);
     SwitchDisplay('welcome',true);
     $('#welLogin').html('Logout');
 }
