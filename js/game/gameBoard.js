@@ -60,10 +60,9 @@ class gameBoard {
         return [getRndValue(1,rowCount-2),getRndValue(1,colCount-2)];
     }
 
-    initGameBoard(ghosts,sGhost){
+    initGameBoard(){
         let gridPos;
         let dotColor;
-        let gridVal;
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; j < colCount; j++) {
                 gridPos = [i,j];
@@ -99,7 +98,10 @@ class gameBoard {
                 gridCellObject = this.gameGrid[i][j];
                 gridCell = [i,j];
                 ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl); 
-                if (!this.gridCellEmpty(gridCell)){
+                if(typeof gridCellObject === undefined){
+                    alert('wtf');
+                }
+                if (!this.gridCellEmpty(gridCell) && typeof gridCellObject !== 'undefined'){
                     gridCellObject.draw();    
                 }
             }
@@ -175,6 +177,19 @@ class gameBoard {
     }
     getScore(){
         return this.score;
+    }
+    setNewPacman(){
+        let prevPos = this.pacman.getPos();
+        let newPac = new pacman(this.findRandomEmptyCell());
+        let nextPos = newPac.getPos();
+        
+        
+        this.setGridCell(prevPos,BOARD_OBJECT_ID.BLANK);
+        delete this.pacman;
+        this.pacman = newPac;
+        pacmanInstance = newPac;
+        this.setGridCell(nextPos,newPac);
+
     }
 
     

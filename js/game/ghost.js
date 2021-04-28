@@ -99,7 +99,6 @@ class ghost extends movable{
 
     handlePacmanCollision(board,caller){
         miniGameOver = true;
-        // lifeLost();
     }
 
     handleGhostCollision(board,caller){

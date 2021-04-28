@@ -44,5 +44,4 @@ class pacman extends movable{
     handleGhostCollision(board,caller){
        return caller.handlePacmanCollision(board,caller);
     }
-    
 }

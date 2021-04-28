@@ -24,7 +24,6 @@ const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 
 function startNewMiniGame(){
-    totalScore = 0;
     miniGameOver = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
@@ -41,7 +40,7 @@ function startNewMiniGame(){
 }
 
 function pacmanLoop(){
-    if (!miniGameOver){
+    if(!miniGameOver){
         pacmanInstance.updatePosition(gb);
         gb.draw();
         updateDisplay();
@@ -49,6 +48,7 @@ function pacmanLoop(){
     else{
         lifeLost();
     }
+
 
 }
 function ghostsLoop(){
@@ -97,8 +97,10 @@ function lifeLost(){
     livesLeft--;
     if(livesLeft > 0){
         alert('you have ' + livesLeft +  ' lives left');
-        stopGame();
-        startNewMiniGame();
+        gb.setNewPacman();
+        miniGameOver = false;
+        // stopGame();
+        // startNewMiniGame();
     }
     else{
         $("#gameSetLivesLeft").val(0);
