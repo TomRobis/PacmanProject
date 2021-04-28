@@ -125,7 +125,7 @@ function endGame(displayEndGameMessages){
                 alert('You are better than ' + livesLeft + ' points!');
             }
             else{
-                alert('Winner winner, KFC dinner!');
+                alert('Winner!!!');
             }
         }
     }

@@ -1,9 +1,8 @@
 class killDot extends dot {
 
     constructor(startPos,score,color) {
-        super(startPos,-50,color);
+        super(startPos,-100,color);
         this.color = color;
-        this.score = -50;
         this.counter = 1;
         this.regularDot = false;
     }
@@ -33,7 +32,10 @@ class killDot extends dot {
         ctx.fill();
         this.counter+=10;
     }
-   
+    handlePacmanCollision(board,caller){
+        super.handlePacmanCollision(board,caller);
+        livesLeft++;
+    }
         
         
     getScore(){
