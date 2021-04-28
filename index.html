@@ -222,7 +222,7 @@
 					<br>
 					<br>
 					<ul class="noBullet">
-						
+						<h3>Game Info</h3>
 						<li>
 							<label for="gameSetScore" class="gameSetLbl">Score </label>
 							<input id="gameSetScore" name="gameSetScore" type="text" readonly="true" class="gameSetDisplay"/>
@@ -235,6 +235,8 @@
 							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
 							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
+						<br>
+						<h3>Game Options</h3>
 						<li>
 							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
@@ -256,15 +258,11 @@
 					</ul>	
 				</div>
 
-
-
-
-
-
 				<div id="gameSetCanvasContainer" class="gameChild">
 					<canvas id="canvas" height="575" width="1000"></canvas>
 				</div>
 
+				
 				<div id=gameInformationDiv class="gameChild">
 					<ul class="noBullet">
 						<li>
@@ -297,24 +295,23 @@
 							<label for="gameSet25pts" class="gameSetLbl">25</label>
 							<span id="gameSet25pts" name="gameSet25pts" class="dot"></span>
 						</li>
-						
+						<br>
+						<li>
+							<label for="gameSetDotsCount" class="gameSetLbl">#TotalDots</label>
+							<input id="gameSetDotsCount" name="gameSetDotsCount" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetMonstersCount" class="gameSetLbl">#Monsters</label>
+							<input id="gameSetMonstersCount" name="gameSetMonstersCount" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="setGameMaxGameTime" class="gameSetLbl">Time Limit</label>
+							<input id="setGameMaxGameTime" name="setGameMaxGameTime" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
 					</ul>
 				</div>
 			</div>
-			<!-- <div>
-				<li>
-					<label for="gameSetDotsCount" class="gameSetLbl">#TotalDots</label>
-					<input id="gameSetDotsCount" name="gameSetDotsCount" type="text" readonly="true" class="gameSetDisplay"/>
-				</li>
-				<li>
-					<label for="gameSetMonstersCount" class="gameSetLbl">#Monsters</label>
-					<input id="gameSetMonstersCount" name="gameSetMonstersCount" type="text" readonly="true" class="gameSetDisplay"/>
-				</li>
-				<li>
-					<label for="setGameMaxGameTime" class="gameSetLbl">Time Limit</label>
-					<input id="setGameMaxGameTime" name="setGameMaxGameTime" type="text" readonly="true" class="gameSetDisplay"/>
-				</li>
-			</div> -->
+
 			<div id="setGameModal" class="modal">
 				<p>
 					<span>Something interesting about game instructions etc etc...</span>
