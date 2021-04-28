@@ -34,7 +34,6 @@ function startNewMiniGame(){
 
     gb.initGameBoard();
     gb.draw();
-    // startSound();
     startIntervals();
     
 }
