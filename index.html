@@ -159,7 +159,6 @@
 			  </div>
 			  <div id="settings" class="menu_wrapper">
 				<form class="menu_container" id="settingsForm">
-				<h3>Movement Keys</h3>
 				  <ul class="noBullet">
 					<li>
 					  <label for="setUpKey">Up</label>
@@ -177,20 +176,18 @@
 						<label for="setRightKey">Right</label>
 						<button type="button" id="setRightKey" class="action_fields keybind" onclick="bindNewKey(this.id)" >d</button>
 					</li>
-					<h3>Pick your favorite dot colors</h3>
 					<li>
-						<label for="5ptsColor">5 pts</label>
-						<input type="color" id="5ptsColor" value="#B400FF"/>
+						<label for="5ptsColor" >5 pts</label>
+						<input type="color" id="5ptsColor" value="#B400FF" class="setColorPicker"/>
 					</li>
 					<li>
-						<label for="15ptsColor">15 pts</label>
-						<input type="color" id="15ptsColor" value="#35FF00"/>
+						<label for="15ptsColor" class="setColorPicker">15 pts</label>
+						<input type="color" id="15ptsColor" value="#35FF00" class="setColorPicker"/>
 					</li>
 					<li>
-						<label for="25ptsColor">25 pts</label>
-						<input type="color" id="25ptsColor" value="#00F0FF"/>
+						<label for="25ptsColor" class="setColorPicker">25 pts</label>
+						<input type="color" id="25ptsColor" value="#00F0FF" class="setColorPicker"/>
 					</li>
-					<h3>Choose your difficulty</h3>
 					<li>
 						<label for="dotsCount">Dots</label>
 						<input type="text" class="inputFields" id="dotsCount" name="dotsCount" placeholder="50 to 90 dots" value=50 />
@@ -317,25 +314,28 @@
 				</div>
 			</div>
 
+			<div id="setKeyModal" class="modal">
+				<p>Press any key to continue.</p>
+			</div>
 			<div id="setGameModal" class="modal">
-				<p>
-					<h2>Welcome to our Pacman game!<br></h2>
-					<h3>Game Instructions<br></h3>
-					<b>Gameplay:</b> <b>To win the game</b>, you must move pacman and score over 100 points or collect all the dots on the gameboard. <br>
-					<b>Gameboard:</b> During a game, pacman may move around the grid, to encounter ghosts, dots and items that interact with pacman, each having a different effect on the game:
-					<ol>
-						<li><b>Ghosts</b> chase Pacman. Collision with Pacman respawns Pacman elsewhere on the gameboard and lowers your score by 10 points.</li>
-						<li><b>Pizza</b> addes 50 points to your score. Who doesn't like pizza?! </li>
-						<li><b>Hourglass</b> removes 15 seconds of your game timer. You're out of time! </li>
-						<li><b>Nuclear Reaction</b> addes one life and lowers your score by 100 points; Dangerous indeed!</li>
-					</ol>
-					<b>Information:</b> on the right side of the gameboard, static in-game settings are presented. <br>
-					On the left side of the gameboard, dynamic in-game settings are presented at the top of the bracket,
-					and additional options are displayed at the bottom of the bracket.
-					<br><br>
-					That's all you need to know to know, good luck and have fun!
-				</p>			
-			  </div>
+			<p>
+				<h2>Welcome to our Pacman game!<br></h2>
+				<h3>Game Instructions<br></h3>
+				<b>Gameplay:</b> <b>To win the game</b>, you must move pacman and score over 100 points or collect all the dots on the gameboard. <br>
+				<b>Gameboard:</b> During a game, pacman may move around the grid, to encounter ghosts, dots and items that interact with pacman, each having a different effect on the game:
+				<ol>
+					<li><b>Ghosts</b> chase Pacman. Collision with Pacman respawns Pacman elsewhere on the gameboard and lowers your score by 10 points.</li>
+					<li><b>Pizza</b> addes 50 points to your score. Who doesn't like pizza?! </li>
+					<li><b>Hourglass</b> removes 15 seconds of your game timer. You're out of time! </li>
+					<li><b>Nuclear Reaction</b> addes one life and lowers your score by 100 points; Dangerous indeed!</li>
+				</ol>
+				<b>Information:</b> on the right side of the gameboard, static in-game settings are presented. <br>
+				On the left side of the gameboard, dynamic in-game settings are presented at the top of the bracket,
+				and additional options are displayed at the bottom of the bracket.
+				<br><br>
+				That's all you need to know to know, good luck and have fun!
+			</p>			
+		</div>
 		</content>
 
 		<footer>

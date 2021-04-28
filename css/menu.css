@@ -22,7 +22,7 @@ body {
 
 .menu_container {
   width: 300px;
-  padding: 30px 0;
+  padding: 20px 0;
   background: rgba(20, 40, 40, .8);
   transition: .4s;
 }
@@ -105,5 +105,7 @@ body {
 
     
   }
-
+.setColorPicker{
+  margin-top: 10px;
+}
   

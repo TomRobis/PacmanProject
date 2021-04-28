@@ -79,21 +79,7 @@ class ghost extends movable{
             }
             this.turnDir = [ 0, this.findDir(diffX) ];
             this.dir = [  this.findDir(diffY) , 0];
-        }
-            // prefer horizontal movement
-
-             /* move based on larger distance to pacman */
-            //  let diffXLarger = Math.abs(diffX - diffY) > 0 ? true : false; 
-            
-            // if (diffXLarger){
-            //     this.turnDir = dirX;
-            //     this.dir = dirY;
-            // }
-            // else{
-            //     this.turnDir = dirY;
-            //     this.dir = dirX;
-            // }
-            
+        }  
             
     }
 
