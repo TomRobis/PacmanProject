@@ -88,6 +88,8 @@ class gameBoard {
             }
         }
         this.setGhosts();
+        this.setTimeDot();
+        this.setKillDot();
     }
     draw(){
         let gridCellObject;
@@ -102,6 +104,18 @@ class gameBoard {
                 }
             }
         }
+    }
+    setTimeDot()
+    {
+        let pos=this.findRandomEmptyCell();
+        let timedot= new timeDot(pos,0,"red");
+        this.setGridCell(pos,timedot);
+    }
+    setKillDot()
+    {
+        let pos=this.findRandomEmptyCell();
+        let killdot= new killDot(pos,0,"red");
+        this.setGridCell(pos,killdot);
     }
 
     checkCollision(caller,nextPos){
