@@ -20,6 +20,7 @@ let ghostsInterval;
 let specialGhostInterval;
 
 let miniGameOver;
+let inGame;
 
 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -112,7 +113,8 @@ function lifeLost(){
 function endGame(displayEndGameMessages){
     stopGame();
     removeEventListeners();
-    toggleBackgroundMusic();
+    pauseMusic();
+    inGame = false;
     if (displayEndGameMessages){
         if(livesLeft == 0){
             alert('Loser!');
@@ -133,7 +135,7 @@ function endGame(displayEndGameMessages){
 
 function startNewGame(){
     stopGame();
-    document.getElementById("game_sound").play();
+    playMusic();
     displayGameSettings();
     setGameVariables();
     setEventListeners();
@@ -182,6 +184,7 @@ function setGameVariables(){
     $("#gameSetUserName").html('User: ' + '<b>' + activeUser + '</b>');
     onPause = false;
     musicOn = true;
+    inGame = true;
 }
 
 function removeEventListeners(){

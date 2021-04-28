@@ -21,12 +21,12 @@ function toggleGamePause(){
 }
 function toggleBackgroundMusic(){
     if (musicOn){
-        document.getElementById("game_sound").pause();
+        pauseMusic();
         
     }
     else{
-        document.getElementById("game_sound").play();
-        document.getElementById("game_sound").volume = 0.1;
+        playMusic();
+        
     }
     musicOn = !musicOn;
 }
@@ -68,4 +68,11 @@ function displayInstructions(){
     $("#setGameModal").modal({
 		fadeDuration: 500
 	  });
+}
+function playMusic(){
+    document.getElementById("game_sound").play();
+    document.getElementById("game_sound").volume = 0.1;
+}
+function pauseMusic(){
+    document.getElementById("game_sound").pause();
 }

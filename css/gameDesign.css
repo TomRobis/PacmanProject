@@ -52,11 +52,10 @@ input{
 }
 #canvas{
   background-color:black; 
-  /* display: flex; */
+  height: 100%;
+  width: 100%;
 }
 #gameSetCanvasContainer{
   height: 575px;
-}
-#setHorizontalList{
-  display: inline;
+  width: 1000px;
 }

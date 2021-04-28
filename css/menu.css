@@ -12,7 +12,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: auto;
+  
   text-align: center;
   display: flex;
   color: white;
@@ -24,7 +24,7 @@ body {
   width: 300px;
   padding: 30px 0;
   background: rgba(20, 40, 40, .8);
-  transition: .2s;
+  transition: .4s;
 }
 .menu_container .h2{
     font-weight: 300;
@@ -58,11 +58,12 @@ body {
   font-size: 18px;
   color: white;
   cursor: pointer;
-  transition: .6  s;
+  transition: .2s;
 }
 .action_fields:hover {
     background: rgba(20, 20, 20, .8);
-    padding: 5px ;
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    
   }
   .topnav {
     background-color: #333;

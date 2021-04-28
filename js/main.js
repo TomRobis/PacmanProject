@@ -9,6 +9,9 @@ $(document).ready(function() {
 
 
  function SwitchDisplay(pageID,resetValues) {
+	 if (inGame){
+		 endGame(false);
+	 }
 	 if (resetValues){
 		$(".menu_container:visible").trigger("reset");
 	 }

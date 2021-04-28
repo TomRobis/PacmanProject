@@ -60,8 +60,8 @@
 			<div class="topnav">
 				<div class="topnav-left">
 					<a id="menu_welcome" onclick="SwitchDisplay('welcome')">Welcome</a>
-					<a id="menu_login" onclick="SwitchDisplay('register')">Log In</a>
-					<a id="menu_register" onclick="SwitchDisplay('login')">Register</a>
+					<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
+					<a id="menu_register" onclick="SwitchDisplay('register')">Register</a>
 					<a id="menu_about" onclick= "displayAboutModal()">About</a>
 					<div class="us">
 						<h1>Ⓒ Tom Robissa & Avichai Edri!</h1>
@@ -239,6 +239,7 @@
 							<input id="gameSetDotsLeft" name="gameSetDotsLeft" type="text" readonly="true" class="gameSetDisplay"/>
 						</li>
 						<br>
+						<h3>Game Options</h3>
 						<li>
 							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
 						</li>
@@ -255,7 +256,7 @@
 						</li>
 
 						<li>
-							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="backToMainMenu()">Return to main menu </button>
+							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')">Return to main menu </button>
 						</li>
 					</ul>	
 				</div>
