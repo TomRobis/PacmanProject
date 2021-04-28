@@ -52,7 +52,7 @@ let LEVEL =
   
 
   const OBJECT_COLORS = {
-    WALL: "grey",
+    WALL: "#1919A6",
     PACMAN: "yellow",
     BLINKY: "red",
     PINKY: "pink",

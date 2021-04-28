@@ -28,6 +28,7 @@ header h1 {
 	font-family: 'Dancing Script', cursive;
 	padding-bottom: 10px;
   text-decoration: none;
+  padding-right: 10px;
 }
 
 header h3, p {
@@ -41,5 +42,6 @@ header h3, p {
   background-color:  #333;
   color: white;
   text-align: center;
+  font-family: 'Dancing Script', cursive;
   
 }

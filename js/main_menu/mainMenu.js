@@ -1,10 +1,8 @@
 $(document).ready(function() {
 	SwitchDisplay('welcome');
-	
 	setSignupValidation();
 	setLoginValidation();
 	setSettingsValidation();
-
 });
 
 
