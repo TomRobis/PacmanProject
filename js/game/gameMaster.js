@@ -57,18 +57,16 @@ function ghostsLoop(){
     for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
-    // gb.draw();
 }
 function specialGhostLoop(){
     sGhost.updatePosition(gb);
-    // gb.draw();
 }
 
 
 function stopGame(){
     clearInterval(pacmanInterval);
     clearInterval(ghostsInterval);
-    clearInterval(specialGhostInterval);
+    // clearInterval(specialGhostInterval);
     onPause = true;
 }
 
@@ -122,7 +120,7 @@ function endGame(displayEndGameMessages){
         // time out
         else { 
             if(totalScore < 100){
-                alert('You are better than ' + livesLeft + ' points!');
+                alert('You are better than ' + totalScore + ' points!');
             }
             else{
                 alert('Winner!!!');
@@ -145,7 +143,7 @@ function startNewGame(){
 
 function startIntervals(){
     pacmanInterval = setInterval(pacmanLoop,100);
-    ghostsInterval = setInterval(ghostsLoop,200);
+    ghostsInterval = setInterval(ghostsLoop,250);
     specialGhostInterval = setInterval(specialGhostLoop,350);
     onPause = false;
 }
