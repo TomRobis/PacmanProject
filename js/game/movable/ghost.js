@@ -52,6 +52,13 @@ class ghost extends movable{
         ctx.restore();
     }
 
+    /**
+     * ghosts determine their direction and then try to move. they also save dots they 
+     *  stepped on and release them once moving to the next grid location. 
+     * 
+     * @param {gameBoard} board:
+     * @memberof ghost
+     */
     updatePosition(board){
         this.newDot = null;
         this.updateDir(board.getPacMan().getPos());
@@ -67,6 +74,11 @@ class ghost extends movable{
     
     }
 
+    /**
+     * ghost tries to either move towards pacman or randomally under some probablity. 
+     * @param {[int col,int row]} pacmanPos: pacman's current position on the grid
+     * @memberof ghost
+     */
     updateDir(pacmanPos){
         let randNum = Math.random(); 
         if( randNum <= this.randomDirectionAlpha){
@@ -87,18 +99,21 @@ class ghost extends movable{
             
     }
 
+    // once a collision is made, player loses 10 points and a life. miniGameOver is an indicator that in the start of the next interval, 
+    // will be used to determine that a collision of ghost and pacman was made .
     handlePacmanCollision(board,caller){
         board.updateScore(-10,false); 
          miniGameOver = true;
     }
 
+    // when two ghosts collide, they both act as a wall.
     handleGhostCollision(board,caller){
-        caller.setStoredDot(this.oldDot);
         return true;
     }
 
+    // stair function that determines which direction ghost wants to move to. 
     findDir(locationDiff){
-        // stair function
+        
         let dir;
         if(locationDiff > 0){
             dir = -1;

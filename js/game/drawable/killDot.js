@@ -32,6 +32,7 @@ class killDot extends dot {
         ctx.fill();
         this.counter+=10;
     }
+    // adds 1 life and -100 score
     handlePacmanCollision(board,caller){
         super.handlePacmanCollision(board,caller);
         livesLeft++;

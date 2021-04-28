@@ -25,8 +25,11 @@ let inGame;
 const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 
-
-function startNewMiniGame(){
+/**
+ * launches a new game after updating the settings. intervals for each moving object are set here.
+ *
+ */
+function launchGame(){
     miniGameOver = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
@@ -41,6 +44,7 @@ function startNewMiniGame(){
     
 }
 
+// actions pacman performs every "interval time" ms. miniGameOver indicates whether a collision with a ghost has been made.  
 function pacmanLoop(){
     if(!miniGameOver){
         pacmanInstance.updatePosition(gb);
@@ -53,16 +57,20 @@ function pacmanLoop(){
 
 
 }
+
+// actions ghosts performs every "interval time" ms.
 function ghostsLoop(){
     for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
 }
+
+// actions ghost performs every "interval time" ms.
 function specialGhostLoop(){
     sGhost.updatePosition(gb);
 }
 
-
+// puts a temporary stop to the game. board information is still saved. 
 function stopGame(){
     clearInterval(pacmanInterval);
     clearInterval(ghostsInterval);
@@ -80,6 +88,8 @@ function setEventListeners(){
     );
 }
 
+
+// creates a copy of the original grid for gameBoard setup
 function generateNewGrid(){
     let newGrid = new Array(rowCount);
     for(let i=0; i<rowCount; i++){
@@ -93,6 +103,8 @@ function generateNewGrid(){
 
 
 
+
+// each time a collision of ghost and pacman occurs, pacman loses one life until the game is over.
 function lifeLost(){
     livesLeft--;
     if(livesLeft > 0){
@@ -108,6 +120,10 @@ function lifeLost(){
     }
 }
 
+
+/**
+ * @param {boolean} displayEndGameMessages
+ */
 function endGame(displayEndGameMessages){
     stopGame();
     removeEventListeners();
@@ -131,37 +147,41 @@ function endGame(displayEndGameMessages){
 }
 
 
+// starts a new game from scratch. 
+
 function startNewGame(){
     stopGame();
     playMusic();
     displayGameSettings();
     setGameVariables();
     setEventListeners();
-    startNewMiniGame();
+    launchGame();
 
 }
 
+// continues the intervals stopped after StopGame()
 function startIntervals(){
     pacmanInterval = setInterval(pacmanLoop,100);
     ghostsInterval = setInterval(ghostsLoop,250);
     specialGhostInterval = setInterval(specialGhostLoop,350);
     onPause = false;
 }
-
+ 
+/**
+ * each pacman interval, the display of time, score and dots pacman ate is displayed to the user or the game stops. 
+ */
 function checkGameStatus(){ 
     let timePassed =  (new Date() - startTime) / 1000;
     timeLeft = timeLimit - timePassed;
     totalScore = gb.getScore();
     dotsLeft = numOfDots - gb.getEatenDots();
-
+    updateDisplay();
     if (timeLeft <= 0 || dotsLeft == 0){ 
         endGame(true);
     } 
-    else{
-        updateDisplay();
-    }
     
 }
+
 function updateDisplay(){
     $("#gameSetTimer").val(timeLeft.toFixed(2));
     $("#gameSetScore").val(totalScore);

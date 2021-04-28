@@ -50,7 +50,6 @@ function hasOnlyLetters(myString){
 } 
 
 
-
 function handleNewUser(){
         usersDB.push(
             {
@@ -62,7 +61,6 @@ function handleNewUser(){
             }	
         );
         SwitchDisplay('welcome',true);
-        // console.log(usersDB[3]);
 }
 
 

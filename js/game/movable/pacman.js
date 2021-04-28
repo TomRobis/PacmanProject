@@ -19,6 +19,7 @@ class pacman extends movable{
         ctx.fill();
     } 
         
+    // update pacman's direction based on user input
     updateDir(newDir){
         switch(newDir) {
             case $("#setUpKey").text(): // should be fixed to more modular impl, allong with rest of these calls

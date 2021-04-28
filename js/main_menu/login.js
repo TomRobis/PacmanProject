@@ -43,6 +43,8 @@ function logout(){
     // $("#welPlay").prop('disabled', true);
     $('#welLogin').html('Login');
 }
+
+// login user into system and switch to the main page, without starting a new game.
 function login(){
     activeUser = $("#LogUsername").val();
     // $("#welPlay").prop('disabled', false);

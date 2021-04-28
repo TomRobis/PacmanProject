@@ -33,6 +33,8 @@ class timeDot extends dot {
         ctx.strokeStyle = 'white';
         ctx.stroke();
     }
+
+    // adds 15 seconds with 0 score
     handlePacmanCollision(board,caller){
         board.updateScore(this.score);
         timeLimit = String(parseInt(timeLimit) + 15);

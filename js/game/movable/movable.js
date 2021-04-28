@@ -9,6 +9,8 @@ class movable extends drawableOnGameBoard{
     }
 
 
+    // makes an attempt to move to a location on the grid. a collision test is done via gameboard. 
+    // returns whether a collision has been made
     moveMeTo(currDir,gb){
         if(!equals(currDir,DIRECTIONS.STATIONARY)){
             let nextPos = sumArrays(this.pos,currDir);
@@ -18,6 +20,8 @@ class movable extends drawableOnGameBoard{
         return false;
     }
 
+    // basic movement - movable tries to turn if asked and if it can't, continues to move in the same direction.
+    // returns whether the movable has been able to move to its' next position
     updatePosition(gb){
         let hasMoved;
         hasMoved = this.moveMeTo(this.turnDir,gb); 
@@ -34,6 +38,7 @@ class movable extends drawableOnGameBoard{
         
     }
 
+    // moves a movable to a new position on the grid and DOES NOT update the previous cell with blank. 
     advance(gb,nextPos){
         let somePos = nextPos;
         gb.setGridCell(nextPos,this); 
@@ -42,6 +47,7 @@ class movable extends drawableOnGameBoard{
         return false;
     }
 
+    // movables may want to be drawn differently based on direction 
     setFacingDir(currDir){
         if(!equals(currDir, DIRECTIONS.STATIONARY)){
             this.facingDir = PACMAN_FACING_DIR[(currDir.join())];

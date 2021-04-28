@@ -17,7 +17,7 @@ class gameBoard {
         this.pacman = new pacman(this.getPacmanStartPos());
 
 
-        this.placeWallsOnGameBoard();
+        this.placeDotsOnGameBoard();
 
         
     }
@@ -29,7 +29,12 @@ class gameBoard {
     }
 
 
-    placeWallsOnGameBoard(){
+    /**
+     *
+     * places dot identifiers on the gameboard randomly, based on pre-determined probabilities.
+     * @memberof gameBoard
+     */
+    placeDotsOnGameBoard(){
         let randomNum;
         let emptyCell;
 
@@ -63,6 +68,7 @@ class gameBoard {
         return [getRndValue(1,rowCount-2),getRndValue(1,colCount-2)];
     }
 
+    // after placing dots identifiers, objects are initiated based on identifiers. 
     initGameBoard(){
         let gridPos;
         let dotColor;
@@ -93,6 +99,8 @@ class gameBoard {
         this.setTimeDot();
         this.setKillDot();
     }
+
+    // each object in the grid is called to draw itself on its designated grid cell 
     draw(){
         let gridCellObject;
         let gridCell;
@@ -108,12 +116,14 @@ class gameBoard {
             }
         }
     }
+
     setTimeDot()
     {
         let pos=this.findRandomEmptyCell();
         let timedot= new timeDot(pos,0,"red");
         this.setGridCell(pos,timedot);
     }
+
     setKillDot()
     {
         let pos=this.findRandomEmptyCell();
@@ -121,6 +131,15 @@ class gameBoard {
         this.setGridCell(pos,killdot);
     }
 
+
+    /**
+     * each drawable object can interact with movables - pacman and ghost objects. 
+     *  once a collision is made with either, a method is invoked to deal with the collision
+     * @param {movable} caller: the initiating party, tried to move and asks game board whether a collision has been made.  
+     * @param {[int: col,int: row]} nextPos: the position caller wanted to move to.  
+     * @return {boolean} collision indicator 
+     * @memberof gameBoard
+     */
     checkCollision(caller,nextPos){
         let gridObj = this.gameGrid[nextPos[0]][nextPos[1]];
         let collision = true;
@@ -138,15 +157,16 @@ class gameBoard {
         }  
         return collision;
     }
-    // switchPositions(firstObj,secondObj){
-    //     let firstPos = firstObj.getPos();
-    //     let secondPos = secondObj.getPos();
-    //     firstObj.advance(this,secondPos);
-    //     secondObj.advance(this,firstPos);
-    //     return false;
-    // }
 
 
+
+    /**
+     *
+     *
+     * @param {int} addToScore: score to add to total score of player
+     * @param {boolean} isRegularDot: indicator - eating all the regular dots ends the game, special dots are not counted. 
+     * @memberof gameBoard
+     */
     updateScore(addToScore,isRegularDot){
         this.score += addToScore;
         if (isRegularDot){

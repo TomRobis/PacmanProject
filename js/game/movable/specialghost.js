@@ -8,6 +8,10 @@ class specialGhost extends ghost{
         return this.score;
     }
 
+
+    // special ghost has the movement of a ghost, collision behavior of a dot and the looks of a pizza.
+    // when a collision is made, a new dot is created with a pre - designated score that handles the collision for the ghost.
+    // after the collision, the ghost ceases to exist, same as a dot.  
     handlePacmanCollision(board,caller){
         let innerDot = new dot(this.pos,BOARD_OBJECT_ID.SPECIALGHOST,"red");
         innerDot.setRegularDot(false); // doesn't count as dot

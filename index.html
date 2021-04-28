@@ -74,6 +74,7 @@
 
 
 		<content>
+			<!-- main menu for the game. -->
 			<div id="welcome" class="menu_wrapper">
 				<div class="menu_container">
 				  <h2>Welcome to Pac-man!</h2>
@@ -94,15 +95,9 @@
 						<button type="button" id="welModalBtn" class="action_fields" onclick="displayAboutModal()">About</button>
 					</li>
 				  </ul>
-				  <div id="welModal" class="modal">
-					<p>
-						<span>This website was built by:<br></span>
-						<span><b>Avichai Edri</b> and <b>Tom Robissa</b><br></span>
-						<span>During construction of this site, we have used the Validation Plugin and Modal Plugin</span>
-					</p>			
-				  </div>
 				</div>
 			  </div>
+			  <!-- div of registry for a new user.  -->
 			<div id="register" class="menu_wrapper">
 				<form class="menu_container" id="signupform">
 				  <h2>Submit your details!</h2>
@@ -136,6 +131,7 @@
 				  </ul>
 				</form>
 			  </div>
+			  <!-- login page for users with an account -->
 			  <div id="login" class="menu_wrapper">
 				<form class="menu_container" id="loginForm">
 				  <h2>Enter your credentials</h2>
@@ -157,6 +153,7 @@
 				  </ul>
 				</form>
 			  </div>
+			  <!-- game settings page  -->
 			  <div id="settings" class="menu_wrapper">
 				<form class="menu_container" id="settingsForm">
 				  <ul class="noBullet">
@@ -213,8 +210,8 @@
 				  </ul>
 			</form>
 			</div>
-
 			<div id="gameDiv" class="gameSetContainer menu_wrapper">
+				<!-- a div that hosts the dynamic in-game setting and some additional options  -->
 				<div id=inGameInformationDiv class="gameChild">
 					<audio id="game_sound"  src="./sound/pacman.mp3"type="audio/mpeg" preload="auto" loop ></audio>
 					<span id="gameSetUserName"></span>
@@ -260,11 +257,13 @@
 					</ul>	
 				</div>
 
+				<!--  hosts the game canvas  -->
 				<div id="gameSetCanvasContainer" class="gameChild">
 					<canvas id="canvas" height="575" width="1000"></canvas>
 				</div>
 
 				
+				<!--  hosts the static information for the game  -->
 				<div id=gameInformationDiv class="gameChild">
 					<ul class="noBullet">
 						<li>
@@ -314,27 +313,39 @@
 				</div>
 			</div>
 
+			<!-- displays a message when binding new keys for the user during settings manipulation -->
 			<div id="setKeyModal" class="modal">
 				<p>Press any key to continue.</p>
 			</div>
+			
+			<!-- instructions for the game -->
 			<div id="setGameModal" class="modal">
-			<p>
-				<h2>Welcome to our Pacman game!<br></h2>
-				<h3>Game Instructions<br></h3>
-				<b>Gameplay:</b> <b>To win the game</b>, you must move pacman and score over 100 points or collect all the dots on the gameboard. <br>
-				<b>Gameboard:</b> During a game, pacman may move around the grid, to encounter ghosts, dots and items that interact with pacman, each having a different effect on the game:
-				<ol>
-					<li><b>Ghosts</b> chase Pacman. Collision with Pacman respawns Pacman elsewhere on the gameboard and lowers your score by 10 points.</li>
-					<li><b>Pizza</b> addes 50 points to your score. Who doesn't like pizza?! </li>
-					<li><b>Hourglass</b> removes 15 seconds of your game timer. You're out of time! </li>
-					<li><b>Nuclear Reaction</b> addes one life and lowers your score by 100 points; Dangerous indeed!</li>
-				</ol>
-				<b>Information:</b> on the right side of the gameboard, static in-game settings are presented. <br>
-				On the left side of the gameboard, dynamic in-game settings are presented at the top of the bracket,
-				and additional options are displayed at the bottom of the bracket.
-				<br><br>
-				That's all you need to know to know, good luck and have fun!
-			</p>			
+				<p>
+					<h2>Welcome to our Pacman game!<br></h2>
+					<h3>Game Instructions<br></h3>
+					<b>Gameplay:</b> <b>To win the game</b>, you must move pacman and score over 100 points or collect all the dots on the gameboard. <br>
+					<b>Gameboard:</b> During a game, pacman may move around the grid, to encounter ghosts, dots and items that interact with pacman, each having a different effect on the game:
+					<ol>
+						<li><b>Ghosts</b> chase Pacman. Collision with Pacman respawns Pacman elsewhere on the gameboard and lowers your score by 10 points.</li>
+						<li><b>Pizza</b> addes 50 points to your score. Who doesn't like pizza?! </li>
+						<li><b>Hourglass</b> removes 15 seconds of your game timer. You're out of time! </li>
+						<li><b>Nuclear Reaction</b> addes one life and lowers your score by 100 points; Dangerous indeed!</li>
+					</ol>
+					<b>Information:</b> on the right side of the gameboard, static in-game settings are presented. <br>
+					On the left side of the gameboard, dynamic in-game settings are presented at the top of the bracket,
+					and additional options are displayed at the bottom of the bracket.
+					<br><br>
+					That's all you need to know to know, good luck and have fun!
+				</p>
+			</div>	
+			<!-- displays some information about the creators		 -->
+			<div id="welModal" class="modal">
+				<p>
+					<span>This website was built by:<br></span>
+					<span><b>Avichai Edri</b> and <b>Tom Robissa</b><br></span>
+					<span>During construction of this site, we have used the Validation Plugin and Modal Plugin</span>
+				</p>			
+			</div>
 		</div>
 		</content>
 

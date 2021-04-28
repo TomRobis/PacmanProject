@@ -6,7 +6,15 @@ $(document).ready(function() {
 });
 
 
- function SwitchDisplay(pageID,resetValues) {
+/**
+ *
+ *
+ * @param {String} pageID: page to display
+ * @param {Boolean} resetValues: indicator whether to reset previous page's values
+ */
+function SwitchDisplay(pageID,resetValues) {
+	 
+	 
 	 if (inGame){
 		 endGame(false);
 	 }

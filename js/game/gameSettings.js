@@ -35,7 +35,6 @@ function toggleBackgroundMusic(){
 
 
 function displayGameSettings(){
-    // TODO make these into variables
     let up = $("#setUpKey").text();
     let down = $("#setDownKey").text();
     let left = $("#setLeftKey").text();
@@ -64,6 +63,8 @@ function displayGameSettings(){
     $("#gameSetDotsLeft").val(numDots);
     
 }   
+
+
 function displayInstructions(){
     $("#setGameModal").modal({
 		fadeDuration: 500
@@ -72,7 +73,6 @@ function displayInstructions(){
 function playMusic(){
     document.getElementById("game_sound").play();
     document.getElementById("game_sound").volume = 0.1;
-    document.getElementById("game_sound").playbackRate = 0.8;
 }
 function pauseMusic(){
     document.getElementById("game_sound").pause();
