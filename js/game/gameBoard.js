@@ -70,6 +70,9 @@ class gameBoard {
 
     // after placing dots identifiers, objects are initiated based on identifiers. 
     initGameBoard(){
+        this.setTimeDot();
+        this.setKillDot();
+
         let gridPos;
         let dotColor;
         for (let i = 0; i < rowCount; i++) {
@@ -89,15 +92,18 @@ class gameBoard {
                         dotColor = $("#" + this.gameGrid[i][j] + "ptsColor").val();
                         this.setGridCell(gridPos,new dot(gridPos,this.gameGrid[i][j],dotColor));
                         break;
+                    case BOARD_OBJECT_ID.GHOST: // ghost indicator
+                        this.setGridCell(gridPos,BOARD_OBJECT_ID.BLANK);
                     default:
                         break;
                 }
 
             }
         }
+
+
         this.setGhosts();
-        this.setTimeDot();
-        this.setKillDot();
+        this.setSpecialGhost();
     }
 
     // each object in the grid is called to draw itself on its designated grid cell 
@@ -110,7 +116,6 @@ class gameBoard {
                 gridCell = [i,j];
                 ctx.clearRect(j*wallSizePxl,i*wallSizePxl, wallSizePxl, wallSizePxl); 
                 if (!this.gridCellEmpty(gridCell)){
-
                     gridCellObject.draw();    
                 }
             }
@@ -179,6 +184,8 @@ class gameBoard {
         for (let i=0; i < monstersCount; i++) {
             this.setGridCell(ghostsLocs[i],this.ghosts[i]);
         }
+    }
+    setSpecialGhost(){
         this.setGridCell(GHOST_START_LOC.SPECIALGHOST,this.sGhost);
     }
     getPacMan(){

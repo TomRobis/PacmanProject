@@ -60,16 +60,18 @@ class ghost extends movable{
      * @memberof ghost
      */
     updatePosition(board){
-        this.newDot = null;
+        // this.newDot = null;
         this.updateDir(board.getPacMan().getPos());
         let hasMoved = super.updatePosition(board);
         if(hasMoved && this.hasStoredDot()){
             this.prevPos = this.oldDot.getPos();    
             gb.setGridCell(this.prevPos,this.oldDot);
             this.oldDot = null;
+
         }
         if (this.newDot != null){
             this.oldDot = this.newDot;
+            this.newDot = null;
         }
     
     }
@@ -103,7 +105,8 @@ class ghost extends movable{
     // will be used to determine that a collision of ghost and pacman was made .
     handlePacmanCollision(board,caller){
         board.updateScore(-10,false); 
-         miniGameOver = true;
+        miniGameOver = true;
+        return true; 
     }
 
     // when two ghosts collide, they both act as a wall.
@@ -134,18 +137,18 @@ class ghost extends movable{
     }
 
     getStoredDot(){ 
-        
-        if (this.hasStoredDot()){
-            return this.oldDot;
-        }
-        return null; 
+        return this.oldDot;
     }
     setStoredOldDot(dot){
         this.oldDot = dot; 
     }
 
-
-
+    getNewStoredDot(){
+        return this.newDot;
+    }
+    hasNewDot(){
+        return this.newDot != null;
+    }
 
 
 }

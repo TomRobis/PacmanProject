@@ -44,4 +44,7 @@ class dot extends drawableOnGameBoard {
     setRegularDot(regularDot){
         this.regularDot = regularDot;
     }
+    isRegular(){
+        return this.regularDot;
+    }
 }   

@@ -18,6 +18,7 @@ let timeLimit;
 let pacmanInterval;
 let ghostsInterval;
 let specialGhostInterval;
+let sGhostEaten;
 
 let miniGameOver;
 let inGame;
@@ -31,7 +32,7 @@ const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
  */
 function launchGame(){
     miniGameOver = false;
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    // ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
     gb = new gameBoard();
     pacmanInstance = gb.getPacMan();    
@@ -46,10 +47,10 @@ function launchGame(){
 
 // actions pacman performs every "interval time" ms. miniGameOver indicates whether a collision with a ghost has been made.  
 function pacmanLoop(){
+    checkGameStatus();
     if(!miniGameOver){
         pacmanInstance.updatePosition(gb);
-        gb.draw();
-        checkGameStatus();
+        gb.draw();  
     }
     else{
         lifeLost();
@@ -63,18 +64,22 @@ function ghostsLoop(){
     for (i = 0; i  < monstersCount; i++){
         ghosts[i].updatePosition(gb);
     }
+    if (!sGhostEaten){
+        sGhost.updatePosition(gb);
+    }
+    
 }
 
-// actions ghost performs every "interval time" ms.
-function specialGhostLoop(){
-    sGhost.updatePosition(gb);
-}
+// // actions ghost performs every "interval time" ms.
+// function specialGhostLoop(){
+//     sGhost.updatePosition(gb);
+// }
 
 // puts a temporary stop to the game. board information is still saved. 
 function stopGame(){
     clearInterval(pacmanInterval);
     clearInterval(ghostsInterval);
-    clearInterval(specialGhostInterval);
+    // clearInterval(specialGhostInterval);
     onPause = true;
 }
 
@@ -163,7 +168,7 @@ function startNewGame(){
 function startIntervals(){
     pacmanInterval = setInterval(pacmanLoop,100);
     ghostsInterval = setInterval(ghostsLoop,250);
-    specialGhostInterval = setInterval(specialGhostLoop,350);
+    // specialGhostInterval = setInterval(specialGhostLoop,350);
     onPause = false;
 }
  
@@ -204,6 +209,7 @@ function setGameVariables(){
     onPause = false;
     musicOn = true;
     inGame = true;
+    sGhostEaten = false;
 }
 
 function removeEventListeners(){
