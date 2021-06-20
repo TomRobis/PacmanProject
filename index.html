@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<META NAME = "keywords" CONTENT = "Webpage, design, HTML, 
+			Pacman, personal, game, Avichai Edri, Tom Robissa, contact, feedback,
+			list, links, frame, js">
+		
+		<META NAME = "description" CONTENT = "This Pacman is brought to you by Tom Robissa and Avichai Edri ">
+		
+		<TITLE>Pacman - Avichai & Tom </TITLE>
+		
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" type="text/css" href="./css/menu.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/gameDesign.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+		<!-- jquery files and plugins -->
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
+
+		<!-- javascript menu files -->
+		<script src="./js/main_menu/login.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/settings.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/signup.js" type="text/javascript" ></script>
+		<script src="./js/main_menu/mainMenuDB.js" type="text/javascript"   ></script>
+		<script src="./js/main_menu/mainMenu.js" type="text/javascript"  ></script>
+
+		<!-- javascript game files -->
+		<script src="./js/game/drawable/drawableOnGameBoard.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/wall.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/dot.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/timeDot.js" type="text/javascript"></script>
+		<script src="./js/game/drawable/killDot.js" type="text/javascript"></script>
+
+		<script src="./js/game/movable/movable.js" type="text/javascript"></script>
+		<script src="./js/game/movable/ghost.js" type="text/javascript"></script>
+		<script src="./js/game/movable/specialghost.js" type="text/javascript"></script>
+		<script src="./js/game/movable/pacman.js" type="text/javascript"></script>
+		
+		<script src="./js/game/gameDataStructs.js" type="text/javascript"></script>
+		<script src="./js/game/gameBoard.js" type="text/javascript"></script>
+		<script src="./js/game/gameMaster.js" type="text/javascript"></script>
+		<script src="./js/game/gameSettings.js" type="text/javascript"></script>
+		
+
+
+
+		
+		
+	</head>
+	
+	<body>
+		<header>
+			<img src="images/logo.png" alt="logo">
+			<div class="topnav">
+				<div class="topnav-left">
+					<a id="menu_welcome" onclick="SwitchDisplay('welcome')">Welcome</a>
+					<a id="menu_login" onclick="SwitchDisplay('login')">Log In</a>
+					<a id="menu_register" onclick="SwitchDisplay('register')">Register</a>
+					<a id="menu_about" onclick= "displayAboutModal()">About</a>
+					<div class="us">
+						<h1>Ⓒ Tom Robissa & Avichai Edri</h1>
+					</div>
+				</div>
+		
+			</div>
+		</header>
+
+
+		<content>
+			<!-- main menu for the game. -->
+			<div id="welcome" class="menu_wrapper">
+				<div class="menu_container">
+				  <h2>Welcome to Pac-man!</h2>
+				  <h2>Default user: k</h2>
+				  <h2>Default password: k</h2>
+				  <ul class="noBullet">
+					<li>
+						<button type="button" id="welPlay" class="action_fields" onclick="playGame()" >Play</button>
+					</li>
+					<li>
+						<button type="button" id="welLogin" class="action_fields" onclick="loginPressed()" >Login</button>
+					</li>
+					<li>
+						<button type="button" id="welRegister" class="action_fields" onclick="SwitchDisplay('register',false)" >Register</button>
+					</li>
+					<li>
+						<button type="button" id="welSettings" class="action_fields" onclick="SwitchDisplay('settings',false)">Settings</button>
+					</li>
+					<li>
+						<button type="button" id="welModalBtn" class="action_fields" onclick="displayAboutModal()">About</button>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			  <!-- div of registry for a new user.  -->
+			<div id="register" class="menu_wrapper">
+				<form class="menu_container" id="signupform">
+				  <h2>Submit your details!</h2>
+				  <ul class="noBullet">
+					<li>
+					  <label for="RegUsername"></label>
+					  <input type="text" class="inputFields" id="RegUsername" name="Username" placeholder="Username"/>
+					</li>
+					<li>
+					  <label for="RegPassword"></label>
+					  <input type="password" class="inputFields" id="RegPassword" name="Password" placeholder="Password"/>
+					</li>
+					<li>
+						<label for="RegFullName"></label>
+						<input type="text" class="inputFields" name="FullName" id="RegFullName" placeholder="Full Name"/>
+					</li>
+					<li>
+					  <label for="RegEmail"></label>
+					  <input type="email" class="inputFields" id="RegEmail" name="Email" placeholder="Email"/>
+					</li>
+					<li>
+						<label for="RegBirthday"></label>
+						<input type="date" class="inputFields" name="Birthday" id="RegBirthday" placeholder=""/>
+					</li>
+					<li>
+						<button type="submit" id="RegSubmit" class="action_fields" >Create my new user!</button>
+					</li>
+					<li>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)">Return to main menu </button>
+					</li>
+				  </ul>
+				</form>
+			  </div>
+			  <!-- login page for users with an account -->
+			  <div id="login" class="menu_wrapper">
+				<form class="menu_container" id="loginForm">
+				  <h2>Enter your credentials</h2>
+				  <ul class="noBullet">
+					<li>
+						<label for="LogUsername"></label>
+						<input type="text" class="inputFields" id="LogUsername" name="Username" placeholder="Username" required/>
+					  </li>
+					  <li>
+						<label for="LogPassword"></label>
+						<input type="password" class="inputFields" id="LogPassword" name="Password" placeholder="Password" required/>
+					  </li>
+					  <li>
+						<button type="submit" id="executeLogin" class="action_fields">Login</button>
+					</li>
+					<li>
+						<button type="button" id="RegReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)" >Return to main menu </button>
+					</li>
+				  </ul>
+				</form>
+			  </div>
+			  <!-- game settings page  -->
+			  <div id="settings" class="menu_wrapper">
+				<form class="menu_container" id="settingsForm">
+				  <ul class="noBullet">
+					<li>
+					  <label for="setUpKey">Up</label>
+					  <button type="button" id="setUpKey" class="action_fields keybind" onclick="bindNewKey(this.id)" >ArrowUp</button>
+					</li>
+					<li>
+						<label for="setDownKey">Down</label>
+						<button type="button" id="setDownKey" class="action_fields keybind" onclick="bindNewKey(this.id)" >ArrowDown</button>
+					</li>
+					<li>
+						<label for="setLeftKey">Left</label>
+						<button type="button" id="setLeftKey" class="action_fields keybind" onclick="bindNewKey(this.id)" >ArrowLeft</button>
+					</li>
+					<li>	
+						<label for="setRightKey">Right</label>
+						<button type="button" id="setRightKey" class="action_fields keybind" onclick="bindNewKey(this.id)" >ArrowRight</button>
+					</li>
+					<li>
+						<label for="5ptsColor" >5 pts</label>
+						<input type="color" id="5ptsColor" value="#B400FF" class="setColorPicker"/>
+					</li>
+					<li>
+						<label for="15ptsColor" class="setColorPicker">15 pts</label>
+						<input type="color" id="15ptsColor" value="#35FF00" class="setColorPicker"/>
+					</li>
+					<li>
+						<label for="25ptsColor" class="setColorPicker">25 pts</label>
+						<input type="color" id="25ptsColor" value="#00F0FF" class="setColorPicker"/>
+					</li>
+					<li>
+						<label for="dotsCount">Dots</label>
+						<input type="text" class="inputFields" id="dotsCount" name="dotsCount" placeholder="50 to 90 dots" value=50 />
+					</li>
+					<li>
+						<label for="monstersCount">Monsters</label>
+						<input type="text" class="inputFields" id="monstersCount" name="monstersCount" placeholder="1 to 4 monsters" value=1 />
+					</li>
+					<li>
+						<label for="setGameTimer">Game time</label>
+						<input type="text" class="inputFields" id="setGameTimer" name="setGameTimer" placeholder="60+ seconds" value=60 />
+					</li>
+					<li>
+						<button type="submit" id="setSubmit" class="action_fields" >Save</button>
+					</li>
+					<li>
+						<button type="button" id="setRandomizeSettings" class="action_fields" onclick="randomizeSettings()">Random Settings</button>
+					</li>	
+					<li>
+						<button type="button" id="setReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome',true)" >Reset Stats</button>
+					</li>
+				
+				  </ul>
+			</form>
+			</div>
+			<div id="gameDiv" class="gameSetContainer menu_wrapper">
+				<!-- a div that hosts the dynamic in-game setting and some additional options  -->
+				<div id=inGameInformationDiv class="gameChild">
+					<audio id="game_sound"  src="./sound/pacman.mp3"type="audio/mpeg" preload="auto" loop ></audio>
+					<span id="gameSetUserName"></span>
+					<br>
+					<ul class="noBullet">
+						<h3>Game Info</h3>
+						<li>
+							<label for="gameSetScore" class="gameSetLbl">Score </label>
+							<input id="gameSetScore" name="gameSetScore" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetTimer" class="gameSetLbl">Timer</label>
+							<input id="gameSetTimer" name="gameSetTimer" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetLivesLeft" class="gameSetLbl">Lives </label>
+							<input id="gameSetLivesLeft" name="gameSetLivesLeft" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetDotsLeft" class="gameSetLbl">Dots Left</label>
+							<input id="gameSetDotsLeft" name="gameSetDotsLeft" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<br>
+						<h3>Game Options</h3>
+						<li>
+							<button type="button" id="gameSetNewGame" class="action_fields" onclick="startNewGame()">New Game </button>
+						</li>
+						<li>
+							<button type="button" id="gameSetPauseGame" class="action_fields" onclick="toggleGamePause()">Pause / Play </button>
+						</li>
+
+						<li>
+							<button type="button" id="gameSetBackgroundMusic" class="action_fields" onclick="toggleBackgroundMusic()">Toggle Music </button>
+						</li>
+
+						<li>
+							<button type="button" id="gameSetInstructions" class="action_fields" onclick="displayInstructions()"> Game Instructions </button>
+						</li>
+
+						<li>
+							<button type="button" id="gameSetReturnMenu" class="action_fields" onclick="SwitchDisplay('welcome')">Return to main menu </button>
+						</li>
+					</ul>	
+				</div>
+
+				<!--  hosts the game canvas  -->
+				<div id="gameSetCanvasContainer" class="gameChild">
+					<canvas id="canvas" height="575" width="1000"></canvas>
+				</div>
+
+				
+				<!--  hosts the static information for the game  -->
+				<div id=gameInformationDiv class="gameChild">
+					<ul class="noBullet">
+						<li>
+							<label for="gameSetUpKey" class="gameSetLbl">↑</label>
+							<input id="gameSetUpKey" name="gameSetUpKey" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetDownKey" class="gameSetLbl">↓</label>
+							<input id="gameSetDownKey" name="gameSetDownKey" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetLeftKey" class="gameSetLbl">←</label>
+							<input id="gameSetLeftKey" name="gameSetLeftKey" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>	
+							<label for="gameSetRightKey" class="gameSetLbl">→</label>
+							<input id="gameSetRightKey" name="gameSetRightKey" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSet5pts" class="gameSetLbl">5</label>
+							<span id="gameSet5pts" name="gameSet5pts" class="dot"></span>
+						</li>
+						<br>
+						<li>
+							<label for="gameSet15pts" class="gameSetLbl">15</label>
+							<span id="gameSet15pts" name="gameSet15pts" class="dot"></span>
+						</li>
+						<br>
+						<li>
+							<label for="gameSet25pts" class="gameSetLbl">25</label>
+							<span id="gameSet25pts" name="gameSet25pts" class="dot"></span>
+						</li>
+						<br>
+						<li>
+							<label for="gameSetDotsCount" class="gameSetLbl">#TotalDots</label>
+							<input id="gameSetDotsCount" name="gameSetDotsCount" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="gameSetMonstersCount" class="gameSetLbl">#Monsters</label>
+							<input id="gameSetMonstersCount" name="gameSetMonstersCount" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+						<li>
+							<label for="setGameMaxGameTime" class="gameSetLbl">Time Limit</label>
+							<input id="setGameMaxGameTime" name="setGameMaxGameTime" type="text" readonly="true" class="gameSetDisplay"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- displays a message when binding new keys for the user during settings manipulation -->
+			<div id="setKeyModal" class="modal">
+				<p>Press any key to continue.</p>
+			</div>
+			
+			<!-- instructions for the game -->
+			<div id="setGameModal" class="modal">
+				<p>
+					<h2>Welcome to our Pacman game!<br></h2>
+					<b>Gameplay:</b> <b>To win the game</b>, you must move pacman and score over 100 points or collect all the dots on the gameboard. <br>
+					<b>Gameboard:</b> During a game, pacman may move around the grid, to encounter ghosts, dots and items that interact with pacman, each having a different effect on the game:
+					<ol>
+						<li><b>Ghosts</b> chase Pacman. Collision with Pacman respawns Pacman elsewhere on the gameboard and lowers your score by 10 points.</li>
+						<li><b>Pizza</b> addes 50 points to your score. Who doesn't like pizza?! </li>
+						<li><b>Hourglass</b> adds 15 seconds of your game timer. It's your time to shine! </li>
+						<li><b>Nuclear Reaction</b> addes one life and lowers your score by 100 points; Dangerous indeed!</li>
+					</ol>
+					<b>Information:</b> on the right side of the gameboard, static in-game settings are presented. <br>
+					On the left side of the gameboard, dynamic in-game settings are presented at the top of the bracket,
+					and additional options are displayed at the bottom of the bracket.
+					<br><br>
+					That's all you need to know to know, good luck and have fun!
+				</p>
+			</div>	
+			<!-- displays some information about the creators		 -->
+			<div id="welModal" class="modal">
+				<p>
+					<span>This website was built by:<br></span>
+					<span><b>Avichai Edri</b> and <b>Tom Robissa</b><br></span>
+					<span>During construction of this site, we have used the Validation Plugin and Modal Plugin</span>
+				</p>			
+			</div>
+		</div>
+		</content>
+
+		<footer>
+			<div  class="footer">
+				<span>
+					Enjoyed the game?
+					Let us know: avichaie@post.bgu.ac.il, tomrob@post.bgu.ac.il.
+				</span>
+				
+			</div>
+		</footer>
+	</body>
+</html>
+
+
