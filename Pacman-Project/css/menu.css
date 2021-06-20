@@ -1,0 +1,111 @@
+body {
+  /* overflow: hidden; */
+  background: #111;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../images/pacman_background_2.png);
+}
+
+.menu_wrapper {
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  text-align: center;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+}
+
+
+.menu_container {
+  width: 300px;
+  padding: 20px 0;
+  background: rgba(20, 40, 40, .8);
+  transition: .4s;
+}
+.menu_container .h2{
+    font-weight: 300;
+}
+
+.inputFields, .lbl {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: auto;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, .2);
+  color: white;
+  outline: none;
+}
+
+.noBullet {
+  list-style-type: none;
+  padding: 0;
+}
+
+.action_fields {
+  margin-top: 10px;
+  text-align: center;
+  width: 200px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, .6);
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+.action_fields:hover {
+    background: rgba(20, 20, 20, .8);
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    
+  }
+  .topnav {
+    background-color: #333;
+    overflow: hidden;
+    padding-left: 50px;
+    height: 50px;
+    margin-top: -10px;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 13px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Dancing Script', cursive;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .us {
+    float: right;
+    color: #f2f2f2;
+    text-align: right;
+    text-decoration: none;
+    font-size: 9px;
+    font-family: 'Dancing Script', cursive;
+
+    
+  }
+.setColorPicker{
+  margin-top: 10px;
+}
+  
